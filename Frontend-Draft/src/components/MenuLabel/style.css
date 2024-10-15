@@ -1,0 +1,21 @@
+.menu-label {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  position: relative;
+}
+
+.menu-label .text-wrapper-2 {
+  color: var(--black);
+  font-family: var(--drop-menu-menu-font-family);
+  font-size: var(--drop-menu-menu-font-size);
+  font-style: var(--drop-menu-menu-font-style);
+  font-weight: var(--drop-menu-menu-font-weight);
+  letter-spacing: var(--drop-menu-menu-letter-spacing);
+  line-height: var(--drop-menu-menu-line-height);
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}

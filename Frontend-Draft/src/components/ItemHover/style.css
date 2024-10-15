@@ -1,0 +1,24 @@
+.item-hover {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 24px;
+  position: relative;
+  width: 260px;
+}
+
+.item-hover.pressing {
+  background-color: var(--bluesgray-2);
+}
+
+.item-hover.selected {
+  background-color: #c3cade;
+}
+
+.item-hover.default {
+  background-color: var(--white);
+}
+
+.item-hover.hover {
+  background-color: var(--bluesgray-3);
+}

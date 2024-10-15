@@ -1,0 +1,328 @@
+.button {
+  align-items: center;
+  border-radius: 100px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.button .state-layer-6 {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.button .icon-2 {
+  height: 18px !important;
+  position: relative !important;
+  width: 18px !important;
+}
+
+.button .label-text-10 {
+  font-family: var(--m3-label-large-font-family);
+  font-size: var(--m3-label-large-font-size);
+  font-style: var(--m3-label-large-font-style);
+  font-weight: var(--m3-label-large-font-weight);
+  letter-spacing: var(--m3-label-large-letter-spacing);
+  line-height: var(--m3-label-large-line-height);
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.button.style-2-outlined {
+  border: 1px solid;
+}
+
+.button.style-2-tonal.state-24-hovered {
+  background-color: #e8def8;
+  box-shadow: var(--m3-elevation-light-1);
+}
+
+.button.state-24-hovered.style-2-elevated {
+  background-color: #f7f2fa;
+  box-shadow: var(--m3-elevation-light-2);
+}
+
+.button.state-24-focused.style-2-filled {
+  background-color: #65558f;
+}
+
+.button.state-24-enabled.style-2-tonal {
+  background-color: #e8def8;
+}
+
+.button.state-24-enabled.style-2-filled {
+  background-color: #65558f;
+}
+
+.button.state-24-pressed.style-2-elevated {
+  background-color: #f7f2fa;
+  box-shadow: var(--m3-elevation-light-1);
+}
+
+.button.state-24-pressed.style-2-tonal {
+  background-color: #e8def8;
+}
+
+.button.style-2-outlined.state-24-pressed {
+  border-color: #79747e;
+}
+
+.button.state-24-hovered.style-2-filled {
+  background-color: #65558f;
+  box-shadow: var(--m3-elevation-light-1);
+}
+
+.button.style-2-outlined.state-24-focused {
+  border-color: #65558f;
+}
+
+.button.style-2-outlined.state-24-enabled {
+  border-color: #79747e;
+}
+
+.button.state-24-enabled.style-2-elevated {
+  background-color: #f7f2fa;
+  box-shadow: var(--m3-elevation-light-1);
+}
+
+.button.style-2-outlined.state-24-disabled {
+  border-color: #1d1b201f;
+}
+
+.button.state-24-pressed.style-2-filled {
+  background-color: #65558f;
+}
+
+.button.style-2-outlined.state-24-hovered {
+  border-color: #79747e;
+}
+
+.button.state-24-focused.style-2-tonal {
+  background-color: #e8def8;
+}
+
+.button.state-24-focused.style-2-elevated {
+  background-color: #f7f2fa;
+  box-shadow: var(--m3-elevation-light-1);
+}
+
+.button .style-3-tonal.state-25-hovered {
+  background-color: #4a445914;
+}
+
+.button .state-25-hovered.style-3-elevated {
+  background-color: #65558f14;
+}
+
+.button .show-icon-true.style-3-filled {
+  padding: 10px 24px 10px 16px;
+}
+
+.button .state-25-focused.style-3-filled {
+  background-color: #ffffff1f;
+}
+
+.button .show-icon-false.style-3-filled {
+  padding: 10px 24px;
+}
+
+.button .state-25-pressed.style-3-elevated {
+  background-color: #65558f1f;
+}
+
+.button .state-25-pressed.style-3-tonal {
+  background-color: #4a44591f;
+}
+
+.button .style-3-outlined.state-25-pressed {
+  background-color: #65558f1f;
+}
+
+.button .state-25-hovered.style-3-filled {
+  background-color: #ffffff14;
+}
+
+.button .style-3-outlined.state-25-focused {
+  background-color: #65558f1f;
+}
+
+.button .state-25-disabled.style-3-elevated {
+  background-color: #1d1b201f;
+}
+
+.button .style-3-tonal.state-25-disabled {
+  background-color: #1d1b201f;
+}
+
+.button .show-icon-false.style-3-outlined {
+  padding: 10px 24px;
+}
+
+.button .style-3-outlined.show-icon-true {
+  padding: 10px 24px 10px 16px;
+}
+
+.button .show-icon-false.style-3-tonal {
+  padding: 10px 24px;
+}
+
+.button .show-icon-false.style-3-elevated {
+  padding: 10px 24px;
+}
+
+.button .state-25-focused.style-3-text {
+  background-color: #65558f1f;
+}
+
+.button .state-25-pressed.style-3-filled {
+  background-color: #ffffff1f;
+}
+
+.button .style-3-outlined.state-25-hovered {
+  background-color: #65558f14;
+}
+
+.button .show-icon-true.style-3-elevated {
+  padding: 10px 24px 10px 16px;
+}
+
+.button .show-icon-true.style-3-text {
+  padding: 10px 16px 10px 12px;
+}
+
+.button .state-25-focused.style-3-tonal {
+  background-color: #4a44591f;
+}
+
+.button .state-25-focused.style-3-elevated {
+  background-color: #65558f1f;
+}
+
+.button .style-3-text.state-25-hovered {
+  background-color: #65558f14;
+}
+
+.button .show-icon-true.style-3-tonal {
+  padding: 10px 24px 10px 16px;
+}
+
+.button .state-25-disabled.style-3-filled {
+  background-color: #1d1b201f;
+}
+
+.button .state-25-pressed.style-3-text {
+  background-color: #65558f1f;
+}
+
+.button .show-icon-false.style-3-text {
+  padding: 10px 12px;
+}
+
+.button .state-25-focused.style-3-filled.show-icon-true {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.button .show-icon-true.state-25-hovered.style-3-filled {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.button .state-layer-6.state-25-disabled .label-text-10 {
+  color: #1d1b20;
+  opacity: 0.38;
+}
+
+.button .state-layer-6.style-3-tonal.state-25-hovered .label-text-10 {
+  color: #4a4459;
+}
+
+.button .state-layer-6.state-25-hovered.style-3-elevated .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.state-25-enabled.style-3-text .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.state-25-focused.style-3-filled .label-text-10 {
+  color: #ffffff;
+}
+
+.button .state-layer-6.state-25-enabled.style-3-tonal .label-text-10 {
+  color: #4a4459;
+}
+
+.button .state-layer-6.state-25-enabled.style-3-filled .label-text-10 {
+  color: #ffffff;
+}
+
+.button .state-layer-6.state-25-pressed.style-3-elevated .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.state-25-pressed.style-3-tonal .label-text-10 {
+  color: #4a4459;
+}
+
+.button .state-layer-6.style-3-outlined.state-25-pressed .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.state-25-hovered.style-3-filled .label-text-10 {
+  color: #ffffff;
+}
+
+.button .state-layer-6.style-3-outlined.state-25-focused .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.style-3-outlined.state-25-enabled .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.state-25-enabled.style-3-elevated .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.state-25-focused.style-3-text .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.state-25-pressed.style-3-filled .label-text-10 {
+  color: #ffffff;
+}
+
+.button .state-layer-6.style-3-outlined.state-25-hovered .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.state-25-focused.style-3-tonal .label-text-10 {
+  color: #4a4459;
+}
+
+.button .state-layer-6.state-25-focused.style-3-elevated .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.style-3-text.state-25-hovered .label-text-10 {
+  color: #65558f;
+}
+
+.button .state-layer-6.state-25-pressed.style-3-text .label-text-10 {
+  color: #65558f;
+}

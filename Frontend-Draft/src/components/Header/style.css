@@ -1,0 +1,19 @@
+.header {
+  align-items: center;
+  background-color: var(--white);
+  border: 1.3px solid;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 18px;
+  position: relative;
+  width: 263px;
+}
+
+.header.active {
+  border-color: var(--bluesblue-cta);
+}
+
+.header.empty {
+  border-color: var(--bluesgray-2);
+}

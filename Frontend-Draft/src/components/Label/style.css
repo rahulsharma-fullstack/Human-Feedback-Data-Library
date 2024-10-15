@@ -1,0 +1,20 @@
+.label {
+  height: 18px;
+  position: relative;
+  width: 45px;
+}
+
+.label .text-wrapper-3 {
+  color: var(--black);
+  font-family: var(--drop-menu-menu-font-family);
+  font-size: var(--drop-menu-menu-font-size);
+  font-style: var(--drop-menu-menu-font-style);
+  font-weight: var(--drop-menu-menu-font-weight);
+  height: 18px;
+  left: 0;
+  letter-spacing: var(--drop-menu-menu-letter-spacing);
+  line-height: var(--drop-menu-menu-line-height);
+  position: absolute;
+  top: -1px;
+  white-space: nowrap;
+}

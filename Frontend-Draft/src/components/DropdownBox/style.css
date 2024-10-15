@@ -1,0 +1,94 @@
+.dropdown-box {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 260px;
+}
+
+.dropdown-box .header-instance {
+  flex: 0 0 auto !important;
+}
+
+.dropdown-box .header-3 {
+  align-self: stretch !important;
+  border-radius: 8px 8px 0px 0px !important;
+  flex: 0 0 auto !important;
+  margin-left: -1.3px !important;
+  margin-right: -1.3px !important;
+  margin-top: -1.3px !important;
+  width: 100% !important;
+  z-index: 2 !important;
+}
+
+.dropdown-box .icons-regular {
+  height: 20px !important;
+  position: relative !important;
+  width: 20px !important;
+}
+
+.dropdown-box .items-frame {
+  align-self: stretch;
+  height: 219px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.dropdown-box .items-list-instance {
+  align-self: stretch !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  z-index: 3 !important;
+}
+
+.dropdown-box .items-list-2 {
+  align-self: stretch !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  z-index: 0 !important;
+}
+
+.dropdown-box .items-list-3 {
+  align-self: stretch !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  z-index: 1 !important;
+}
+
+.dropdown-box .items-list-4 {
+  top: 1px !important;
+}
+
+.dropdown-box .items-list-5 {
+  align-self: stretch !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  z-index: 2 !important;
+}
+
+.dropdown-box .items-list-6 {
+  align-self: stretch !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  z-index: 4 !important;
+}
+
+.dropdown-box .rectangle {
+  height: 1911px;
+  left: -1519px;
+  position: absolute;
+  top: -825px;
+  width: 3297px;
+  z-index: 0;
+}
+
+.dropdown-box .items-list-wrapper {
+  align-self: stretch;
+  height: 1px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 0;
+}

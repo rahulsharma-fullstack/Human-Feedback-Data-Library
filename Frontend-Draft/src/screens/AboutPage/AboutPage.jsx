@@ -1,0 +1,79 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import "./style.css";
+
+export const AboutPage = () => {
+  return (
+    <div className="about-page">
+      <div className="div-3">
+        <div className="text-wrapper-5">What is OpenFeedbackVault?</div>
+        <div className="overlap">
+          <p className="p">
+            At OpenFeedbackVault, we believe that the future of artificial intelligence and machine learning should be
+            rooted in the rich tapestry of human experience. Our mission is to make human feedback datasets more
+            accessible to engineers and developers, empowering them to create models that reflect diverse perspectives
+            and better serve humanity.
+          </p>
+          <div className="text-wrapper-6">Our Goal</div>
+        </div>
+        <div className="overlap-group">
+          <p className="text-wrapper-7">
+            The Human Feedback Foundation’s Data Trust work stream is dedicated to harnessing the power of human
+            feedback as a crucial component of the AI development process. As AI technology continues to reshape modern
+            software, integrating public input into AI models has become vital for creating resilient and well-aligned
+            systems. Our mission is to establish a comprehensive global database of human feedback, serving as an
+            authoritative and democratic resource for AI developers worldwide.
+          </p>
+          <div className="text-wrapper-8">About the Foundation</div>
+        </div>
+        <div className="overlap-2">
+          <p className="text-wrapper-9">
+            Our team consists of five undergraduate students from the University of Toronto.
+          </p>
+          <div className="aleksandra-kalas">Aleksandra Kalas</div>
+          <div className="text-wrapper-10">Assad Usman</div>
+          <div className="humza-iqbal">Humza&nbsp;&nbsp;Iqbal</div>
+          <div className="text-wrapper-11">Modaser Mojadiddi</div>
+          <div className="text-wrapper-12">Aditya Kumar</div>
+          <div className="text-wrapper-13">Our Team</div>
+          <div className="group">
+            <img className="IMG" alt="Img" src="/img/img-0071.png" />
+            <div className="ellipse" />
+            <div className="ellipse-2" />
+            <div className="ellipse-3" />
+            <div className="ellipse-4" />
+          </div>
+          <div className="text-wrapper-14">Frontend Engineer</div>
+          <div className="text-wrapper-15">Fullstack Engineer</div>
+          <div className="text-wrapper-16">Backend Engineer</div>
+          <div className="text-wrapper-17">Backend Engineer</div>
+          <div className="text-wrapper-18">Project Manager</div>
+        </div>
+        <div className="overlap-3">
+          <div className="overlap-group-wrapper">
+            <div className="overlap-group-2">
+              <div className="rectangle-2" />
+              <div className="text-wrapper-19">Search</div>
+            </div>
+          </div>
+          <div className="text-wrapper-20">Advanced Search</div>
+        </div>
+        <div className="navbar">
+          <Link className="text-wrapper-21" to="/ai-chatbot-page">
+            Chatbot
+          </Link>
+          <Link className="text-wrapper-22" to="/search-page">
+            Datasets
+          </Link>
+          <Link className="text-wrapper-23" to="/landing-page">
+            Home
+          </Link>
+          <Link className="text-wrapper-24" to="/about-page">
+            About
+          </Link>
+        </div>
+        <img className="logo" alt="Logo" src="/img/logo.png" />
+      </div>
+    </div>
+  );
+};

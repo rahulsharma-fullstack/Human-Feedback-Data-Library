@@ -1,0 +1,189 @@
+.icon-button {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 48px;
+  justify-content: center;
+  position: relative;
+  width: 48px;
+}
+
+.icon-button .container {
+  align-items: center;
+  border-radius: 100px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 10px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.icon-button .icon-wrapper {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 10px;
+  justify-content: center;
+  padding: 8px;
+  position: relative;
+}
+
+.icon-button .icon-160 {
+  height: 24px !important;
+  position: relative !important;
+  width: 24px !important;
+}
+
+.icon-button.state-22-enabled.style-filled {
+  padding: 4px;
+}
+
+.icon-button.style-outlined.state-22-enabled {
+  padding: 8px;
+}
+
+.icon-button.style-tonal.state-22-disabled {
+  padding: 8px;
+}
+
+.icon-button.style-outlined.state-22-disabled {
+  padding: 8px;
+}
+
+.icon-button.style-standard.state-22-disabled {
+  opacity: 0.38;
+}
+
+.icon-button.state-22-disabled.style-filled {
+  padding: 8px;
+}
+
+.icon-button.style-outlined .container {
+  border: 1px solid;
+}
+
+.icon-button.style-tonal.state-22-hovered .container {
+  background-color: #e8def8;
+}
+
+.icon-button.state-22-focused.style-filled .container {
+  background-color: #65558f;
+}
+
+.icon-button.state-22-enabled.style-tonal .container {
+  background-color: #e8def8;
+}
+
+.icon-button.state-22-enabled.style-filled .container {
+  background-color: #65558f;
+}
+
+.icon-button.state-22-pressed.style-tonal .container {
+  background-color: #e8def8;
+}
+
+.icon-button.style-outlined.state-22-pressed .container {
+  border-color: #79747e;
+}
+
+.icon-button.state-22-hovered.style-filled .container {
+  background-color: #65558f;
+}
+
+.icon-button.style-outlined.state-22-focused .container {
+  border-color: #79747e;
+}
+
+.icon-button.style-outlined.state-22-enabled .container {
+  border-color: #79747e;
+  margin-bottom: -4px;
+  margin-left: -4px;
+  margin-right: -4px;
+  margin-top: -4px;
+}
+
+.icon-button.style-tonal.state-22-disabled .container {
+  background-color: #1d1b201f;
+  margin-bottom: -4px;
+  margin-left: -4px;
+  margin-right: -4px;
+  margin-top: -4px;
+}
+
+.icon-button.style-outlined.state-22-disabled .container {
+  border-color: #1d1b201f;
+  margin-bottom: -4px;
+  margin-left: -4px;
+  margin-right: -4px;
+  margin-top: -4px;
+}
+
+.icon-button.state-22-pressed.style-filled .container {
+  background-color: #65558f;
+}
+
+.icon-button.style-outlined.state-22-hovered .container {
+  border-color: #79747e;
+}
+
+.icon-button.state-22-focused.style-tonal .container {
+  background-color: #e8def8;
+}
+
+.icon-button.state-22-disabled.style-filled .container {
+  background-color: #1d1b201f;
+  margin-bottom: -4px;
+  margin-left: -4px;
+  margin-right: -4px;
+  margin-top: -4px;
+}
+
+.icon-button.style-tonal.state-22-hovered .icon-wrapper {
+  background-color: #4a445914;
+}
+
+.icon-button.state-22-focused.style-standard .icon-wrapper {
+  background-color: #49454f1f;
+}
+
+.icon-button.state-22-focused.style-filled .icon-wrapper {
+  background-color: #ffffff1f;
+}
+
+.icon-button.state-22-pressed.style-tonal .icon-wrapper {
+  background-color: #4a44591f;
+}
+
+.icon-button.style-outlined.state-22-pressed .icon-wrapper {
+  background-color: #49454f1f;
+}
+
+.icon-button.state-22-hovered.style-filled .icon-wrapper {
+  background-color: #ffffff14;
+}
+
+.icon-button.style-outlined.state-22-focused .icon-wrapper {
+  background-color: #49454f1f;
+}
+
+.icon-button.state-22-pressed.style-standard .icon-wrapper {
+  background-color: #49454f1f;
+}
+
+.icon-button.state-22-pressed.style-filled .icon-wrapper {
+  background-color: #ffffff1f;
+}
+
+.icon-button.style-outlined.state-22-hovered .icon-wrapper {
+  background-color: #49454f14;
+}
+
+.icon-button.style-standard.state-22-hovered .icon-wrapper {
+  background-color: #49454f14;
+}
+
+.icon-button.state-22-focused.style-tonal .icon-wrapper {
+  background-color: #4a44591f;
+}
