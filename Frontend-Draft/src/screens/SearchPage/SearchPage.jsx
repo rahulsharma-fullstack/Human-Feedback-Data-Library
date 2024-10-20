@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { DropdownBox } from "../../components/DropdownBox";
 import { InputDatePicker } from "../../components/InputDatePicker";
 import { SliderField } from "../../components/SliderField";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import "./style.css";
+
 
 export const SearchPage = () => {
   return (
@@ -13,11 +16,10 @@ export const SearchPage = () => {
           <img className="path" alt="Path" src="/img/path.svg" />
           <img className="element" alt="Element" src="/img/5.png" />
           <div className="group-2">
-            <div className="overlap-group-3">
-              <div className="rectangle-3" />
-              <div className="text-wrapper-25">Search</div>
-            </div>
+            <Form.Control className="overlap-group-3" placeholder="Search"></Form.Control>
           </div>
+
+
           <div className="text-wrapper-26">Date</div>
           <div className="text-wrapper-27">Data Length</div>
           <InputDatePicker
@@ -30,7 +32,7 @@ export const SearchPage = () => {
           />
           <div className="group-3">
             <div className="text-wrapper-28">Language</div>
-            <DropdownBox
+            {/* <DropdownBox
               className="dropdown-box-instance"
               headerIconsRegularChevronDownS75StyleOverrideClassName="dropdown-box-5"
               headerMenuLabelDivClassName="dropdown-box-4"
@@ -47,8 +49,13 @@ export const SearchPage = () => {
               itemsListItemHoverStatePressingClassName="dropdown-box-14"
               itemsListItemsListClassName="dropdown-box-10"
               stateProp="closed"
-            />
+            /> */}
           </div>
+          <Form.Select className="Language-Select">
+            <option>English</option>
+            <option>Russian</option>
+            <option>Etc</option>
+          </Form.Select>
           <SliderField
             blockClassName="slider-field-2"
             className="slider-field-instance"
@@ -60,7 +67,8 @@ export const SearchPage = () => {
             text=""
             text1="Min Number-Max Number"
           />
-          <DropdownBox
+
+          {/* <DropdownBox
             className="dropdown-box-15"
             headerIconsRegularChevronDownS75StyleOverrideClassName="dropdown-box-18"
             headerMenuLabelMenuLabelClassName="dropdown-box-16"
@@ -74,12 +82,20 @@ export const SearchPage = () => {
             itemsListItemHoverStatePressingClassName="dropdown-box-24"
             itemsListItemsListClassName="dropdown-box-21"
             stateProp="closed"
-          />
-          <img className="group-4" alt="Group" src="/img/group-8.png" />
-          <img className="group-5" alt="Group" src="/img/group-9.png" />
+          /> */}
+
+          <Form.Select className="Dataset-Pages" id="pages-top">
+            <option>Page 1</option>
+            <option>Page 2</option>
+            <option>Page 3</option>
+            <option>Page n</option>
+          </Form.Select>
+
+          <Button className="group-4 Dataset-Button">Next</Button>
+          <Button className="group-5 Dataset-Button">Back</Button>
         </div>
         <img className="logo-2" alt="Logo" src="/img/logo-1.png" />
-        <DropdownBox
+        {/* <DropdownBox
           className="dropdown-box-25"
           headerIconsRegularChevronDownS75StyleOverrideClassName="dropdown-box-18"
           headerMenuLabelMenuLabelClassName="dropdown-box-16"
@@ -93,9 +109,15 @@ export const SearchPage = () => {
           itemsListItemHoverStatePressingClassName="dropdown-box-24"
           itemsListItemsListClassName="dropdown-box-21"
           stateProp="closed"
-        />
-        <img className="group-6" alt="Group" src="/img/group-10.png" />
-        <img className="group-7" alt="Group" src="/img/group-11.png" />
+        /> */}
+        <Form.Select className="Dataset-Pages" id="pages-bottom">
+          <option>Page 1</option>
+          <option>Page 2</option>
+          <option>Page 3</option>
+          <option>Page n</option>
+        </Form.Select>
+        <Button className="group-6 Dataset-Button">Next</Button>
+        <Button className="group-7 Dataset-Button">Back</Button>
         <div className="navbar-2">
           <Link className="text-wrapper-29" to="/ai-chatbot-page">
             Chatbot

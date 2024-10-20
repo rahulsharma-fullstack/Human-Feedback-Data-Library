@@ -61,16 +61,7 @@ export const InputDatePicker = ({
               textFieldClassName={textFieldTextFieldClassName}
               trailingIcon={false}
             />
-            <TextField
-              className="instance-node"
-              labelText="End date"
-              leadingIcon={false}
-              showSupportingText={false}
-              stateProp="enabled"
-              style="outlined"
-              textConfigurations="label-text"
-              trailingIcon={false}
-            />
+
           </>
         )}
 
