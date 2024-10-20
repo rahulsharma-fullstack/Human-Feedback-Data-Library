@@ -8,7 +8,7 @@ import { AiChatbotPage } from "./screens/AiChatbotPage";
 const router = createBrowserRouter([
   {
     path: "/*",
-    element: <SearchPage />,
+    element: <LandingPage />,
   },
   {
     path: "/search-page",
