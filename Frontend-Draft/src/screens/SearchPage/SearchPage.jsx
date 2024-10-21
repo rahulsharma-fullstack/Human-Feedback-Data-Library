@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { DropdownBox } from "../../components/DropdownBox";
 import { InputDatePicker } from "../../components/InputDatePicker";
 import { SliderField } from "../../components/SliderField";
+import { Frame } from "../../components/Frame";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./style.css";
@@ -14,7 +15,50 @@ export const SearchPage = () => {
       <div className="div-4">
         <div className="overlap-4">
           <img className="path" alt="Path" src="/img/path.svg" />
-          <img className="element" alt="Element" src="/img/5.png" />
+          <div className="element">
+          <div className="div">
+          <Frame
+          className="frame-34"
+          divClassName="frame-instance"
+          divClassName1="frame-instance"
+          divClassName2="frame-instance"
+          divClassName3="frame-instance"
+          divClassName4="design-component-instance-node"
+          divClassName5="frame-instance"
+          divClassNameOverride="frame-instance"
+          frameClassName="frame-34-instance"
+          text="Dataset Name"
+          text1="Master Template"
+          text2="Type"
+          text3="Industry"
+          text4="Author"
+          text5="Created"
+          text6="Edited"
+        />
+        <Frame
+          className="frame-9"
+          text="Asset Allocation"
+          text1="Founder Break-Even Calculator"
+          text2="Comparable"
+          text3="Internet Services"
+          text4="John Smith"
+          text5="21.03.2021"
+          text6="14.07.2021"
+        />
+        <Frame
+          className="frame-10"
+          text="Analysis Name"
+          text1="Founder Break-Even Calculator"
+          text2="Comparable"
+          text3="Bank"
+          text4="John Smith"
+          text5="21.03.2021"
+          text6="14.07.2021"
+        />
+        
+
+      </div>
+    </div>
           <div className="group-2">
             <Form.Control className="overlap-group-3" placeholder="Search"></Form.Control>
           </div>
