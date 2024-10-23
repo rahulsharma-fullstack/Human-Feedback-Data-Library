@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DropdownBox } from "../../components/DropdownBox";
 import { InputDatePicker } from "../../components/InputDatePicker";
@@ -10,55 +10,283 @@ import "./style.css";
 
 
 export const SearchPage = () => {
+  // State to store datasets
+  const [datasets, setDatasets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  let pages = []
+  const num_per_page = 21
+  // Fetch datasets from the backend when the component mounts
+  useEffect(() => {
+    fetch('http://localhost:8082/api/datasets') // Update the URL if necessary
+      .then(response => response.json())
+      .then(data => {
+        setDatasets(data);  // Save datasets to state
+        setLoading(false);  // Set loading to false once data is fetched
+
+        //split data into pages
+        let count = 0
+        let page_arr = []
+        while (count < datasets.length) {
+          page_arr.push(datasets[count]);
+
+          if (page_arr.length == num_per_page) {
+            pages.push(page_arr);
+            page_arr = [];
+          }
+          count += 1;
+
+        }
+        if (page_arr.length != 0) {
+          pages.push(page_arr);
+
+        }
+        console.log(pages);
+      })
+      .catch(error => {
+        console.error('Error fetching datasets:', error);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div className="search-page">
       <div className="div-4">
         <div className="overlap-4">
           <img className="path" alt="Path" src="/img/path.svg" />
           <div className="element">
-          <div className="div">
-          <Frame
-          className="frame-34"
-          divClassName="frame-instance"
-          divClassName1="frame-instance"
-          divClassName2="frame-instance"
-          divClassName3="frame-instance"
-          divClassName4="design-component-instance-node"
-          divClassName5="frame-instance"
-          divClassNameOverride="frame-instance"
-          frameClassName="frame-34-instance"
-          text="Dataset Name"
-          text1="Master Template"
-          text2="Type"
-          text3="Industry"
-          text4="Author"
-          text5="Created"
-          text6="Edited"
-        />
-        <Frame
-          className="frame-9"
-          text="Asset Allocation"
-          text1="Founder Break-Even Calculator"
-          text2="Comparable"
-          text3="Internet Services"
-          text4="John Smith"
-          text5="21.03.2021"
-          text6="14.07.2021"
-        />
-        <Frame
-          className="frame-10"
-          text="Analysis Name"
-          text1="Founder Break-Even Calculator"
-          text2="Comparable"
-          text3="Bank"
-          text4="John Smith"
-          text5="21.03.2021"
-          text6="14.07.2021"
-        />
-        
+            <div className="div">
+              <Frame
+                className="frame-34"
+                divClassName="frame-instance"
+                divClassName1="frame-instance"
+                divClassName2="frame-instance"
+                divClassName3="frame-instance"
+                divClassName4="design-component-instance-node"
+                divClassName5="frame-instance"
+                divClassNameOverride="frame-instance"
+                frameClassName="frame-34-instance"
+                text="Dataset Name"
+                text1="Master Template"
+                text2="Type"
+                text3="Industry"
+                text4="Author"
+                text5="Created"
+                text6="Edited"
+              />
+              <Frame
+                className="frame-9"
+                text="Asset Allocation"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Internet Services"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
+              <Frame
+                className="frame-10"
+                text="Analysis Name"
+                text1="Founder Break-Even Calculator"
+                text2="Comparable"
+                text3="Bank"
+                text4="John Smith"
+                text5="21.03.2021"
+                text6="14.07.2021"
+              />
 
-      </div>
-    </div>
+
+            </div>
+          </div>
           <div className="group-2">
             <Form.Control className="overlap-group-3" placeholder="Search"></Form.Control>
           </div>
