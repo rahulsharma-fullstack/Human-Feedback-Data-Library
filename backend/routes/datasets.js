@@ -22,4 +22,43 @@ router.get('/datasets', async (req, res) => {
     }
 });
 
+router.post('/datasets/search', async (req, res) => {
+    const { endDate, minRows, maxRows, language } = req.body; // Destructure the search filters from request body
+    let query = 'SELECT * FROM datasets WHERE 1=1';
+    let queryParams = [];
+
+    // Convert endDate from 'DD/MM/YYYY' to 'YYYY-MM-DD', if date filter is provided
+    if (endDate) {
+        const [day, month, year] = endDate.split('/');
+        const formattedEndDate = `${year}-${month}-${day}`; // Reformat to 'YYYY-MM-DD'
+        queryParams.push(formattedEndDate);
+        query += ` AND date_posted >= $${queryParams.length}`; // may need TO_DATE($${queryParams.length}, 'DD/MM/YYYY' if python doesnt convert
+    }
+
+    // Add filters to query if they are provided, for other filters
+    if (minRows) {
+        queryParams.push(minRows);
+        query += ` AND number_of_rows >= $${queryParams.length}`;
+    }
+
+    if (maxRows) {
+        queryParams.push(maxRows);
+        query += ` AND number_of_rows <= $${queryParams.length}`;
+    }
+
+    if (language) {
+        queryParams.push(language);
+        query += ` AND language = $${queryParams.length}`;
+    }
+
+    try {
+        const result = await pool.query(query, queryParams); // Execute the query with parameters
+        res.json(result.rows);  // Send the filtered datasets back to the client
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+
 module.exports = router;
