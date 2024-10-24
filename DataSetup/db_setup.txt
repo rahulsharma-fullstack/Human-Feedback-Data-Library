@@ -1,0 +1,30 @@
+All the files related to the project that will be deployed will be in the feedback folder
+To create your own local environments in the vm please create another folder in the same directory as feedback
+
+Login to db using commands
+    ssh feedback@142.1.114.69 (cisco vpn on)
+    pass: letmein888
+
+Need to first create a new postgres user 
+    sudo -i -u postgres
+    psql
+    CREATE ROLE feedback WITH LOGIN PASSWORD 'letmein888';
+    ALTER ROLE feedback CREATEDB;
+    CREATE DATABASE feedback;
+    \q
+    exit
+
+Now we can create the table (install postgressql if needed)
+    make sure to have the datasets.sql file in the same folder
+    psql
+    \c feedback
+    \i datasets.sql
+    \d datasets (you should see the table along its columns)
+
+To insert the data into the table make sure you have a csv formatted copy 
+of the table. All you need to do is have a copy of the insert_to_datasets.py as well
+    Make sure the path_to_csv is correct
+    python -m venv env
+    windows: env/Scripts/activate Linux: source env/bin/activate
+    pip install pandas and psycopg2
+    python insert_to_datasets.py

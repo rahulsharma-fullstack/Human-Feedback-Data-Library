@@ -1,1 +1,10 @@
-CSC392-CSC492 Project for University of Toronto
+Backend Documentation
+
+Create a Node.js project with 
+    npm init -y
+
+Install dependencies
+    npm install express pg cors
+
+To run the backend
+    node server.js
