@@ -13,8 +13,11 @@ export const AiChatbotPage = () => {
               <div className="text-wrapper-48">Search</div>
             </div>
           </div>
-          <div className="text-wrapper-49">Advanced Search</div>
+          
         </div>
+        <Link className="AdvancedSearchLink" to="/search-page">
+            <div className="text-wrapper-36">Advanced Search</div>
+          </Link>
         <img className="logo-4" alt="Logo" src="/img/logo.png" />
         <div className="group-14">
           <div className="overlap-10">

@@ -54,7 +54,7 @@ export const SearchPage = () => {
         <div className="overlap-4">
           <img className="path" alt="Path" src="/img/path.svg" />
           <div className="element">
-            <div className="div">
+            <div className="div2">
               <Frame
                 className="frame-34"
                 divClassName="frame-instance"

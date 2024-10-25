@@ -79,6 +79,16 @@
   height: 2213px;
   position: relative;
   width: 1440px;
+  margin-inline: auto;
+  left: 0;
+}
+
+.search-page .div2{
+  
+  
+  max-width: fit-content;
+  margin-inline: auto;
+  
 }
 
 .search-page .overlap-4 {

@@ -56,7 +56,7 @@ export const AboutPage = () => {
               <div className="text-wrapper-19">Search</div>
             </div>
           </div>
-          <div className="text-wrapper-20">Advanced Search</div>
+          <Link className="text-wrapper-20" to="/search-page">Advanced Search</Link>
         </div>
         <div className="navbar">
           <Link className="text-wrapper-21" to="/ai-chatbot-page">
