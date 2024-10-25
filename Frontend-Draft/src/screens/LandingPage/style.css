@@ -25,16 +25,16 @@
   height: 1186px;
   left: 0;
   position: absolute;
-  top: 0;
+  top: -200px;
   width: 1247px;
 }
 
 .landing-page .logo-3 {
-  height: 77px;
-  left: 46px;
+  height: 150px;
+  left: 25px;
   position: absolute;
-  top: 29px;
-  width: 92px;
+  top: 400px;
+  width: 170px;
 }
 
 .landing-page .group-8 {
@@ -61,7 +61,7 @@
   width: 373px;
 }
 
-.landing-page .text-wrapper-33 {
+.landing-page .Search-text {
   color: #7b7777;
   font-family: "Roboto", Helvetica;
   font-size: 24px;
@@ -71,17 +71,17 @@
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 0;
+  top: 15px;
   width: 230px;
 }
 
-.landing-page .text-wrapper-34 {
+.landing-page .OpenFeedbackVault {
   color: #236629;
   font-family: "Roboto", Helvetica;
   font-size: 96px;
   font-weight: 900;
   height: 96px;
-  left: 132px;
+  left: 200px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
@@ -96,11 +96,11 @@
   font-size: 36px;
   font-weight: 300;
   height: 36px;
-  left: 166px;
+  left: 230px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 684px;
+  top: 550px;
   white-space: nowrap;
   width: 856px;
 }
@@ -124,9 +124,9 @@
 .landing-page .overlap-wrapper {
   display: block;
   height: 72px;
-  left: 371px;
+  left: 600px;
   position: absolute;
-  top: 859px;
+  top: 620px;
   width: 237px;
 }
 
@@ -149,7 +149,7 @@
   line-height: 27px;
   position: absolute;
   text-align: center;
-  top: 1px;
+  top: 22px;
   width: 235px;
 }
 
@@ -232,7 +232,7 @@
   height: 423px;
   left: 91px;
   position: absolute;
-  top: 1324px;
+  top: 1100px;
   width: 1271px;
 }
 
@@ -257,13 +257,13 @@
   font-family: "Roboto", Helvetica;
   font-size: 36px;
   font-weight: 900;
-  height: 172px;
+  height: 77px;
   left: 26px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
   text-align: center;
-  top: 4px;
+  top: 51px;
   width: 328px;
 }
 
@@ -310,13 +310,13 @@
   font-family: "Roboto", Helvetica;
   font-size: 36px;
   font-weight: 900;
-  height: 180px;
+  height: 77px;
   left: 32px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
   text-align: center;
-  top: 0;
+  top: 51px;
   width: 322px;
 }
 
