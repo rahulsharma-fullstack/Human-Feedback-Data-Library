@@ -38,7 +38,7 @@ export const AboutPage = () => {
           <div className="text-wrapper-13">Our Team</div>
           <div className="group">
             <img className="IMG" alt="Img" src="/img/img-0071.png" />
-            <div className="ellipse" />
+            <img className="IMG2" alt="Img" src="/img/humza.png" />
             <div className="ellipse-2" />
             <div className="ellipse-3" />
             <div className="ellipse-4" />

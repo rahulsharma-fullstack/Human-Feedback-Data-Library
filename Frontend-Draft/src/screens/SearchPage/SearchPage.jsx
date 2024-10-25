@@ -302,6 +302,15 @@ export const SearchPage = () => {
             textFieldTextFieldClassName="design-component-instance-node"
             type="range"
           />
+          <div className="keywords-dropdown">
+            <div className="keywords-text">Keywords</div>
+            <Form.Select className="Keywords-Select">
+              <option>Psychology</option>
+              <option>Math</option>
+              <option>Etc</option>
+            </Form.Select>
+          </div>
+          
           <div className="group-3">
             <div className="text-wrapper-28">Language</div>
             {/* <DropdownBox

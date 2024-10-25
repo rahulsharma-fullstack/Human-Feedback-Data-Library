@@ -35,13 +35,25 @@
   position: absolute;
   z-index: 2;
   border-radius: 16px;
-  width: 530px;
+  width: 350px;
   height: 82px;
   top: 330px;
-  left: 750px;
+  left: 900px;
   font-size: larger;
   font-family: "Poppins-Medium", Helvetica;
 
+}
+
+.Keywords-Select {
+  position: absolute;
+  z-index: 2;
+  border-radius: 16px;
+  width: 350px;
+  height: 82px;
+  top: 330px;
+  left: 500px;
+  font-size: larger;
+  font-family: "Poppins-Medium", Helvetica;
 }
 
 #pages-top {
@@ -189,13 +201,27 @@
   width: 535px;
 }
 
+.search-page .keywords-text {
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 32px;
+  font-weight: 400;
+  height: 52px;
+  left: 500px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  top: 260px;
+  width: 221px;
+}
+
 .search-page .text-wrapper-28 {
   color: #000000;
   font-family: "Roboto", Helvetica;
   font-size: 32px;
   font-weight: 400;
   height: 52px;
-  left: 0;
+  left: 150;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
