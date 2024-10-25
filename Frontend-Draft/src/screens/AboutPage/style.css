@@ -25,7 +25,7 @@
   line-height: 38px;
   position: absolute;
   text-align: center;
-  top: 150px;
+  top: 200px;
   width: 1357px;
 }
 
@@ -35,7 +35,7 @@
   height: 530px;
   left: -119px;
   position: absolute;
-  top: 374px;
+  top: 340px;
   width: 1387px;
 }
 
@@ -49,7 +49,7 @@
   letter-spacing: 0;
   line-height: 50px;
   position: absolute;
-  top: 98px;
+  top: 110px;
   width: 1157px;
 }
 
@@ -83,11 +83,11 @@
   font-size: 32px;
   font-weight: 500;
   height: 412px;
-  left: 69px;
+  left: 30px;
   letter-spacing: 0;
   line-height: 50px;
   position: absolute;
-  text-align: right;
+  text-align: left;
   top: 106px;
   width: 1144px;
 }
@@ -125,7 +125,7 @@
   letter-spacing: 0;
   line-height: 50px;
   position: absolute;
-  top: 146px;
+  top: 125px;
   width: 1157px;
 }
 
@@ -223,13 +223,23 @@
 
 .about-page .IMG {
   height: 240px;
-  left: 0;
+  left: 0px;
   object-fit: cover;
   position: absolute;
   top: 0;
   width: 240px;
+  border-radius: 50;
 }
 
+.about-page .IMG3 {
+  height: 240px;
+  left: 555px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 240px;
+  border-radius: 50;
+}
 .about-page .ellipse {
   background-color: #d9d9d9;
   border-radius: 120px;
@@ -244,7 +254,7 @@
   background-color: #d9d9d9;
   border-radius: 120px;
   height: 240px;
-  left: 554px;
+  left: 280px;
   position: absolute;
   top: 0;
   width: 240px;
@@ -260,14 +270,14 @@
   width: 240px;
 }
 
-.about-page .ellipse-4 {
-  background-color: #d9d9d9;
-  border-radius: 120px;
+.about-page .IMG5 {
   height: 240px;
   left: 1108px;
+  object-fit: cover;
   position: absolute;
   top: 0;
   width: 240px;
+  border-radius: 50;
 }
 
 .about-page .text-wrapper-14 {
@@ -387,7 +397,7 @@
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 0;
+  top: 15;
   width: 230px;
 }
 
