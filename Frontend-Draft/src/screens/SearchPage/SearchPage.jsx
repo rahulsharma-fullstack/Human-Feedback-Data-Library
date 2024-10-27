@@ -14,8 +14,12 @@ export const SearchPage = () => {
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(0); // Track the current page
   const [languages, setLanguages] = useState([]);
+  const [keywords, setKeywords] = useState([]);
   const [minRows, setMin] = useState(0);
   const [maxRows, setMax] = useState(0);
+  const [date, setDate] = useState("");
+
+
 
 
   const num_per_page = 21
@@ -32,8 +36,11 @@ export const SearchPage = () => {
         let page_arr = []
         let temp_arr = []
         const lang_set = new Set();
+        const key_set = new Set();
         while (count < data.length) {
-
+          data[count].tags.forEach(element => {
+            key_set.add(element.toLowerCase());
+          });
           if (data[count].number_of_rows == 0) {
             data[count].number_of_rows = null;
           }
@@ -44,7 +51,7 @@ export const SearchPage = () => {
             min = data[count].number_of_rows;
           }
           if (data[count].data_type == "NaN") {
-            data[count].data_type = "N/A"
+            data[count].data_type = "";
           }
           page_arr.push(data[count]);
 
@@ -64,13 +71,14 @@ export const SearchPage = () => {
         }
         setPages(temp_arr);
         setLanguages(Array.from(lang_set));
+        setKeywords(Array.from(key_set));
         setMin(min);
         setMax(max);
         console.log(temp_arr);
         console.log(lang_set);
         console.log(max);
         console.log(min);
-
+        console.log(key_set);
       })
       .catch(error => {
         console.error('Error fetching datasets:', error);
@@ -129,14 +137,14 @@ export const SearchPage = () => {
                       }
                       text3={
                         dataset.date_posted == null
-                          ? "N/A"
+                          ? ""
                           : dataset.date_posted.slice(0, 10)
                       }
                       text5={dataset.language}
                       text6={
                         dataset.number_of_rows
                           ? dataset.number_of_rows.toString()
-                          : "N/A"
+                          : ""
 
                       }
                     />

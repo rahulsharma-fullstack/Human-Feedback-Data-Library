@@ -12,6 +12,11 @@
   box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.34);
 }
 
+#dataset-page .frame:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
 .Dataset-Button:hover {
   background-color: rgb(231, 231, 231);
   cursor: pointer;
@@ -83,12 +88,12 @@
   left: 0;
 }
 
-.search-page .div2{
-  
-  
+.search-page .div2 {
+
+
   max-width: fit-content;
   margin-inline: auto;
-  
+
 }
 
 .search-page .overlap-4 {
