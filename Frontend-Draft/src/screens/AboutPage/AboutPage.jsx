@@ -28,20 +28,22 @@ export const AboutPage = () => {
         </div>
         <div className="overlap-2">
           <p className="text-wrapper-9">
-            Our team consists of five undergraduate students from the University of Toronto.
+            Our team consists of five undergraduate students from the University of Toronto. Each member of the team brings
+            their own unique skills, such as unique design thinking, expertise with artificial intelligence, and database construction.
+            
           </p>
           <div className="aleksandra-kalas">Aleksandra Kalas</div>
           <div className="text-wrapper-10">Assad Usman</div>
-          <div className="humza-iqbal">Humza&nbsp;&nbsp;Iqbal</div>
+          <div className="humza-iqbal">Humza <br />Iqbal</div>
           <div className="text-wrapper-11">Modaser Mojadiddi</div>
           <div className="text-wrapper-12">Aditya Kumar</div>
           <div className="text-wrapper-13">Our Team</div>
           <div className="group">
-            <img className="IMG" alt="Img" src="/img/img-0071.png" />
-            <div className="ellipse" />
+            <img className="IMG" alt="Img" src="/img/aleksandra.png" />
+            <img className="IMG3" alt="Img" src="/img/humza.png" />
             <div className="ellipse-2" />
             <div className="ellipse-3" />
-            <div className="ellipse-4" />
+            <img className="IMG5" alt="Img" src="/img/aditya.jpg" />
           </div>
           <div className="text-wrapper-14">Frontend Engineer</div>
           <div className="text-wrapper-15">Fullstack Engineer</div>
@@ -56,7 +58,7 @@ export const AboutPage = () => {
               <div className="text-wrapper-19">Search</div>
             </div>
           </div>
-          <div className="text-wrapper-20">Advanced Search</div>
+          <Link className="text-wrapper-20" to="/search-page">Advanced Search</Link>
         </div>
         <div className="navbar">
           <Link className="text-wrapper-21" to="/ai-chatbot-page">

@@ -12,12 +12,14 @@ export const LandingPage = () => {
           <div className="group-8">
             <div className="overlap-group-4">
               <div className="rectangle-4" />
-              <div className="text-wrapper-33">Search</div>
+              <div className="Search-text">Search</div>
             </div>
           </div>
-          <div className="text-wrapper-34">OpenFeedbackVault</div>
+          <div className="OpenFeedbackVault">OpenFeedbackVault</div>
           <p className="text-wrapper-35">A Human-Centric AI Feedback Library.</p>
-          <div className="text-wrapper-36">Advanced Search</div>
+          <Link className="AdvancedSearchLink" to="/search-page">
+            <div className="text-wrapper-36">Advanced Search</div>
+          </Link>
           <Link className="overlap-wrapper" to="/about-page">
             <div className="overlap-6">
               <div className="text-wrapper-37">About Us</div>
