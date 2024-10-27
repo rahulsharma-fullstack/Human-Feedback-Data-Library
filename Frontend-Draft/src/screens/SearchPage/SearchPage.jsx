@@ -11,43 +11,73 @@ import "./style.css";
 
 export const SearchPage = () => {
   // State to store datasets
-  const [datasets, setDatasets] = useState([]);
-  const [loading, setLoading] = useState(true);
-  let pages = []
+  const [pages, setPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0); // Track the current page
+  const [languages, setLanguages] = useState([]);
+  const [minRows, setMin] = useState(0);
+  const [maxRows, setMax] = useState(0);
+
+
   const num_per_page = 21
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
     fetch('http://localhost:8082/api/datasets') // Update the URL if necessary
       .then(response => response.json())
       .then(data => {
-        setDatasets(data);  // Save datasets to state
-        setLoading(false);  // Set loading to false once data is fetched
 
-        //split data into pages
+        //split data into pages, fill languages, and set min and max rows
+        let min = Infinity
+        let max = -Infinity;
         let count = 0
         let page_arr = []
-        while (count < datasets.length) {
-          page_arr.push(datasets[count]);
+        let temp_arr = []
+        const lang_set = new Set();
+        while (count < data.length) {
+
+          if (data[count].number_of_rows == 0) {
+            data[count].number_of_rows = null;
+          }
+          else if (data[count].number_of_rows > max) {
+            max = data[count].number_of_rows;
+          }
+          else if (data[count].number_of_rows < min) {
+            min = data[count].number_of_rows;
+          }
+          if (data[count].data_type == "NaN") {
+            data[count].data_type = "N/A"
+          }
+          page_arr.push(data[count]);
+
+          lang_set.add(data[count].language)
 
           if (page_arr.length == num_per_page) {
-            pages.push(page_arr);
+
+            temp_arr.push(page_arr);
             page_arr = [];
           }
           count += 1;
 
         }
         if (page_arr.length != 0) {
-          pages.push(page_arr);
+          temp_arr.push(page_arr);
 
         }
-        console.log(pages);
+        setPages(temp_arr);
+        setLanguages(Array.from(lang_set));
+        setMin(min);
+        setMax(max);
+        console.log(temp_arr);
+        console.log(lang_set);
+        console.log(max);
+        console.log(min);
+
       })
       .catch(error => {
         console.error('Error fetching datasets:', error);
-        setLoading(false);
-      });
-  }, []);
 
+      });
+
+  }, []);
   return (
     <div className="search-page">
       <div className="div-4">
@@ -66,225 +96,53 @@ export const SearchPage = () => {
                 divClassNameOverride="frame-instance"
                 frameClassName="frame-34-instance"
                 text="Dataset Name"
-                text1="Master Template"
+                text1="Description"
                 text2="Type"
-                text3="Industry"
-                text4="Author"
-                text5="Created"
-                text6="Edited"
+                text3="Date Posted"
+                text4=""
+                text5="Language"
+                text6="# of Rows"
               />
-              <Frame
-                className="frame-9"
-                text="Asset Allocation"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Internet Services"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
-              <Frame
-                className="frame-10"
-                text="Analysis Name"
-                text1="Founder Break-Even Calculator"
-                text2="Comparable"
-                text3="Bank"
-                text4="John Smith"
-                text5="21.03.2021"
-                text6="14.07.2021"
-              />
+              {pages[currentPage] && (
+                <div key={currentPage} className="page" id="dataset-page">
+                  {pages[currentPage].map((dataset, datasetIndex) => (
+                    <Frame
+                      key={datasetIndex}
+                      className="frame"
+                      divClassName="frame-instance"
+                      divClassName1="frame-instance"
+                      divClassName2="frame-instance"
+                      divClassName3="frame-instance"
+                      divClassName4="design-component-instance-node"
+                      divClassName5="frame-instance"
+                      divClassNameOverride="frame-instance"
+                      frameClassName="frame-34-instance"
+                      text1={
+                        dataset.description.length < 50
+                          ? dataset.description
+                          : dataset.description.slice(0, 60).concat("...")
+                      }
+                      text2={
+                        dataset.data_type.length < 25
+                          ? dataset.data_type
+                          : dataset.data_type.slice(0, 25).concat("...")
+                      }
+                      text3={
+                        dataset.date_posted == null
+                          ? "N/A"
+                          : dataset.date_posted.slice(0, 10)
+                      }
+                      text5={dataset.language}
+                      text6={
+                        dataset.number_of_rows
+                          ? dataset.number_of_rows.toString()
+                          : "N/A"
 
-
+                      }
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div className="group-2">
@@ -301,6 +159,7 @@ export const SearchPage = () => {
             textFieldHasLabelTextContainer={false}
             textFieldTextFieldClassName="design-component-instance-node"
             type="range"
+
           />
           <div className="keywords-dropdown">
             <div className="keywords-text">Keywords</div>
@@ -310,95 +169,75 @@ export const SearchPage = () => {
               <option>Etc</option>
             </Form.Select>
           </div>
-          
+
           <div className="group-3">
             <div className="text-wrapper-28">Language</div>
-            {/* <DropdownBox
-              className="dropdown-box-instance"
-              headerIconsRegularChevronDownS75StyleOverrideClassName="dropdown-box-5"
-              headerMenuLabelDivClassName="dropdown-box-4"
-              headerMenuLabelMenuLabelClassName="dropdown-box-2"
-              headerMenuLabelText="Select Language"
-              headerStateEmptyClassName="dropdown-box-3"
-              itemsFrameClassName="dropdown-box-6"
-              itemsListItemHoverLabelDivClassName="dropdown-box-12"
-              itemsListItemHoverLabelLabelClassName="dropdown-box-9"
-              itemsListItemHoverStateDefaultClassName="dropdown-box-7"
-              itemsListItemHoverStateDefaultClassNameOverride="dropdown-box-8"
-              itemsListItemHoverStateHoverClassName="dropdown-box-11"
-              itemsListItemHoverStateHoverClassNameOverride="dropdown-box-13"
-              itemsListItemHoverStatePressingClassName="dropdown-box-14"
-              itemsListItemsListClassName="dropdown-box-10"
-              stateProp="closed"
-            /> */}
+
           </div>
           <Form.Select className="Language-Select">
-            <option>English</option>
-            <option>Russian</option>
-            <option>Etc</option>
+            {languages.map((lang, index) => (
+              <option key={lang} value={lang}>
+                {lang}
+              </option>
+            ))}
           </Form.Select>
-          <SliderField
-            blockClassName="slider-field-2"
-            className="slider-field-instance"
-            description="Number of Data Objects in Dataset"
-            knobEndClassName="slider-field-3"
-            knobStartClassName="slider-field-3"
-            label=""
-            state="default"
-            text=""
-            text1="Min Number-Max Number"
-          />
+          <Form.Range className="slider-field-instance"
+            min={minRows}
+            max={maxRows}
+            step={1}
 
-          {/* <DropdownBox
-            className="dropdown-box-15"
-            headerIconsRegularChevronDownS75StyleOverrideClassName="dropdown-box-18"
-            headerMenuLabelMenuLabelClassName="dropdown-box-16"
-            headerMenuLabelText="Page 1"
-            headerStateEmptyClassName="dropdown-box-17"
-            itemsListItemHoverLabelText="Page 2"
-            itemsListItemHoverStateDefaultClassName="dropdown-box-19"
-            itemsListItemHoverStateDefaultClassNameOverride="dropdown-box-20"
-            itemsListItemHoverStateHoverClassName="dropdown-box-22"
-            itemsListItemHoverStateHoverClassNameOverride="dropdown-box-23"
-            itemsListItemHoverStatePressingClassName="dropdown-box-24"
-            itemsListItemsListClassName="dropdown-box-21"
-            stateProp="closed"
-          /> */}
+          ></Form.Range>
 
-          <Form.Select className="Dataset-Pages" id="pages-top">
-            <option>Page 1</option>
-            <option>Page 2</option>
-            <option>Page 3</option>
-            <option>Page n</option>
+
+
+          <Form.Select
+            className="Dataset-Pages"
+            id="pages-top"
+            onChange={(e) => setCurrentPage(Number(e.target.value))}
+            value={currentPage}  // Keep in sync with current page
+          >
+            {pages.map((_, index) => (
+              <option key={index} value={index}>
+                Page {index + 1}
+              </option>
+            ))}
           </Form.Select>
 
-          <Button className="group-4 Dataset-Button">Next</Button>
-          <Button className="group-5 Dataset-Button">Back</Button>
+          <Button onClick={(e) => {
+            if (currentPage + 1 < pages.length) {
+              setCurrentPage(currentPage + 1)
+            }
+          }} className="group-4 Dataset-Button">Next</Button>
+          <Button onClick={(e) => {
+            if (currentPage - 1 >= 0) {
+              setCurrentPage(currentPage - 1)
+            }
+          }} className="group-5 Dataset-Button">Back</Button>
         </div>
         <img className="logo-2" alt="Logo" src="/img/logo-1.png" />
-        {/* <DropdownBox
-          className="dropdown-box-25"
-          headerIconsRegularChevronDownS75StyleOverrideClassName="dropdown-box-18"
-          headerMenuLabelMenuLabelClassName="dropdown-box-16"
-          headerMenuLabelText="Page 1"
-          headerStateEmptyClassName="dropdown-box-26"
-          itemsListItemHoverLabelText="Page 2"
-          itemsListItemHoverStateDefaultClassName="dropdown-box-19"
-          itemsListItemHoverStateDefaultClassNameOverride="dropdown-box-20"
-          itemsListItemHoverStateHoverClassName="dropdown-box-22"
-          itemsListItemHoverStateHoverClassNameOverride="dropdown-box-23"
-          itemsListItemHoverStatePressingClassName="dropdown-box-24"
-          itemsListItemsListClassName="dropdown-box-21"
-          stateProp="closed"
-        /> */}
-        <Form.Select className="Dataset-Pages" id="pages-bottom">
-          <option>Page 1</option>
-          <option>Page 2</option>
-          <option>Page 3</option>
-          <option>Page n</option>
+
+        <Form.Select
+          className="Dataset-Pages"
+          id="pages-bottom"
+          onChange={(e) => setCurrentPage(Number(e.target.value))}
+          value={currentPage}
+        >
+          {pages.map((_, index) => (
+            <option key={index} value={index}>
+              Page {index + 1}
+            </option>
+          ))}
         </Form.Select>
-        <Button className="group-6 Dataset-Button">Next</Button>
-        <Button className="group-7 Dataset-Button">Back</Button>
+        <Button onClick={(e) => {
+          if (currentPage + 1 < pages.length) {
+            setCurrentPage(currentPage + 1)
+          }
+        }} className="group-6 Dataset-Button">Next</Button>
+        <Button onClick={(e) => {
+          if (currentPage - 1 >= 0) {
+            setCurrentPage(currentPage - 1)
+          }
+        }} className="group-7 Dataset-Button">Back</Button>
         <div className="navbar-2">
           <Link className="text-wrapper-29" to="/ai-chatbot-page">
             Chatbot
