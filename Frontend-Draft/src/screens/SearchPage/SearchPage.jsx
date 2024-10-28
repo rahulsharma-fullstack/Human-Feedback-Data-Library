@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { DropdownBox } from "../../components/DropdownBox";
 import { InputDatePicker } from "../../components/InputDatePicker";
 import { SliderField } from "../../components/SliderField";
+import Slider from '@mui/material/Slider';
 import { Frame } from "../../components/Frame";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -15,12 +16,12 @@ export const SearchPage = () => {
   const [currentPage, setCurrentPage] = useState(0); // Track the current page
   const [languages, setLanguages] = useState([]);
   const [keywords, setKeywords] = useState([]);
-  const [minRows, setMin] = useState(0);
-  const [maxRows, setMax] = useState(0);
-  const [date, setDate] = useState("");
-
-
-
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(0);
+  const minInputRef = useRef(null);
+  const maxInputRef = useRef(null);
+  const dateRef = useRef(null);
+  const langref = useRef(null);
 
   const num_per_page = 21
   // Fetch datasets from the backend when the component mounts
@@ -56,6 +57,7 @@ export const SearchPage = () => {
           page_arr.push(data[count]);
 
           lang_set.add(data[count].language)
+          console.log(data[count].language)
 
           if (page_arr.length == num_per_page) {
 
@@ -72,12 +74,14 @@ export const SearchPage = () => {
         setPages(temp_arr);
         setLanguages(Array.from(lang_set));
         setKeywords(Array.from(key_set));
-        setMin(min);
         setMax(max);
+        setMin(min);
         console.log(temp_arr);
         console.log(lang_set);
         console.log(max);
         console.log(min);
+
+
         console.log(key_set);
       })
       .catch(error => {
@@ -86,6 +90,73 @@ export const SearchPage = () => {
       });
 
   }, []);
+
+  const searchFunction = () => {
+    setCurrentPage(0);
+    let min = minInputRef.current ? minInputRef.current.value : null;
+    let max = maxInputRef.current ? maxInputRef.current.value : null;
+
+    let date = dateRef.current ? dateRef.current.value : null;
+    let lang = langref.current ? langref.current.value : null;
+
+
+    const searchParams = {
+      endDate: date, // Format: DD/MM/YYYY
+      minRows: min,
+      maxRows: max,
+      language: lang
+    };
+    fetch('http://localhost:8082/api/datasets/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(searchParams)
+    }).then(response => response.json())
+      .then(data => {
+        //split data into pages, fill languages, and set min and max rows
+        let min = Infinity
+        let max = -Infinity;
+        let count = 0
+        let page_arr = []
+        let temp_arr = []
+
+        while (count < data.length) {
+
+          if (data[count].number_of_rows == 0) {
+            data[count].number_of_rows = null;
+          }
+          else if (data[count].number_of_rows > max) {
+            max = data[count].number_of_rows;
+          }
+          else if (data[count].number_of_rows < min) {
+            min = data[count].number_of_rows;
+          }
+          if (data[count].data_type == "NaN") {
+            data[count].data_type = "";
+          }
+          page_arr.push(data[count]);
+
+
+          if (page_arr.length == num_per_page) {
+
+            temp_arr.push(page_arr);
+            page_arr = [];
+          }
+          count += 1;
+
+        }
+        if (page_arr.length != 0) {
+          temp_arr.push(page_arr);
+
+        }
+        setPages(temp_arr);
+
+        setMax(max);
+        setMin(min);
+      })
+
+  }
   return (
     <div className="search-page">
       <div className="div-4">
@@ -167,6 +238,7 @@ export const SearchPage = () => {
             textFieldHasLabelTextContainer={false}
             textFieldTextFieldClassName="design-component-instance-node"
             type="range"
+            ref={dateRef}
 
           />
           <div className="keywords-dropdown">
@@ -182,22 +254,19 @@ export const SearchPage = () => {
             <div className="text-wrapper-28">Language</div>
 
           </div>
-          <Form.Select className="Language-Select">
+          <Form.Select ref={langref} className="Language-Select">
             {languages.map((lang, index) => (
               <option key={lang} value={lang}>
                 {lang}
               </option>
             ))}
           </Form.Select>
-          <Form.Range className="slider-field-instance"
-            min={minRows}
-            max={maxRows}
-            step={1}
-
-          ></Form.Range>
 
 
 
+          <Form.Control ref={minInputRef} className="slider-field-instance" placeholder="Minimum"></Form.Control>
+          <Form.Control ref={maxInputRef} className="max-field-instance" placeholder="Maximum"></Form.Control>
+          <Button className="search-button" onClick={() => searchFunction()} variant="success">Search</Button>{' '}
           <Form.Select
             className="Dataset-Pages"
             id="pages-top"

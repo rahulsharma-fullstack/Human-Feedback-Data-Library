@@ -357,8 +357,26 @@
 .search-page .slider-field-instance {
   left: 151px !important;
   position: absolute !important;
-  top: 471px !important;
-  width: 1186px !important;
+  top: 480px !important;
+  width: 200px !important;
+  height: 30px;
+}
+
+.search-page .max-field-instance {
+  left: 400px !important;
+  position: absolute !important;
+  top: 480px !important;
+  width: 200px !important;
+  height: 30px;
+
+}
+
+.search-page .search-button {
+  left: 1000px !important;
+  position: absolute !important;
+  top: 480px !important;
+  width: 200px !important;
+  height: 50px;
 }
 
 .search-page .slider-field-2 {
