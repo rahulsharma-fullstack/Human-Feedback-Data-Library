@@ -1,9 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { DropdownBox } from "../../components/DropdownBox";
-import { InputDatePicker } from "../../components/InputDatePicker";
-import { SliderField } from "../../components/SliderField";
-import Slider from '@mui/material/Slider';
 import { Frame } from "../../components/Frame";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -92,12 +88,18 @@ export const SearchPage = () => {
 
   }, []);
 
+  function isDateFormatValid(dateString) {
+    // Regular expression to match "DD/MM/YYYY" format
+    const datePattern = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(\d{4})$/;
+
+    return datePattern.test(dateString);
+  }
   const searchFunction = () => {
     setCurrentPage(0);
     let min = minInputRef.current ? minInputRef.current.value : null;
     let max = maxInputRef.current ? maxInputRef.current.value : null;
 
-    let date = dateRef.current ? dateRef.current.value : null;
+    let date = (dateRef.current && isDateFormatValid(dateRef.current.value)) ? dateRef.current.value : null;
     let lang = langref.current ? langref.current.value : null;
     let searchText = searchRef.current ? searchRef.current.value : null;
     console.log(searchText);
@@ -172,6 +174,8 @@ export const SearchPage = () => {
         setPages(temp_arr);
 
 
+      }).catch(error => {
+        console.log("Unable to fetch datasets. Please check formatting");
       })
 
   }
