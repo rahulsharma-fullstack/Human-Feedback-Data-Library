@@ -23,7 +23,7 @@ router.get('/datasets', async (req, res) => {
 });
 
 router.post('/datasets/search', async (req, res) => {
-    const { endDate, minRows, maxRows, language } = req.body; // Destructure the search filters from request body
+    const { endDate, minRows, maxRows, language, tags} = req.body; // Destructure the search filters from request body
     let query = 'SELECT * FROM datasets WHERE 1=1';
     let queryParams = [];
 
@@ -49,6 +49,12 @@ router.post('/datasets/search', async (req, res) => {
     if (language) {
         queryParams.push(language);
         query += ` AND language = $${queryParams.length}`;
+    }
+
+    // Multi-select filter for tags
+    if (tags && Array.isArray(tags) && tags.length > 0) {
+        queryParams.push(tags);
+        query += ` AND tags && $${queryParams.length}::text[]`; // match any of the tags with && $N::text[]
     }
 
     try {
