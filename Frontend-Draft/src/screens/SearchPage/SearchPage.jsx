@@ -22,6 +22,7 @@ export const SearchPage = () => {
   const maxInputRef = useRef(null);
   const dateRef = useRef(null);
   const langref = useRef(null);
+  const searchRef = useRef(null);
 
   const num_per_page = 21
   // Fetch datasets from the backend when the component mounts
@@ -98,7 +99,9 @@ export const SearchPage = () => {
 
     let date = dateRef.current ? dateRef.current.value : null;
     let lang = langref.current ? langref.current.value : null;
-
+    let searchText = searchRef.current ? searchRef.current.value : null;
+    console.log(searchText);
+    console.log(date);
 
     const searchParams = {
       endDate: date, // Format: DD/MM/YYYY
@@ -114,28 +117,44 @@ export const SearchPage = () => {
       body: JSON.stringify(searchParams)
     }).then(response => response.json())
       .then(data => {
+        // Filter the response data by seeing if its descriptions contain key words or words in search bar.
+        let searchWords = searchText.split(/\s+/); // Splits by one or more spaces
+        let searchedData = null;
+        if (searchText != null) {
+          searchedData = [];
+          for (let i = 0; i < data.length; i++) {
+            let description = data[i].description.toLowerCase();
+            let found = searchWords.some(word => description.includes(word.toLowerCase()));
+            if (found) {
+              searchedData.push(data[i]);
+            }
+          }
+        }
+        else {
+          searchedData = data;
+        }
+        console.log(searchedData);
         //split data into pages, fill languages, and set min and max rows
-        let min = Infinity
-        let max = -Infinity;
-        let count = 0
-        let page_arr = []
-        let temp_arr = []
+        let count = 0;
+        let page_arr = [];
+        let temp_arr = [];
 
-        while (count < data.length) {
 
-          if (data[count].number_of_rows == 0) {
-            data[count].number_of_rows = null;
+        while (count < searchedData.length) {
+
+          if (searchedData[count].number_of_rows == 0) {
+            searchedData[count].number_of_rows = null;
           }
-          else if (data[count].number_of_rows > max) {
-            max = data[count].number_of_rows;
+          else if (searchedData[count].number_of_rows > max) {
+            max = searchedData[count].number_of_rows;
           }
-          else if (data[count].number_of_rows < min) {
-            min = data[count].number_of_rows;
+          else if (searchedData[count].number_of_rows < min) {
+            min = searchedData[count].number_of_rows;
           }
-          if (data[count].data_type == "NaN") {
-            data[count].data_type = "";
+          if (searchedData[count].data_type == "NaN") {
+            searchedData[count].data_type = "";
           }
-          page_arr.push(data[count]);
+          page_arr.push(searchedData[count]);
 
 
           if (page_arr.length == num_per_page) {
@@ -152,8 +171,7 @@ export const SearchPage = () => {
         }
         setPages(temp_arr);
 
-        setMax(max);
-        setMin(min);
+
       })
 
   }
@@ -225,13 +243,13 @@ export const SearchPage = () => {
             </div>
           </div>
           <div className="group-2">
-            <Form.Control className="overlap-group-3" placeholder="Search"></Form.Control>
+            <Form.Control ref={searchRef} className="overlap-group-3" placeholder="Search"></Form.Control>
           </div>
 
 
           <div className="text-wrapper-26">Date</div>
           <div className="text-wrapper-27">Data Length</div>
-          <InputDatePicker
+          {/* <InputDatePicker
             className="input-date-picker-instance"
             hasButtonContainer={false}
             hasHeader={false}
@@ -240,7 +258,8 @@ export const SearchPage = () => {
             type="range"
             ref={dateRef}
 
-          />
+          /> */}
+          <Form.Control placeholder="dd/mm/yyyy" ref={dateRef} className="input-date-picker-instance"></Form.Control>
           <div className="keywords-dropdown">
             <div className="keywords-text">Keywords</div>
             <Form.Select className="Keywords-Select">

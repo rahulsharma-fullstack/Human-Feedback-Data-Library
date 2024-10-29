@@ -197,6 +197,11 @@
 
 .search-page .input-date-picker-instance {
   background-color: unset !important;
+  border-color: #236629;
+  border-style: solid;
+  border-radius: 16px;
+  font-size: larger;
+  border-width: 3px;
   height: 94px !important;
   left: 129px !important;
   position: absolute !important;
