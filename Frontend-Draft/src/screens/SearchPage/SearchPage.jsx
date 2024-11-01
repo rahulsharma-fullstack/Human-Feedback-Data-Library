@@ -23,7 +23,7 @@ export const SearchPage = () => {
   const num_per_page = 21
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
-    fetch('http://localhost:5000/api/datasets') // Update the URL if necessary
+    fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets') // Update the URL if necessary
       .then(response => response.json())
       .then(data => {
 
@@ -112,7 +112,7 @@ export const SearchPage = () => {
       maxRows: max,
       language: lang
     };
-    fetch('http://localhost:5000/api/datasets/search', {
+    fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets/search', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
