@@ -54,7 +54,7 @@ export const SearchPage = () => {
           page_arr.push(data[count]);
 
           lang_set.add(data[count].language)
-          console.log(data[count].language)
+
 
           if (page_arr.length == num_per_page) {
 
@@ -94,6 +94,7 @@ export const SearchPage = () => {
 
     return datePattern.test(dateString);
   }
+
   const searchFunction = () => {
     setCurrentPage(0);
     let min = minInputRef.current ? minInputRef.current.value : null;
@@ -207,7 +208,12 @@ export const SearchPage = () => {
               {pages[currentPage] && (
                 <div key={currentPage} className="page" id="dataset-page">
                   {pages[currentPage].map((dataset, datasetIndex) => (
+
                     <Frame
+                      // onClick={window.open(dataset.link, "_blank")}
+                      onClick={() => {
+                        window.open(dataset.link, "_blank");
+                      }}
                       key={datasetIndex}
                       className="frame"
                       divClassName="frame-instance"

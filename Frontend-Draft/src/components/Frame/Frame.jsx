@@ -22,9 +22,10 @@ export const Frame = ({
   text5 = "21.03.2021",
   divClassName5,
   text6 = "14.07.2021",
+  onClick
 }) => {
   return (
-    <div className={`frame ${className}`}>
+    <div className={`frame ${className}`} onClick={onClick}>
 
 
       <div className="founder-break-even-wrapper">
