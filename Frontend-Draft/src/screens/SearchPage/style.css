@@ -12,6 +12,11 @@
   box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.34);
 }
 
+#dataset-page .frame:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
 .Dataset-Button:hover {
   background-color: rgb(231, 231, 231);
   cursor: pointer;
@@ -83,12 +88,12 @@
   left: 0;
 }
 
-.search-page .div2{
-  
-  
+.search-page .div2 {
+
+
   max-width: fit-content;
   margin-inline: auto;
-  
+
 }
 
 .search-page .overlap-4 {
@@ -192,6 +197,11 @@
 
 .search-page .input-date-picker-instance {
   background-color: unset !important;
+  border-color: #236629;
+  border-style: solid;
+  border-radius: 16px;
+  font-size: larger;
+  border-width: 3px;
   height: 94px !important;
   left: 129px !important;
   position: absolute !important;
@@ -352,8 +362,26 @@
 .search-page .slider-field-instance {
   left: 151px !important;
   position: absolute !important;
-  top: 471px !important;
-  width: 1186px !important;
+  top: 480px !important;
+  width: 200px !important;
+  height: 30px;
+}
+
+.search-page .max-field-instance {
+  left: 400px !important;
+  position: absolute !important;
+  top: 480px !important;
+  width: 200px !important;
+  height: 30px;
+
+}
+
+.search-page .search-button {
+  left: 1000px !important;
+  position: absolute !important;
+  top: 480px !important;
+  width: 200px !important;
+  height: 50px;
 }
 
 .search-page .slider-field-2 {
