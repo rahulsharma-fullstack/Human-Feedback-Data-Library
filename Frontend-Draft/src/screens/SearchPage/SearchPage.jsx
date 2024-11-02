@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Frame } from "../../components/Frame";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Select from 'react-select';
 import "./style.css";
 
 
@@ -21,6 +22,64 @@ export const SearchPage = () => {
   const searchRef = useRef(null);
 
   const num_per_page = 21
+
+  const keyword_options = [
+    { value: 'RLHF', label: 'RLHF' },
+    { value: 'Helpfulness', label: 'Helpfulness' },
+    { value: 'Harmless', label: 'Harmless' },
+    { value: 'Science', label: 'Science' },
+    { value: 'Educational', label: 'Educational' },
+    { value: 'Comparison', label: 'Comparison' },
+    { value: 'TOOL/instruction', label: 'TOOL/instruction' },
+    { value: 'DPO', label: 'DPO' },
+    { value: 'NLG', label: 'NLG' },
+    { value: 'News', label: 'News' },
+    { value: 'Medical', label: 'Medical' },
+    { value: 'Translation', label: 'Translation' },
+    { value: 'Bias', label: 'Bias' },
+    { value: 'Truthfulness', label: 'Truthfulness' },
+    { value: 'Fairness', label: 'Fairness' },
+    { value: 'Safety', label: 'Safety' },
+    { value: 'Dialogue', label: 'Dialogue' },
+    { value: 'Task Prompts', label: 'Task Prompts' },
+    { value: 'Reddit', label: 'Reddit' },
+    { value: 'Evaluation', label: 'Evaluation' },
+    { value: 'Structured Tasks', label: 'Structured Tasks' },
+    { value: 'Math', label: 'Math' },
+    { value: 'EcoFriendly', label: 'EcoFriendly' },
+    { value: 'Sustainability', label: 'Sustainability' },
+    { value: 'Alignment', label: 'Alignment' },
+    { value: 'Quantitative Reasoning', label: 'Quantitative Reasoning' },
+    { value: 'Summarization', label: 'Summarization' },
+    { value: 'Transparency', label: 'Transparency' },
+    { value: 'Process Supervision', label: 'Process Supervision' },
+    { value: 'QA', label: 'QA' },
+    { value: 'NLP', label: 'NLP' },
+    { value: 'Writing', label: 'Writing' },
+    { value: 'Human Feedback', label: 'Human Feedback' },
+    { value: 'Visual QA', label: 'Visual QA' },
+    { value: 'Accuracy', label: 'Accuracy' },
+    { value: 'Instruction', label: 'Instruction' },
+    { value: 'Multilingual', label: 'Multilingual' },
+    { value: 'Toxicity', label: 'Toxicity' },
+    { value: 'Social Reasoning', label: 'Social Reasoning' },
+    { value: 'Psychology', label: 'Psychology' },
+    { value: 'Mental Health', label: 'Mental Health' },
+    { value: 'Finance', label: 'Finance' },
+    { value: 'Sentiment Analysis', label: 'Sentiment Analysis' },
+    { value: 'Social Media', label: 'Social Media' },
+    { value: 'Benchmarking', label: 'Benchmarking' },
+    { value: 'Preference Learning', label: 'Preference Learning' },
+    { value: 'Technical Queries', label: 'Technical Queries' },
+    { value: 'Red Teaming', label: 'Red Teaming' },
+    { value: 'Text-to-Image', label: 'Text-to-Image' },
+    { value: 'Feedback', label: 'Feedback' },
+    { value: 'Coding', label: 'Coding' },
+    { value: 'SQL', label: 'SQL' },
+    { value: 'Expert Feedback', label: 'Expert Feedback' },
+    { value: 'Training', label: 'Training' },
+    { value: 'Search', label: 'Search' }
+  ];
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
     fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets') // Update the URL if necessary
@@ -270,13 +329,12 @@ export const SearchPage = () => {
 
           /> */}
           <Form.Control placeholder="dd/mm/yyyy" ref={dateRef} className="input-date-picker-instance"></Form.Control>
+          
           <div className="keywords-dropdown">
             <div className="keywords-text">Keywords</div>
-            <Form.Select className="Keywords-Select">
-              <option>Psychology</option>
-              <option>Math</option>
-              <option>Etc</option>
-            </Form.Select>
+            <Select className="Keywords-Select"
+              isMulti
+              options={keyword_options}/>
           </div>
 
           <div className="group-3">
@@ -289,8 +347,8 @@ export const SearchPage = () => {
                 {lang}
               </option>
             ))}
-          </Form.Select>
-
+          </Form.Select> 
+          
 
 
           <Form.Control ref={minInputRef} className="slider-field-instance" placeholder="Minimum"></Form.Control>
