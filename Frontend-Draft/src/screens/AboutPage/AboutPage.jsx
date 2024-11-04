@@ -42,7 +42,7 @@ export const AboutPage = () => {
             <img className="IMG" alt="Img" src="/img/aleksandra.png" />
             <img className="IMG3" alt="Img" src="/img/humza.png" />
             <div className="ellipse-2" />
-            <div className="ellipse-3" />
+            <img className="IMG4" alt="Img" src="/img/modaser.jpg"/>
             <img className="IMG5" alt="Img" src="/img/aditya.jpg" />
           </div>
           <div className="text-wrapper-14">Frontend Engineer</div>
