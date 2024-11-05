@@ -22,6 +22,7 @@ export const SearchPage = () => {
   const searchRef = useRef(null);
 
   const num_per_page = 21
+
   const keyword_options = [
     { value: 'RLHF', label: 'RLHF' },
     { value: 'Helpfulness', label: 'Helpfulness' },
@@ -79,7 +80,7 @@ export const SearchPage = () => {
     { value: 'Training', label: 'Training' },
     { value: 'Search', label: 'Search' }
   ];
-  
+
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
     fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets') // Update the URL if necessary
@@ -317,7 +318,7 @@ export const SearchPage = () => {
 
 
           <div className="text-wrapper-26">Date</div>
-          <div className="text-wrapper-27">Data Length</div>
+          <div className="Data_length_text">Data Length</div>
           {/* <InputDatePicker
             className="input-date-picker-instance"
             hasButtonContainer={false}
@@ -380,9 +381,11 @@ export const SearchPage = () => {
                 {lang}
               </option>
             ))}
-          </Form.Select>
-          <Form.Control ref={minInputRef} className="slider-field-instance" placeholder="Minimum"></Form.Control>
-          <Form.Control ref={maxInputRef} className="max-field-instance" placeholder="Maximum"></Form.Control>
+            
+          </Form.Select> 
+          <Form.Control ref={minInputRef} className="min_field_textbox" placeholder="Minimum"></Form.Control>
+          <Form.Control ref={maxInputRef} className="max_field_textbox" placeholder="Maximum"></Form.Control>
+
           <Button className="search-button" onClick={() => searchFunction()} variant="success">Search</Button>{' '}
           <Form.Select
             className="Dataset-Pages"
