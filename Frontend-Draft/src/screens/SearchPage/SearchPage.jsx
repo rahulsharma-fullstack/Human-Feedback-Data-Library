@@ -80,6 +80,7 @@ export const SearchPage = () => {
     { value: 'Training', label: 'Training' },
     { value: 'Search', label: 'Search' }
   ];
+
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
     fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets') // Update the URL if necessary
@@ -325,6 +326,7 @@ export const SearchPage = () => {
             textFieldHasLabelTextContainer={false}
             textFieldTextFieldClassName="design-component-instance-node"
             type="range"
+          />
             ref={dateRef}
 
           /> */}
@@ -338,6 +340,39 @@ export const SearchPage = () => {
 
           <div className="group-3">
             <div className="text-wrapper-28">Language</div>
+            <Select className="Language-Select"
+            isMulti 
+            options={lang_set}
+            />
+          </div>
+          
+          <SliderField
+            blockClassName="slider-field-2"
+            className="slider-field-instance"
+            description="Number of Data Objects in Dataset"
+            knobEndClassName="slider-field-3"
+            knobStartClassName="slider-field-3"
+            label=""
+            state="default"
+            text=""
+            text1="Min Number-Max Number"
+          />
+
+          {/* <DropdownBox
+            className="dropdown-box-15"
+            headerIconsRegularChevronDownS75StyleOverrideClassName="dropdown-box-18"
+            headerMenuLabelMenuLabelClassName="dropdown-box-16"
+            headerMenuLabelText="Page 1"
+            headerStateEmptyClassName="dropdown-box-17"
+            itemsListItemHoverLabelText="Page 2"
+            itemsListItemHoverStateDefaultClassName="dropdown-box-19"
+            itemsListItemHoverStateDefaultClassNameOverride="dropdown-box-20"
+            itemsListItemHoverStateHoverClassName="dropdown-box-22"
+            itemsListItemHoverStateHoverClassNameOverride="dropdown-box-23"
+            itemsListItemHoverStatePressingClassName="dropdown-box-24"
+            itemsListItemsListClassName="dropdown-box-21"
+            stateProp="closed"
+          /> */}
 
           </div>
           <Form.Select ref={langref} className="Language-Select">
@@ -346,12 +381,11 @@ export const SearchPage = () => {
                 {lang}
               </option>
             ))}
+            
           </Form.Select> 
-          
-
-
           <Form.Control ref={minInputRef} className="min_field_textbox" placeholder="Minimum"></Form.Control>
           <Form.Control ref={maxInputRef} className="max_field_textbox" placeholder="Maximum"></Form.Control>
+
           <Button className="search-button" onClick={() => searchFunction()} variant="success">Search</Button>{' '}
           <Form.Select
             className="Dataset-Pages"
