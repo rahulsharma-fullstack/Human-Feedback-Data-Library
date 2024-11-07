@@ -22,6 +22,8 @@ export const SearchPage = () => {
   const [keywords, setKeywords] = useState([]);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(0);
+  const [date, setDate] = useState(null);
+
   const minInputRef = useRef(null);
   const maxInputRef = useRef(null);
   const dateRef = useRef(null);
@@ -87,7 +89,7 @@ export const SearchPage = () => {
     { value: 'Training', label: 'Training' },
     { value: 'Search', label: 'Search' }
   ];
-  const [value, setValue] = React.useState([20, 37]);
+  const [value, setValue] = React.useState([0, 31284837]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -144,11 +146,12 @@ export const SearchPage = () => {
         }
         setPages(temp_arr);
         setLanguages(Array.from(lang_set));
-        setKeywords(Array.from(key_set));
+        // setKeywords(Array.from(key_set));
         setMax(max);
         setMin(min);
         console.log(temp_arr);
         console.log(lang_set);
+        console.log("MAX:\n")
         console.log(max);
         console.log(min);
 
@@ -162,31 +165,36 @@ export const SearchPage = () => {
 
   }, []);
 
-  function isDateFormatValid(dateString) {
-    // Regular expression to match "DD/MM/YYYY" format
-    const datePattern = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(\d{4})$/;
-
-    return datePattern.test(dateString);
-  }
-
   const searchFunction = () => {
     setCurrentPage(0);
-    let min = minInputRef.current ? minInputRef.current.value : null;
-    let max = maxInputRef.current ? maxInputRef.current.value : null;
+    let chosenMin = value[0]
+    let chosenMax = value[1]
+    let keys = keywords;
 
-    let date = (dateRef.current && isDateFormatValid(dateRef.current.value)) ? dateRef.current.value : null;
+    // let date = (dateRef.current && isDateFormatValid(dateRef.current.value)) ? dateRef.current.value : null;
+    let chosenDate = date;
+    console.log(chosenDate);
+    if (chosenDate == "Invalid Date" || chosenDate == null) {
+      chosenDate = null;
+    }
+    else {
+      chosenDate = date
+
+    }
+
     let lang = langref.current ? langref.current.value : null;
     let searchText = searchRef.current ? searchRef.current.value : null;
     console.log(searchText);
-    console.log(date);
+
 
     const searchParams = {
-      endDate: date, // Format: DD/MM/YYYY
-      minRows: min,
-      maxRows: max,
-      language: lang
+      endDate: chosenDate, // Format: DD/MM/YYYY
+      minRows: chosenMin,
+      maxRows: chosenMax,
+      language: lang,
+      tags: keys
     };
-    fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets/search', {
+    fetch('http://localhost:8082/api/datasets/search', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -333,89 +341,74 @@ export const SearchPage = () => {
 
           <div className="text-wrapper-26">Date</div>
           <div className="Data_length_text">Data Length</div>
-          {/* <InputDatePicker
-            className="input-date-picker-instance"
-            hasButtonContainer={false}
-            hasHeader={false}
-            textFieldHasLabelTextContainer={false}
-            textFieldTextFieldClassName="design-component-instance-node"
-            type="range"
-          />
-            ref={dateRef}
 
-          /> */}
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker label="Select date" />
-      </LocalizationProvider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker label="Select date"
+              onChange={(dateInput) => {
+                if (dateInput != null) {
+                  console.log(dateInput.format("DD/MM/YYYY"));
+                  setDate(dateInput.format("DD/MM/YYYY"))
+                }
+                else {
+                  setDate(null);
+                }
+              }} />
+          </LocalizationProvider>
 
-      
-      <Box className="max-min-holder" sx={{ width: 400 }}>
-      
-        <Slider className="max-min-slider"
-          //getAriaLabel={() => 'Temperature range'}
-          value={value}
-          onChange={handleChange}
-          valueLabelDisplay="auto"
-          getAriaValueText={valuetext}
-          min={0}
-          max={30000000}
-          step={1000}
-          
-        />
-      </Box>
+
+          <Box className="max-min-holder" sx={{ width: 400 }}>
+
+            <Slider className="max-min-slider"
+              //getAriaLabel={() => 'Temperature range'}
+              value={value}
+              onChange={handleChange}
+              valueLabelDisplay="auto"
+              getAriaValueText={valuetext}
+              min={0}
+              max={31284837}
+              step={1000}
+
+            />
+          </Box>
           {/*<Form.Control placeholder="dd/mm/yyyy" ref={dateRef} className="input-date-picker-instance"></Form.Control> */}
           <div className="keywords-dropdown">
             <div className="keywords-text">Keywords</div>
             <Select className="Keywords-Select"
               isMulti
-              options={keyword_options}/>
-          </div>
+              options={keyword_options}
+              onChange={(options) => {
+
+                let stateArray = []
+                if (options != null) {
+                  for (let i = 0; i < options.length; i++) {
+                    stateArray.push(options[i].value);
+                  }
+                }
+                setKeywords(stateArray);
+              }}
+            />
 
           </div>
-          <div className="text-wrapper-28">Language</div>
-          <Form.Select ref={langref} className="Language-Select">
-            {languages.map((lang, index) => (
-              <option key={lang} value={lang}>
-                {lang}
-              </option>
-            ))}
-            
-          </Form.Select> 
 
-
-        
-          <Button className="search-button" onClick={() => searchFunction()} variant="success">Search</Button>{' '}
-          <Form.Select
-            className="Dataset-Pages"
-            id="pages-top"
-            onChange={(e) => setCurrentPage(Number(e.target.value))}
-            value={currentPage}  // Keep in sync with current page
-          >
-            {pages.map((_, index) => (
-              <option key={index} value={index}>
-                Page {index + 1}
-              </option>
-            ))}
-          </Form.Select>
-
-          <Button onClick={(e) => {
-            if (currentPage + 1 < pages.length) {
-              setCurrentPage(currentPage + 1)
-            }
-          }} className="group-4 Dataset-Button">Next</Button>
-          <Button onClick={(e) => {
-            if (currentPage - 1 >= 0) {
-              setCurrentPage(currentPage - 1)
-            }
-          }} className="group-5 Dataset-Button">Back</Button>
         </div>
-        <img className="logo-2" alt="Logo" src="/img/logo-1.png" />
+        <div className="text-wrapper-28">Language</div>
+        <Form.Select ref={langref} className="Language-Select">
+          {languages.map((lang, index) => (
+            <option key={lang} value={lang}>
+              {lang}
+            </option>
+          ))}
 
+        </Form.Select>
+
+
+
+        <Button className="search-button" onClick={() => searchFunction()} variant="success">Search</Button>{' '}
         <Form.Select
           className="Dataset-Pages"
-          id="pages-bottom"
+          id="pages-top"
           onChange={(e) => setCurrentPage(Number(e.target.value))}
-          value={currentPage}
+          value={currentPage}  // Keep in sync with current page
         >
           {pages.map((_, index) => (
             <option key={index} value={index}>
@@ -423,30 +416,58 @@ export const SearchPage = () => {
             </option>
           ))}
         </Form.Select>
+
         <Button onClick={(e) => {
           if (currentPage + 1 < pages.length) {
             setCurrentPage(currentPage + 1)
           }
-        }} className="group-6 Dataset-Button">Next</Button>
+        }} className="group-4 Dataset-Button">Next</Button>
         <Button onClick={(e) => {
           if (currentPage - 1 >= 0) {
             setCurrentPage(currentPage - 1)
           }
-        }} className="group-7 Dataset-Button">Back</Button>
-        <div className="navbar-2">
-          <Link className="text-wrapper-29" to="/ai-chatbot-page">
-            Chatbot
-          </Link>
-          <Link className="text-wrapper-30" to="/search-page">
-            Datasets
-          </Link>
-          <Link className="text-wrapper-31" to="/landing-page">
-            Home
-          </Link>
-          <Link className="text-wrapper-32" to="/about-page">
-            About
-          </Link>
-        </div>
+        }} className="group-5 Dataset-Button">Back</Button>
       </div>
+      <img className="logo-2" alt="Logo" src="/img/logo-1.png" />
+
+      { /*    <Form.Select
+        className="Dataset-Pages"
+        id="pages-bottom"
+        onChange={(e) => setCurrentPage(Number(e.target.value))}
+        value={currentPage}
+      >
+        {pages.map((_, index) => (
+          <option key={index} value={index}>
+            Page {index + 1}
+          </option>
+        ))}
+      </Form.Select>
+
+      <Button onClick={(e) => {
+        if (currentPage + 1 < pages.length) {
+          setCurrentPage(currentPage + 1)
+        }
+      }} className="group-6 Dataset-Button">Next</Button>
+      <Button onClick={(e) => {
+        if (currentPage - 1 >= 0) {
+          setCurrentPage(currentPage - 1)
+        }
+      }} className="group-7 Dataset-Button">Back</Button>
+    */}
+      <div className="navbar-2">
+        <Link className="text-wrapper-29" to="/ai-chatbot-page">
+          Chatbot
+        </Link>
+        <Link className="text-wrapper-30" to="/search-page">
+          Datasets
+        </Link>
+        <Link className="text-wrapper-31" to="/landing-page">
+          Home
+        </Link>
+        <Link className="text-wrapper-32" to="/about-page">
+          About
+        </Link>
+      </div>
+    </div>
   );
 };
