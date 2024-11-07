@@ -40,9 +40,10 @@
   position: absolute;
   z-index: 2;
   border-radius: 16px;
+  border-width: 1.5px;
   width: 350px;
   height: 60px !important;
-  top: 330px;
+  top: 395px;
   left: 900px;
   font-size: larger;
   font-family: "Poppins-Medium", Helvetica;
@@ -52,23 +53,25 @@
 .search-page .Keywords-Select {
   position: absolute;
   z-index: 2;
-  border-radius: 30px;
+  border-radius: 100px;
   width: 350px;
   height: 82px !important;
-  top: 330px;
+  top: 270px;
   left: 500px;
   font-size: larger;
   font-family: "Poppins-Medium", Helvetica;
   line-height: 50px;
+  border-width: 1.5px;
+  border-color: black;
 }
 
 #pages-top {
-  top: 580px;
+  top: 690px;
   left: 585px;
 }
 
 #pages-bottom {
-  top: 2040px;
+  top: 200px;
   left: 585px;
 }
 
@@ -130,7 +133,7 @@
 }
 
 .search-page .overlap-group-3 {
-  height: 95px;
+  height: 80px;
   position: relative;
   width: 960px;
   font-size: 30px;
@@ -178,7 +181,7 @@
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 258px;
+  top: 220px;
   width: 151px;
 }
 
@@ -192,21 +195,21 @@
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 438px;
+  top: 380px;
   width: 221px;
 }
 
 .search-page .input-date-picker-instance {
   background-color: white;
-  border-color: #236629;
+  border-color: black;
   border-style: solid;
   border-radius: 16px;
   font-size: larger;
-  border-width: 3px;
+  border-width: 1.5px;
   height: 60px !important;
   left: 129px !important;
   position: absolute !important;
-  top: 328px !important;
+  top: 270px !important;
   width: 315px !important;
 }
 
@@ -232,7 +235,7 @@
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 260px;
+  top: 220px;
   width: 221px;
 }
 
@@ -242,11 +245,11 @@
   font-size: 32px;
   font-weight: 400;
   height: 52px;
-  left: 150;
+  left: 900px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 0;
+  top: 345;
   width: 221px;
 }
 
@@ -363,24 +366,28 @@
 .search-page .min_field_textbox {
   left: 130px !important;
   position: absolute !important;
-  top: 500px !important;
+  top: 560px !important;
   width: 180px !important;
   height: 50px;
+  border-radius: 16px;
+  font-size: larger;
 }
 
 .search-page .max_field_textbox {
   left: 320px !important;
   position: absolute !important;
-  top: 500px !important;
+  top: 560px !important;
   width: 180px !important;
   height: 50px;
+  border-radius: 16px;
+  font-size: larger;
 
 }
 
 .search-page .search-button {
   left: 1000px !important;
   position: absolute !important;
-  top: 480px !important;
+  top: 550px !important;
   width: 200px !important;
   height: 50px;
   font-size: 20px;
@@ -394,7 +401,7 @@
 }
 
 .search-button:hover {
-  background-color: rgb(231, 231, 231);
+  background-color: #869386;
   cursor: pointer;
 }
 
@@ -477,7 +484,7 @@
   height: 47px;
   left: 908px;
   position: absolute;
-  top: 580px;
+  top: 690px;
   width: 110px;
 }
 
@@ -485,7 +492,7 @@
 
   left: 422px;
   position: absolute;
-  top: 580px;
+  top: 690px;
 
 }
 
@@ -605,3 +612,21 @@
   white-space: nowrap;
   width: 110px;
 }
+
+/* This is the slider styler */
+.search-page .css-13vpke-MuiSlider-root {
+  top: 380px !important;
+  left: 130px;
+}
+
+/* This is the date picker styler */
+.search-page .css-1b1fjlj-MuiFormControl-root-MuiTextField-root{
+  top: 270px;
+  left: 130px;
+  background-color: white;
+  height: 65px;
+  width: 330px;
+ 
+}
+
+
