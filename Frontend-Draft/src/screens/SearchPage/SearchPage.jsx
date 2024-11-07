@@ -381,9 +381,9 @@ export const SearchPage = () => {
             ))}
             
           </Form.Select> 
-          {/*<Form.Control ref={minInputRef} className="min_field_textbox" placeholder="Minimum"></Form.Control>
-          <Form.Control ref={maxInputRef} className="max_field_textbox" placeholder="Maximum"></Form.Control>
-            */}
+
+
+        
           <Button className="search-button" onClick={() => searchFunction()} variant="success">Search</Button>{' '}
           <Form.Select
             className="Dataset-Pages"
@@ -448,6 +448,5 @@ export const SearchPage = () => {
           </Link>
         </div>
       </div>
-    //</div>
   );
 };
