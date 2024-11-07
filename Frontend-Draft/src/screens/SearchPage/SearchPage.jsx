@@ -4,6 +4,13 @@ import { Frame } from "../../components/Frame";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Select from 'react-select';
+//import {SliderField} from "../../components/SliderField"
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import "./style.css";
 
 
@@ -80,6 +87,13 @@ export const SearchPage = () => {
     { value: 'Training', label: 'Training' },
     { value: 'Search', label: 'Search' }
   ];
+  const [value, setValue] = React.useState([20, 37]);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  function valuetext(value) {
+    return `${value}°C`;
+  }
 
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
@@ -330,7 +344,26 @@ export const SearchPage = () => {
             ref={dateRef}
 
           /> */}
-          <Form.Control placeholder="dd/mm/yyyy" ref={dateRef} className="input-date-picker-instance"></Form.Control>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePicker label="Select date" />
+      </LocalizationProvider>
+
+      
+      <Box className="max-min-holder" sx={{ width: 400 }}>
+      
+        <Slider className="max-min-slider"
+          //getAriaLabel={() => 'Temperature range'}
+          value={value}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+          getAriaValueText={valuetext}
+          min={0}
+          max={30000000}
+          step={1000}
+          
+        />
+      </Box>
+          {/*<Form.Control placeholder="dd/mm/yyyy" ref={dateRef} className="input-date-picker-instance"></Form.Control> */}
           <div className="keywords-dropdown">
             <div className="keywords-text">Keywords</div>
             <Select className="Keywords-Select"
@@ -338,43 +371,8 @@ export const SearchPage = () => {
               options={keyword_options}/>
           </div>
 
-          <div className="group-3">
-            <div className="text-wrapper-28">Language</div>
-            <Select className="Language-Select"
-            isMulti 
-            options={lang_set}
-            />
           </div>
-          
-          <SliderField
-            blockClassName="slider-field-2"
-            className="slider-field-instance"
-            description="Number of Data Objects in Dataset"
-            knobEndClassName="slider-field-3"
-            knobStartClassName="slider-field-3"
-            label=""
-            state="default"
-            text=""
-            text1="Min Number-Max Number"
-          />
-
-          {/* <DropdownBox
-            className="dropdown-box-15"
-            headerIconsRegularChevronDownS75StyleOverrideClassName="dropdown-box-18"
-            headerMenuLabelMenuLabelClassName="dropdown-box-16"
-            headerMenuLabelText="Page 1"
-            headerStateEmptyClassName="dropdown-box-17"
-            itemsListItemHoverLabelText="Page 2"
-            itemsListItemHoverStateDefaultClassName="dropdown-box-19"
-            itemsListItemHoverStateDefaultClassNameOverride="dropdown-box-20"
-            itemsListItemHoverStateHoverClassName="dropdown-box-22"
-            itemsListItemHoverStateHoverClassNameOverride="dropdown-box-23"
-            itemsListItemHoverStatePressingClassName="dropdown-box-24"
-            itemsListItemsListClassName="dropdown-box-21"
-            stateProp="closed"
-          /> */}
-
-          </div>
+          <div className="text-wrapper-28">Language</div>
           <Form.Select ref={langref} className="Language-Select">
             {languages.map((lang, index) => (
               <option key={lang} value={lang}>
@@ -383,9 +381,9 @@ export const SearchPage = () => {
             ))}
             
           </Form.Select> 
-          <Form.Control ref={minInputRef} className="min_field_textbox" placeholder="Minimum"></Form.Control>
-          <Form.Control ref={maxInputRef} className="max_field_textbox" placeholder="Maximum"></Form.Control>
-            
+
+
+        
           <Button className="search-button" onClick={() => searchFunction()} variant="success">Search</Button>{' '}
           <Form.Select
             className="Dataset-Pages"
@@ -450,6 +448,5 @@ export const SearchPage = () => {
           </Link>
         </div>
       </div>
-    // </div>
   );
 };
