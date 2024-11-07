@@ -194,7 +194,7 @@ export const SearchPage = () => {
       language: lang,
       tags: keys
     };
-    fetch('http://localhost:8082/api/datasets/search', {
+    fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets/search', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
