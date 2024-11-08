@@ -104,8 +104,8 @@ export const SearchPage = () => {
       .then(data => {
 
         //split data into pages, fill languages, and set min and max rows
-        let min = Infinity
-        let max = -Infinity;
+        let chosenMin = Infinity
+        let chosenMax = -Infinity;
         let count = 0
         let page_arr = []
         let temp_arr = []
@@ -118,11 +118,11 @@ export const SearchPage = () => {
           if (data[count].number_of_rows == 0) {
             data[count].number_of_rows = null;
           }
-          else if (data[count].number_of_rows > max) {
-            max = data[count].number_of_rows;
+          else if (data[count].number_of_rows > chosenMax) {
+            chosenMax = data[count].number_of_rows;
           }
-          else if (data[count].number_of_rows < min) {
-            min = data[count].number_of_rows;
+          else if (data[count].number_of_rows < chosenMin) {
+            chosenMin = data[count].number_of_rows;
           }
           if (data[count].data_type == "NaN") {
             data[count].data_type = "";
@@ -188,7 +188,7 @@ export const SearchPage = () => {
 
 
     const searchParams = {
-      endDate: chosenDate, // Format: DD/MM/YYYY
+	    endDate: chosenDate, // Format: DD/MM/YYYY
       minRows: chosenMin,
       maxRows: chosenMax,
       language: lang,
@@ -230,12 +230,7 @@ export const SearchPage = () => {
           if (searchedData[count].number_of_rows == 0) {
             searchedData[count].number_of_rows = null;
           }
-          else if (searchedData[count].number_of_rows > max) {
-            max = searchedData[count].number_of_rows;
-          }
-          else if (searchedData[count].number_of_rows < min) {
-            min = searchedData[count].number_of_rows;
-          }
+         
           if (searchedData[count].data_type == "NaN") {
             searchedData[count].data_type = "";
           }
