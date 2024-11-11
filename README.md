@@ -16,19 +16,11 @@ Command to update docker image in server:
         git branch to confirm you are in main
         git pull
 
-    To save backend change: 
-        in backend folder 
-        docker build -t backend-iamge . # create image
-        docker ps # find the already running image should be called backend image
-        docker stop "container_id"
-        docker rm "container_id" 
-        docker run -d --network host backend-image
-    To save frontend change:
-        in frontend folder
-        docker build -t frontend-image .
-        docker ps # find the already running image should be called frontend image
-        docker stop "container_id"
-        docker rm "container_id" 
-        docker run -d --network host frontend-image
+
+To update deployment:
+    docker compose up -d --build  (Run commands inside /home/feedback/Human-Feedback-Data-Library)
+
+To takedown deployment:
+    docker compose down (Run commands inside /home/feedback/Human-Feedback-Data-Library)
 
     
