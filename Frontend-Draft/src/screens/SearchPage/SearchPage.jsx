@@ -8,9 +8,13 @@ import Select from 'react-select';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import Modal from '@mui/material/Modal';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
 import "./style.css";
 
 
@@ -24,9 +28,22 @@ export const SearchPage = () => {
   const [max, setMax] = useState(0);
   const [date, setDate] = useState(null);
 
-  const minInputRef = useRef(null);
-  const maxInputRef = useRef(null);
-  const dateRef = useRef(null);
+  // handles opening dataset frames
+  const [openModalIndex, setOpen] = React.useState(null);
+
+
+  // style for dataset frame popup
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 900,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
   const langref = useRef(null);
   const searchRef = useRef(null);
 
@@ -188,7 +205,7 @@ export const SearchPage = () => {
 
 
     const searchParams = {
-	    endDate: chosenDate, // Format: DD/MM/YYYY
+      endDate: chosenDate, // Format: DD/MM/YYYY
       minRows: chosenMin,
       maxRows: chosenMax,
       language: lang,
@@ -230,7 +247,7 @@ export const SearchPage = () => {
           if (searchedData[count].number_of_rows == 0) {
             searchedData[count].number_of_rows = null;
           }
-         
+
           if (searchedData[count].data_type == "NaN") {
             searchedData[count].data_type = "";
           }
@@ -285,45 +302,60 @@ export const SearchPage = () => {
               {pages[currentPage] && (
                 <div key={currentPage} className="page" id="dataset-page">
                   {pages[currentPage].map((dataset, datasetIndex) => (
+                    <React.Fragment key={datasetIndex}>
+                      <Frame
+                        // onClick={window.open(dataset.link, "_blank")}
+                        onClick={() => { setOpen(datasetIndex) }}
+                        className="frame"
+                        divClassName="frame-instance"
+                        divClassName1="frame-instance"
+                        divClassName2="frame-instance"
+                        divClassName3="frame-instance"
+                        divClassName4="design-component-instance-node"
+                        divClassName5="frame-instance"
+                        divClassNameOverride="frame-instance"
+                        frameClassName="frame-34-instance"
+                        text1={
+                          dataset.description.length < 50
+                            ? dataset.description
+                            : dataset.description.slice(0, 60).concat("...")
+                        }
+                        text2={
+                          dataset.data_type.length < 25
+                            ? dataset.data_type
+                            : dataset.data_type.slice(0, 25).concat("...")
+                        }
+                        text3={
+                          dataset.date_posted == null
+                            ? ""
+                            : dataset.date_posted.slice(0, 10)
+                        }
+                        text5={dataset.language}
+                        text6={
+                          dataset.number_of_rows
+                            ? dataset.number_of_rows.toString()
+                            : ""
 
-                    <Frame
-                      // onClick={window.open(dataset.link, "_blank")}
-                      onClick={() => {
-                        window.open(dataset.link, "_blank");
-                      }}
-                      key={datasetIndex}
-                      className="frame"
-                      divClassName="frame-instance"
-                      divClassName1="frame-instance"
-                      divClassName2="frame-instance"
-                      divClassName3="frame-instance"
-                      divClassName4="design-component-instance-node"
-                      divClassName5="frame-instance"
-                      divClassNameOverride="frame-instance"
-                      frameClassName="frame-34-instance"
-                      text1={
-                        dataset.description.length < 50
-                          ? dataset.description
-                          : dataset.description.slice(0, 60).concat("...")
-                      }
-                      text2={
-                        dataset.data_type.length < 25
-                          ? dataset.data_type
-                          : dataset.data_type.slice(0, 25).concat("...")
-                      }
-                      text3={
-                        dataset.date_posted == null
-                          ? ""
-                          : dataset.date_posted.slice(0, 10)
-                      }
-                      text5={dataset.language}
-                      text6={
-                        dataset.number_of_rows
-                          ? dataset.number_of_rows.toString()
-                          : ""
+                        }
 
-                      }
-                    />
+                      />
+                      <Modal
+                        open={openModalIndex === datasetIndex}
+                        onClose={() => { setOpen(-1) }}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={style}>
+                          <Button className="modal-button" onClick={() => { window.open(dataset.link, "_blank") }}>Go to Dataset Website</Button>
+
+                          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            {dataset.description} <br />  <br />  {"Key words: " + dataset.tags} <br /> Size: {dataset.data_size_mb} mbs
+                          </Typography>
+                        </Box>
+
+                      </Modal>
+                    </React.Fragment>
+
                   ))}
                 </div>
               )}
