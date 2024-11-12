@@ -20,11 +20,7 @@ export const LandingPage = () => {
           <Link className="AdvancedSearchLink" to="/search-page">
             <div className="text-wrapper-36">Advanced Search</div>
           </Link>
-          <Link className="overlap-wrapper" to="/about-page">
-            <div className="overlap-6">
-              <div className="text-wrapper-37">About Us</div>
-            </div>
-          </Link>
+          
           <div className="navbar-3">
             <Link className="text-wrapper-38" to="/ai-chatbot-page">
               Chatbot
@@ -34,7 +30,10 @@ export const LandingPage = () => {
             </Link>
             <div className="text-wrapper-40">Home</div>
             <Link className="text-wrapper-41" to="/about-page">
-              About
+              About Us
+            </Link>
+            <Link className="userguide-page-link" to="/userguide-page">
+            User Guide & Help
             </Link>
           </div>
         </div>

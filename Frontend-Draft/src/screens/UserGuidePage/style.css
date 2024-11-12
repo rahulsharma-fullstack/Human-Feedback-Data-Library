@@ -1,0 +1,468 @@
+.userguide-page {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .userguide-page .header-group {
+    background-color: #ffffff;
+    height: 2499px;
+    overflow: hidden;
+    position: relative;
+    width: 1440px;
+  }
+  
+  
+  .userguide-page .text-wrapper-6 {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 64px;
+    font-weight: 500;
+    height: 50px;
+    left: 151px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    top: 48px;
+    width: 1148px;
+  }
+  
+  
+  .userguide-page .text-wrapper-7 {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 32px;
+    font-weight: 500;
+    height: 412px;
+    left: 30px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: left;
+    top: 106px;
+    width: 1144px;
+  }
+  
+  .userguide-page .text-wrapper-8 {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 64px;
+    font-weight: 500;
+    height: 50px;
+    left: 25px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    top: 37px;
+    width: 1148px;
+  }
+  
+  
+  .userguide-page .text-wrapper-9 {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 36px;
+    font-weight: 500;
+    left: 174px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    top: 125px;
+    width: 1157px;
+  }
+  
+  .userguide-page .aleksandra-kalas {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 36px;
+    font-weight: 500;
+    left: 196px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 638px;
+    width: 208px;
+  }
+  
+  .userguide-page .text-wrapper-10 {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 36px;
+    font-weight: 500;
+    left: 473px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 638px;
+    width: 208px;
+  }
+  
+  .userguide-page .humza-iqbal {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 36px;
+    font-weight: 500;
+    left: 750px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 638px;
+    width: 208px;
+  }
+  
+  .userguide-page .text-wrapper-11 {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 36px;
+    font-weight: 500;
+    left: 1027px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 638px;
+    width: 208px;
+  }
+  
+  .userguide-page .text-wrapper-12 {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 36px;
+    font-weight: 500;
+    left: 1304px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 638px;
+    width: 208px;
+  }
+  
+  .userguide-page .text-wrapper-13 {
+    color: #23662a;
+    font-family: "Roboto", Helvetica;
+    font-size: 64px;
+    font-weight: 500;
+    height: 50px;
+    left: 174px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    top: 51px;
+    width: 1148px;
+  }
+  
+  .userguide-page .group {
+    height: 240px;
+    left: 180px;
+    position: absolute;
+    top: 367px;
+    width: 1348px;
+  }
+  
+  .userguide-page .IMG {
+    height: 240px;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 240px;
+    border-radius: 50;
+  }
+  
+  .userguide-page .IMG2 {
+    border-radius: 50px;
+    height: 240px;
+    left: 280px;
+    position: absolute;
+    top: 0;
+    width: 240px;
+  }
+  
+  .userguide-page .IMG3 {
+    height: 240px;
+    left: 555px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 240px;
+    border-radius: 50;
+  }
+  
+  .userguide-page .IMG4 {
+    background-color: #d9d9d9;
+    border-radius: 50px;
+    height: 240px;
+    left: 831px;
+    position: absolute;
+    top: 0;
+    width: 240px;
+  }
+  
+  .userguide-page .IMG5 {
+    height: 240px;
+    left: 1108px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 240px;
+    border-radius: 50;
+  }
+  
+  .userguide-page .text-wrapper-14 {
+    color: #236629;
+    font-family: "Roboto", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    left: 214px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 740px;
+    white-space: nowrap;
+    width: 171px;
+  }
+  
+  .userguide-page .text-wrapper-15 {
+    color: #236629;
+    font-family: "Roboto", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    left: 491px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 740px;
+    white-space: nowrap;
+    width: 171px;
+  }
+  
+  .userguide-page .text-wrapper-16 {
+    color: #236629;
+    font-family: "Roboto", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    left: 768px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 740px;
+    white-space: nowrap;
+    width: 171px;
+  }
+  
+  .userguide-page .text-wrapper-17 {
+    color: #236629;
+    font-family: "Roboto", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    left: 1045px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 740px;
+    white-space: nowrap;
+    width: 171px;
+  }
+  
+  .userguide-page .text-wrapper-18 {
+    color: #236629;
+    font-family: "Roboto", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    left: 1322px;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 740px;
+    white-space: nowrap;
+    width: 171px;
+  }
+  
+  .userguide-page .overlap-3 {
+    height: 100px;
+    left: 1053px;
+    position: absolute;
+    top: 24px;
+    width: 375px;
+  }
+  
+  .userguide-page .overlap-group-wrapper {
+    height: 71px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 375px;
+  }
+  
+  .userguide-page .overlap-group-2 {
+    height: 71px;
+    position: relative;
+    width: 373px;
+  }
+  
+  .userguide-page .rectangle-2 {
+    background-color: #ececec;
+    border-radius: 50px;
+    height: 63px;
+    left: 0;
+    position: absolute;
+    top: 4px;
+    width: 373px;
+  }
+  
+  .userguide-page .text-wrapper-19 {
+    color: #7b7777;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    height: 71px;
+    left: 24px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    top: 15;
+    width: 230px;
+  }
+  
+  .userguide-page .advanced-search-link {
+    color: #0d27b2;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 17px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 70px;
+    white-space: nowrap;
+    width: 195px;
+  }
+  .userguide-page .userguide-page-link {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 570px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .navbar {
+    height: 30px;
+    left: 230px;
+    position: absolute;
+    top: 31px;
+    width: 541px;
+  }
+  
+  .userguide-page .text-wrapper-21 {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 282px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .text-wrapper-22 {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 141px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .text-wrapper-23 {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .text-wrapper-24 {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 423px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .logo {
+    height: 77px;
+    left: 46px;
+    position: absolute;
+    top: 29px;
+    width: 92px;
+  }
+  .userguide-page .text-wrapper-36 {
+    color: #0d27b2;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 1059px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 94px;
+    white-space: nowrap;
+    width: 195px;
+  }
+  

@@ -40,8 +40,8 @@ export const AboutPage = () => {
           <div className="text-wrapper-13">Our Team</div>
           <div className="group">
             <img className="IMG" alt="Img" src="/img/aleksandra.png" />
+            <img className="IMG2" alt="Img" src="/img/assad.jpg" />
             <img className="IMG3" alt="Img" src="/img/humza.png" />
-            <div className="ellipse-2" />
             <img className="IMG4" alt="Img" src="/img/modaser.jpg"/>
             <img className="IMG5" alt="Img" src="/img/aditya.jpg" />
           </div>
