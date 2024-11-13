@@ -1,6 +1,7 @@
 CREATE TABLE Datasets (
     id SERIAL PRIMARY KEY,  -- Unique identifier for each dataset
     link TEXT NOT NULL,  -- Stores the hyperlink as text
+    name TEXT,  -- NAME
     description TEXT,  -- Description of the dataset
     tags TEXT[],  -- Array of strings to store tags
     data_type TEXT,  -- Description of the data type
