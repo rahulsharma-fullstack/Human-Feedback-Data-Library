@@ -1,0 +1,9 @@
+services:
+  backend:
+    build: ./backend/
+    network_mode: host
+    restart: unless-stopped
+  frontend:
+    build: ./Frontend-Draft/
+    network_mode: host
+    restart: unless-stopped

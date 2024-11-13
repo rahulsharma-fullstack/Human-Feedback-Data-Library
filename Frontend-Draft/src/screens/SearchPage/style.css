@@ -12,6 +12,27 @@
   box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.34);
 }
 
+.modal-button {
+  background-color: #DEF9C4;
+  border-color: #236629;
+  border-style: solid;
+  border-width: 4px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-size: larger;
+  border-radius: 10px;
+  width: 30%;
+  height: 50px;
+  margin-left: 35%;
+  margin-right: auto;
+}
+
+.modal-button:hover {
+  background-color: lightgray;
+  cursor: pointer;
+
+}
+
+
 #dataset-page .frame:hover {
   background-color: lightgray;
   cursor: pointer;
@@ -391,7 +412,7 @@
   width: 200px !important;
   height: 50px;
   font-size: 20px;
-  font-weight:bold;
+  font-weight: bold;
   font-family: "Poppins-Medium", Helvetica;
   border-radius: 10px;
   background-color: #adbdad;
@@ -620,13 +641,12 @@
 }
 
 /* This is the date picker styler */
-.search-page .css-1b1fjlj-MuiFormControl-root-MuiTextField-root{
+.search-page .css-1b1fjlj-MuiFormControl-root-MuiTextField-root {
   top: 270px;
   left: 130px;
   background-color: white;
   height: 65px;
   width: 330px;
- 
 }
 
 .search-page .userguide-page-link {
@@ -645,4 +665,3 @@
   white-space: nowrap;
   width: 110px;
 }
-
