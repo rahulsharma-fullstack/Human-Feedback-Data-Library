@@ -71,8 +71,11 @@ export const AboutPage = () => {
             Home
           </Link>
           <Link className="text-wrapper-24" to="/about-page">
-            About
+            About Us
           </Link>
+          <Link className="userguide-page-link" to="/userguide-page">
+            User Guide & Help
+            </Link>
         </div>
         <img className="logo" alt="Logo" src="/img/logo.png" />
       </div>

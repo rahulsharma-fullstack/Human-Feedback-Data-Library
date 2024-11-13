@@ -444,8 +444,11 @@ export const SearchPage = () => {
             Home
           </Link>
           <Link className="text-wrapper-32" to="/about-page">
-            About
+            About Us
           </Link>
+          <Link className="userguide-page-link" to="/userguide-page">
+            User Guide & Help
+            </Link>
         </div>
       </div>
   );
