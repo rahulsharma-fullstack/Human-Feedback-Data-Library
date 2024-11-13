@@ -40,8 +40,8 @@ export const AboutPage = () => {
           <div className="text-wrapper-13">Our Team</div>
           <div className="group">
             <img className="IMG" alt="Img" src="/img/aleksandra.png" />
+            <img className="IMG2" alt="Img" src="/img/assad.jpg" />
             <img className="IMG3" alt="Img" src="/img/humza.png" />
-            <div className="ellipse-2" />
             <img className="IMG4" alt="Img" src="/img/modaser.jpg"/>
             <img className="IMG5" alt="Img" src="/img/aditya.jpg" />
           </div>
@@ -71,8 +71,11 @@ export const AboutPage = () => {
             Home
           </Link>
           <Link className="text-wrapper-24" to="/about-page">
-            About
+            About Us
           </Link>
+          <Link className="userguide-page-link" to="/userguide-page">
+            User Guide & Help
+            </Link>
         </div>
         <img className="logo" alt="Logo" src="/img/logo.png" />
       </div>

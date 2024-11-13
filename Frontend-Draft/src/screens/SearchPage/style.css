@@ -560,7 +560,7 @@
 
 .search-page .navbar-2 {
   height: 30px;
-  left: 349px;
+  left: 230px;
   position: absolute;
   top: 31px;
   width: 541px;
@@ -647,5 +647,21 @@
   background-color: white;
   height: 65px;
   width: 330px;
+}
 
+.search-page .userguide-page-link {
+  color: #000000;
+  display: block;
+  font-family: "Roboto", Helvetica;
+  font-size: 24px;
+  font-weight: 200;
+  height: 30px;
+  left: 570px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 110px;
 }

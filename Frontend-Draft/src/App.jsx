@@ -4,6 +4,7 @@ import { SearchPage } from "./screens/SearchPage";
 import { AboutPage } from "./screens/AboutPage";
 import { LandingPage } from "./screens/LandingPage";
 import { AiChatbotPage } from "./screens/AiChatbotPage";
+import { UserGuidePage } from "./screens/UserGuidePage";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/ai-chatbot-page",
     element: <AiChatbotPage />,
+  },
+  {
+    path: "/userguide-page",
+    element: <UserGuidePage/>,
   },
 ]);
 

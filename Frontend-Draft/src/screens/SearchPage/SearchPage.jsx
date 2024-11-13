@@ -453,47 +453,25 @@ export const SearchPage = () => {
           if (currentPage - 1 >= 0) {
             setCurrentPage(currentPage - 1)
           }
-        }} className="group-5 Dataset-Button">Back</Button>
-      </div>
-      <img className="logo-2" alt="Logo" src="/img/logo-1.png" />
 
-      { /*    <Form.Select
-        className="Dataset-Pages"
-        id="pages-bottom"
-        onChange={(e) => setCurrentPage(Number(e.target.value))}
-        value={currentPage}
-      >
-        {pages.map((_, index) => (
-          <option key={index} value={index}>
-            Page {index + 1}
-          </option>
-        ))}
-      </Form.Select>
-
-      <Button onClick={(e) => {
-        if (currentPage + 1 < pages.length) {
-          setCurrentPage(currentPage + 1)
-        }
-      }} className="group-6 Dataset-Button">Next</Button>
-      <Button onClick={(e) => {
-        if (currentPage - 1 >= 0) {
-          setCurrentPage(currentPage - 1)
-        }
-      }} className="group-7 Dataset-Button">Back</Button>
-    */}
-      <div className="navbar-2">
-        <Link className="text-wrapper-29" to="/ai-chatbot-page">
-          Chatbot
-        </Link>
-        <Link className="text-wrapper-30" to="/search-page">
-          Datasets
-        </Link>
-        <Link className="text-wrapper-31" to="/landing-page">
-          Home
-        </Link>
-        <Link className="text-wrapper-32" to="/about-page">
-          About
-        </Link>
+        }} className="group-7 Dataset-Button">Back</Button>
+        <div className="navbar-2">
+          <Link className="text-wrapper-29" to="/ai-chatbot-page">
+            Chatbot
+          </Link>
+          <Link className="text-wrapper-30" to="/search-page">
+            Datasets
+          </Link>
+          <Link className="text-wrapper-31" to="/landing-page">
+            Home
+          </Link>
+          <Link className="text-wrapper-32" to="/about-page">
+            About Us
+          </Link>
+          <Link className="userguide-page-link" to="/userguide-page">
+            User Guide & Help
+            </Link>
+        </div>
       </div>
     </div>
   );

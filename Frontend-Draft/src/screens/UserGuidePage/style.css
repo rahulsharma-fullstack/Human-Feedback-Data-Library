@@ -1,0 +1,231 @@
+.userguide-page {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .userguide-page .header-group {
+    background-color: #ffffff;
+    height: 2499px;
+    overflow: hidden;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .userguide-page .overlap-3 {
+    height: 100px;
+    left: 1053px;
+    position: absolute;
+    top: 24px;
+    width: 375px;
+  }
+  
+  .userguide-page .overlap-group-wrapper {
+    height: 71px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 375px;
+  }
+  
+  .userguide-page .overlap-group-2 {
+    height: 71px;
+    position: relative;
+    width: 373px;
+  }
+  
+  .userguide-page .rectangle-2 {
+    background-color: #ececec;
+    border-radius: 50px;
+    height: 63px;
+    left: 0;
+    position: absolute;
+    top: 4px;
+    width: 373px;
+  }
+  
+  .userguide-page .searchbar-text {
+    color: #7b7777;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    height: 71px;
+    left: 24px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    top: 15;
+    width: 230px;
+  }
+  
+  .userguide-page .advanced-search-link {
+    color: #0d27b2;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 17px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 70px;
+    white-space: nowrap;
+    width: 195px;
+  }
+  .userguide-page .userguide-page-link {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 570px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .navbar {
+    height: 30px;
+    left: 230px;
+    position: absolute;
+    top: 31px;
+    width: 541px;
+  }
+  
+  .userguide-page .aichatbot-link {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 282px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .searchpage-link {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 141px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .landingpage-link {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .aboutpage-link {
+    color: #000000;
+    display: block;
+    font-family: "Roboto", Helvetica;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    left: 423px;
+    letter-spacing: 0;
+    line-height: 38px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 110px;
+  }
+  
+  .userguide-page .logo {
+    height: 77px;
+    left: 46px;
+    position: absolute;
+    top: 29px;
+    width: 92px;
+  }
+
+  .userguide-page .background-image {
+    height: 1186px;
+    left: 0;
+    position: absolute;
+    top: -200px;
+    width: 1247px;
+  }
+
+  .userguide-page .userguide{
+    top: 140px;
+    left: 30px;
+    width: 1000px;
+    font-family: "Roboto", Helvetica;
+    position: absolute;
+  }
+
+  .userguide-page .heading{
+    font-size: 50px;
+    color: #236629;
+    font-weight: bolder;
+  }
+
+  .userguide-page .how-to-heading{
+    padding-top: 20px;
+    font-size: 30px;
+    color: #236629;
+    font-weight: bolder;
+  }
+
+  .userguide-page .paragraph-1{
+    padding-top: 20px;
+    font-size: 20px;
+    color: #236629;
+    
+  }
+
+  .userguide-page .filters-list{
+    font-size: 20px;
+    color: #236629;
+    
+  }
+
+  .userguide-page .search-header{
+    padding-top: 20px;
+    font-size: 20px;
+    color: #236629;
+  }
+  
+  .userguide-page .search-results-list{
+    font-size: 20px;
+    color: #236629;
+    
+  }
