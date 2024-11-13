@@ -1,0 +1,40 @@
+
+# Database Update Instructions
+
+These instructions will guide you through the process of updating the `datasets` table with new changes: adding a new column (`Name`)
+
+Connect to the PostgreSQL Database. 
+Open a terminal and connect to your PostgreSQL database using the following command: (use your username and database name)
+```
+psql -U feedback -d feedback
+```
+
+Once connected, confirm you're using the correct database:
+```
+\c feedback
+```
+
+To add the new `Name` column to the `datasets` table, run the following command:
+ALTER TABLE Datasets
+ADD COLUMN name TEXT;
+
+Delete All Rows (Preserves Table Structure)
+```
+DELETE FROM datasets;
+```
+
+Run the Python Script to Insert Data
+Exit the `psql` terminal and run the Python script to re-insert the updated data:
+```bash
+python insert_to_datasets.py
+```
+
+Verify New Data Insertions
+After running the script, verify that the new data has been inserted correctly:
+
+```bash
+psql -U feedback -d feedback
+SELECT id, name, link FROM datasets LIMIT 5;
+```
+
+You should see the updated entries with the `Name` column populated.
