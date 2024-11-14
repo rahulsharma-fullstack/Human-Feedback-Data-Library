@@ -204,7 +204,7 @@
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 220px;
+  top: 210px;
   width: 151px;
 }
 
@@ -258,7 +258,7 @@
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 220px;
+  top: 210px;
   width: 221px;
 }
 
@@ -272,7 +272,7 @@
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
-  top: 345;
+  top: 335;
   width: 221px;
 }
 
@@ -683,4 +683,56 @@
   top: 0;
   white-space: nowrap;
   width: 110px;
+}
+
+.search-page .date-subscript{
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  height: 52px;
+  left: 130px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  top: 235px;
+}
+
+.search-page .length-subscript{
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  height: 52px;
+  left: 130px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  top: 410px;
+}
+
+.search-page .length-minimum-text{
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  height: 52px;
+  left: 110px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  top: 470px;
+}
+
+.search-page .length-maximum-text{
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  height: 52px;
+  left: 500px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  top: 470px;
 }
