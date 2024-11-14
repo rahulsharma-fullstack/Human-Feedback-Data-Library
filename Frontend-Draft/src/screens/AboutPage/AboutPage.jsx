@@ -4,6 +4,16 @@ import Form from 'react-bootstrap/Form';
 import "./style.css";
 
 export const AboutPage = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      // Navigate to the results page and pass the search query as state
+      navigate("/search-page", { state: { searchQuery: query } });
+    }
+  };
   return (
     <div className="about-page">
       <div className="div-3">
@@ -58,7 +68,9 @@ export const AboutPage = () => {
               <div className="rectangle-2" />
               <div className="text-wrapper-19">Search</div>
             </div> */}
-            <Form.Control className="overlap-group-2" placeholder="Search"></Form.Control>
+            <Form.Control className="overlap-group-2" placeholder="Search" value={query}
+              onChange={(e) => setQuery(e.target.value)} // Update the search query
+              onKeyDown={handleKeyPress}></Form.Control>
           </div>
           <Link className="text-wrapper-20" to="/search-page">Advanced Search</Link>
         </div>

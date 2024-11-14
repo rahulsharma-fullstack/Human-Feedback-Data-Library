@@ -4,6 +4,17 @@ import Form from 'react-bootstrap/Form';
 import "./style.css";
 
 export const AiChatbotPage = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      // Navigate to the results page and pass the search query as state
+      navigate("/search-page", { state: { searchQuery: query } });
+    }
+  };
+
   return (
     <div className="AI-chatbot-page">
       <div className="div-6">
@@ -14,7 +25,9 @@ export const AiChatbotPage = () => {
               <div className="text-wrapper-48">Search</div>
             </div> */}
 
-            <Form.Control className="overlap-group-6" placeholder="Search"></Form.Control>
+            <Form.Control className="overlap-group-6" placeholder="Search" value={query}
+              onChange={(e) => setQuery(e.target.value)} // Update the search query
+              onKeyDown={handleKeyPress}></Form.Control>
           </div>
 
         </div>
