@@ -365,6 +365,13 @@
   height: 71px;
   position: relative;
   width: 373px;
+  font-size: 30px;
+  border-radius: 50px;
+  padding-left: 20px;
+  padding-right: 10px;
+  border-color: #DFF9C5;
+  box-shadow: none;
+  border-style: solid;
 }
 
 .about-page .rectangle-2 {
@@ -490,6 +497,7 @@
   top: 29px;
   width: 92px;
 }
+
 .about-page .text-wrapper-36 {
   color: #0d27b2;
   font-family: "Roboto", Helvetica;
@@ -505,6 +513,7 @@
   white-space: nowrap;
   width: 195px;
 }
+
 .about-page .userguide-page-link {
   color: #000000;
   display: block;

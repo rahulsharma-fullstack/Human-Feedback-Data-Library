@@ -14,6 +14,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { useLocation } from 'react-router-dom';
 
 import "./style.css";
 
@@ -31,6 +32,9 @@ export const SearchPage = () => {
   // handles opening dataset frames
   const [openModalIndex, setOpen] = React.useState(null);
 
+  //quicksearching
+  const location = useLocation();
+  const searchQuery = location.state?.searchQuery;
 
   // style for dataset frame popup
   const style = {
@@ -116,6 +120,13 @@ export const SearchPage = () => {
 
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
+    // if quicksearching, go straight to search
+    if (searchQuery) {
+      searchRef.current.value = searchQuery;
+      searchFunction(); // Trigger search with the query
+      return;
+    }
+
     fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets') // Update the URL if necessary
       .then(response => response.json())
       .then(data => {
@@ -180,7 +191,7 @@ export const SearchPage = () => {
 
       });
 
-  }, []);
+  }, [searchQuery]);
 
   const searchFunction = () => {
     setCurrentPage(0);
@@ -470,7 +481,7 @@ export const SearchPage = () => {
           </Link>
           <Link className="userguide-page-link" to="/userguide-page">
             User Guide & Help
-            </Link>
+          </Link>
         </div>
       </div>
     </div>

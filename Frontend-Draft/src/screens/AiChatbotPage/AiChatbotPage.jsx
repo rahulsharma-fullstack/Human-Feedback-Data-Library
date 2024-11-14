@@ -1,23 +1,40 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 import "./style.css";
 
 export const AiChatbotPage = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      // Navigate to the results page and pass the search query as state
+      navigate("/search-page", { state: { searchQuery: query } });
+    }
+  };
+
   return (
     <div className="AI-chatbot-page">
       <div className="div-6">
         <div className="overlap-9">
           <div className="group-13">
-            <div className="overlap-group-6">
+            {/* <div className="overlap-group-6">
               <div className="rectangle-6" />
               <div className="text-wrapper-48">Search</div>
-            </div>
+            </div> */}
+
+            <Form.Control className="overlap-group-6" placeholder="Search" value={query}
+              onChange={(e) => setQuery(e.target.value)} // Update the search query
+              onKeyDown={handleKeyPress}></Form.Control>
           </div>
-          
+
         </div>
         <Link className="AdvancedSearchLink" to="/search-page">
-            <div className="text-wrapper-36">Advanced Search</div>
-          </Link>
+          <div className="text-wrapper-36">Advanced Search</div>
+        </Link>
         <img className="logo-4" alt="Logo" src="/img/logo.png" />
         <div className="group-14">
           <div className="overlap-10">
@@ -82,7 +99,7 @@ export const AiChatbotPage = () => {
           </Link>
           <Link className="userguide-page-link" to="/userguide-page">
             User Guide & Help
-            </Link>
+          </Link>
         </div>
       </div>
     </div>
