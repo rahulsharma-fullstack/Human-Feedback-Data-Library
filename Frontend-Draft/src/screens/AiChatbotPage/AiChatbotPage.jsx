@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 import "./style.css";
 
 export const AiChatbotPage = () => {
@@ -8,16 +9,18 @@ export const AiChatbotPage = () => {
       <div className="div-6">
         <div className="overlap-9">
           <div className="group-13">
-            <div className="overlap-group-6">
+            {/* <div className="overlap-group-6">
               <div className="rectangle-6" />
               <div className="text-wrapper-48">Search</div>
-            </div>
+            </div> */}
+
+            <Form.Control className="overlap-group-6" placeholder="Search"></Form.Control>
           </div>
-          
+
         </div>
         <Link className="AdvancedSearchLink" to="/search-page">
-            <div className="text-wrapper-36">Advanced Search</div>
-          </Link>
+          <div className="text-wrapper-36">Advanced Search</div>
+        </Link>
         <img className="logo-4" alt="Logo" src="/img/logo.png" />
         <div className="group-14">
           <div className="overlap-10">
@@ -82,7 +85,7 @@ export const AiChatbotPage = () => {
           </Link>
           <Link className="userguide-page-link" to="/userguide-page">
             User Guide & Help
-            </Link>
+          </Link>
         </div>
       </div>
     </div>

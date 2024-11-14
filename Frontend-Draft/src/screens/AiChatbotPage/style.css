@@ -13,6 +13,7 @@
   position: relative;
   width: 1440px;
 }
+
 .AI-chatbot-page .text-wrapper-36 {
   color: #0d27b2;
   font-family: "Roboto", Helvetica;
@@ -49,6 +50,13 @@
   height: 71px;
   position: relative;
   width: 373px;
+  font-size: 30px;
+  border-radius: 50px;
+  padding-left: 20px;
+  padding-right: 10px;
+  border-color: #DFF9C5;
+  box-shadow: none;
+  border-style: solid;
 }
 
 .AI-chatbot-page .rectangle-6 {

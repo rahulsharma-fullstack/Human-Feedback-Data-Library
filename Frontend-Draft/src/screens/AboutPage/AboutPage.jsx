@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 import "./style.css";
 
 export const AboutPage = () => {
@@ -30,7 +31,7 @@ export const AboutPage = () => {
           <p className="text-wrapper-9">
             Our team consists of five undergraduate students from the University of Toronto. Each member of the team brings
             their own unique skills, such as unique design thinking, expertise with artificial intelligence, and database construction.
-            
+
           </p>
           <div className="aleksandra-kalas">Aleksandra Kalas</div>
           <div className="text-wrapper-10">Assad Usman</div>
@@ -42,7 +43,7 @@ export const AboutPage = () => {
             <img className="IMG" alt="Img" src="/img/aleksandra.png" />
             <img className="IMG2" alt="Img" src="/img/assad.jpg" />
             <img className="IMG3" alt="Img" src="/img/humza.png" />
-            <img className="IMG4" alt="Img" src="/img/modaser.jpg"/>
+            <img className="IMG4" alt="Img" src="/img/modaser.jpg" />
             <img className="IMG5" alt="Img" src="/img/aditya.jpg" />
           </div>
           <div className="text-wrapper-14">Frontend Engineer</div>
@@ -53,10 +54,11 @@ export const AboutPage = () => {
         </div>
         <div className="overlap-3">
           <div className="overlap-group-wrapper">
-            <div className="overlap-group-2">
+            {/* <div className="overlap-group-2">
               <div className="rectangle-2" />
               <div className="text-wrapper-19">Search</div>
-            </div>
+            </div> */}
+            <Form.Control className="overlap-group-2" placeholder="Search"></Form.Control>
           </div>
           <Link className="text-wrapper-20" to="/search-page">Advanced Search</Link>
         </div>
@@ -75,7 +77,7 @@ export const AboutPage = () => {
           </Link>
           <Link className="userguide-page-link" to="/userguide-page">
             User Guide & Help
-            </Link>
+          </Link>
         </div>
         <img className="logo" alt="Logo" src="/img/logo.png" />
       </div>
