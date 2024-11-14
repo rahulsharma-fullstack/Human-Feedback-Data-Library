@@ -17,6 +17,7 @@ import Modal from '@mui/material/Modal';
 import { useLocation } from 'react-router-dom';
 
 import "./style.css";
+import { element } from "prop-types";
 
 
 export const SearchPage = () => {
@@ -28,9 +29,12 @@ export const SearchPage = () => {
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(0);
   const [date, setDate] = useState(null);
+  const [loading_lengths, setLoading] = useState(true);
+
+  const [keyword_options, setKeyOptions] = useState(null);
 
   // handles opening dataset frames
-  const [openModalIndex, setOpen] = React.useState(null);
+  const [openModalIndex, setOpen] = useState(null);
 
   //quicksearching
   const location = useLocation();
@@ -53,63 +57,7 @@ export const SearchPage = () => {
 
   const num_per_page = 21
 
-  const keyword_options = [
-    { value: 'RLHF', label: 'RLHF' },
-    { value: 'Helpfulness', label: 'Helpfulness' },
-    { value: 'Harmless', label: 'Harmless' },
-    { value: 'Science', label: 'Science' },
-    { value: 'Educational', label: 'Educational' },
-    { value: 'Comparison', label: 'Comparison' },
-    { value: 'TOOL/instruction', label: 'TOOL/instruction' },
-    { value: 'DPO', label: 'DPO' },
-    { value: 'NLG', label: 'NLG' },
-    { value: 'News', label: 'News' },
-    { value: 'Medical', label: 'Medical' },
-    { value: 'Translation', label: 'Translation' },
-    { value: 'Bias', label: 'Bias' },
-    { value: 'Truthfulness', label: 'Truthfulness' },
-    { value: 'Fairness', label: 'Fairness' },
-    { value: 'Safety', label: 'Safety' },
-    { value: 'Dialogue', label: 'Dialogue' },
-    { value: 'Task Prompts', label: 'Task Prompts' },
-    { value: 'Reddit', label: 'Reddit' },
-    { value: 'Evaluation', label: 'Evaluation' },
-    { value: 'Structured Tasks', label: 'Structured Tasks' },
-    { value: 'Math', label: 'Math' },
-    { value: 'EcoFriendly', label: 'EcoFriendly' },
-    { value: 'Sustainability', label: 'Sustainability' },
-    { value: 'Alignment', label: 'Alignment' },
-    { value: 'Quantitative Reasoning', label: 'Quantitative Reasoning' },
-    { value: 'Summarization', label: 'Summarization' },
-    { value: 'Transparency', label: 'Transparency' },
-    { value: 'Process Supervision', label: 'Process Supervision' },
-    { value: 'QA', label: 'QA' },
-    { value: 'NLP', label: 'NLP' },
-    { value: 'Writing', label: 'Writing' },
-    { value: 'Human Feedback', label: 'Human Feedback' },
-    { value: 'Visual QA', label: 'Visual QA' },
-    { value: 'Accuracy', label: 'Accuracy' },
-    { value: 'Instruction', label: 'Instruction' },
-    { value: 'Multilingual', label: 'Multilingual' },
-    { value: 'Toxicity', label: 'Toxicity' },
-    { value: 'Social Reasoning', label: 'Social Reasoning' },
-    { value: 'Psychology', label: 'Psychology' },
-    { value: 'Mental Health', label: 'Mental Health' },
-    { value: 'Finance', label: 'Finance' },
-    { value: 'Sentiment Analysis', label: 'Sentiment Analysis' },
-    { value: 'Social Media', label: 'Social Media' },
-    { value: 'Benchmarking', label: 'Benchmarking' },
-    { value: 'Preference Learning', label: 'Preference Learning' },
-    { value: 'Technical Queries', label: 'Technical Queries' },
-    { value: 'Red Teaming', label: 'Red Teaming' },
-    { value: 'Text-to-Image', label: 'Text-to-Image' },
-    { value: 'Feedback', label: 'Feedback' },
-    { value: 'Coding', label: 'Coding' },
-    { value: 'SQL', label: 'SQL' },
-    { value: 'Expert Feedback', label: 'Expert Feedback' },
-    { value: 'Training', label: 'Training' },
-    { value: 'Search', label: 'Search' }
-  ];
+
   const [value, setValue] = React.useState([0, 31284837]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -141,7 +89,7 @@ export const SearchPage = () => {
         const key_set = new Set();
         while (count < data.length) {
           data[count].tags.forEach(element => {
-            key_set.add(element.toLowerCase());
+            key_set.add(element);
           });
           if (data[count].number_of_rows == 0) {
             data[count].number_of_rows = null;
@@ -174,13 +122,23 @@ export const SearchPage = () => {
         }
         setPages(temp_arr);
         setLanguages(Array.from(lang_set));
-        // setKeywords(Array.from(key_set));
-        setMax(max);
-        setMin(min);
+        setKeywords(Array.from(key_set));
+        //set keyword options
+        let options = [];
+        for (e of key_set) {
+          console.log(e);
+          options.push({ value: e, label: e });
+        }
+        console.log("OPTIONS:");
+        console.log(options);
+        setKeyOptions(options);
+
+        setMax(chosenMax);
+        setMin(chosenMin);
         console.log(temp_arr);
         console.log(lang_set);
         console.log("MAX:\n")
-        console.log(max);
+        console.log(chosenMax);
         console.log(min);
 
 
@@ -303,7 +261,7 @@ export const SearchPage = () => {
                 divClassNameOverride="frame-instance"
                 frameClassName="frame-34-instance"
                 text="Dataset Name"
-                text1="Description"
+                text1="Dataset Name"
                 text2="Type"
                 text3="Date Posted"
                 text4=""
@@ -327,9 +285,9 @@ export const SearchPage = () => {
                         divClassNameOverride="frame-instance"
                         frameClassName="frame-34-instance"
                         text1={
-                          dataset.description.length < 50
-                            ? dataset.description
-                            : dataset.description.slice(0, 60).concat("...")
+                          dataset.name.length < 50
+                            ? dataset.name
+                            : dataset.name.slice(0, 60).concat("...")
                         }
                         text2={
                           dataset.data_type.length < 25
@@ -378,10 +336,10 @@ export const SearchPage = () => {
 
 
           <div className="text-wrapper-26">Date</div>
-          <div className="date-subscript">Please enter the oldest date for 
+          <div className="date-subscript">Please enter the oldest date for
             published datasets</div>
           <div className="Data_length_text">Data Length</div>
-          <div className="length-subscript">Please enter a minimum and maximum 
+          <div className="length-subscript">Please enter a minimum and maximum
             for number of rows.
           </div>
           <div className="length-minimum-text">Minimum</div>
@@ -403,17 +361,29 @@ export const SearchPage = () => {
 
           <Box className="max-min-holder" sx={{ width: 400 }}>
 
-            <Slider className="max-min-slider"
+            {/* <Slider className="max-min-slider"
               //getAriaLabel={() => 'Temperature range'}
               value={value}
               onChange={handleChange}
               valueLabelDisplay="auto"
               getAriaValueText={valuetext}
               min={0}
-              max={31284837}
+              max={max ? max : 300000}
               step={1000}
 
+            /> */}
+
+
+            <Slider
+              className="max-min-slider"
+              value={value}
+              onChange={handleChange}
+              valueLabelDisplay="auto"
+              min={min}
+              max={max}
+              step={1000}
             />
+
           </Box>
           {/*<Form.Control placeholder="dd/mm/yyyy" ref={dateRef} className="input-date-picker-instance"></Form.Control> */}
           <div className="keywords-dropdown">
@@ -491,8 +461,8 @@ export const SearchPage = () => {
           </Link>
           <Link className="google-form-link" to={"/google-form"}>
             Submit a Dataset
-            </Link>
-            
+          </Link>
+
         </div>
         <img className="logo-2" alt="Logo" src="/img/logo.png" />
       </div>
