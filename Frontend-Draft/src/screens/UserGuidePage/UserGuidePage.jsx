@@ -161,6 +161,9 @@ export const UserGuidePage = () => {
                         <Link className="userguide-page-link" to="/userguide-page">
                             User Guide & Help
                         </Link>
+                        <Link className="google-form-link" to={"/google-form"}>
+                        Submit a Dataset
+                        </Link>
 
                     </div>
 

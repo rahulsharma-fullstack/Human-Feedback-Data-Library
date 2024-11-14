@@ -482,7 +482,12 @@ export const SearchPage = () => {
           <Link className="userguide-page-link" to="/userguide-page">
             User Guide & Help
           </Link>
+          <Link className="google-form-link" to={"/google-form"}>
+            Submit a Dataset
+            </Link>
+            
         </div>
+        <img className="logo-2" alt="Logo" src="/img/logo.png" />
       </div>
     </div>
   );
