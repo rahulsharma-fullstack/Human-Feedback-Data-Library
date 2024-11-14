@@ -280,7 +280,7 @@
 
 .AI-chatbot-page .navbar-4 {
   height: 30px;
-  left: 230px;
+  left: 170px;
   position: absolute;
   top: 31px;
   width: 541px;
@@ -290,10 +290,10 @@
   color: #000000;
   display: block;
   font-family: "Roboto", Helvetica;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 200;
   height: 30px;
-  left: 282px;
+  left: 230px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
@@ -307,10 +307,10 @@
   color: #000000;
   display: block;
   font-family: "Roboto", Helvetica;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 200;
   height: 30px;
-  left: 141px;
+  left: 110px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
@@ -324,7 +324,7 @@
   color: #000000;
   display: block;
   font-family: "Roboto", Helvetica;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 200;
   height: 30px;
   left: 0;
@@ -341,10 +341,10 @@
   color: #000000;
   display: block;
   font-family: "Roboto", Helvetica;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 200;
   height: 30px;
-  left: 423px;
+  left: 350px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
@@ -358,10 +358,27 @@
   color: #000000;
   display: block;
   font-family: "Roboto", Helvetica;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 200;
   height: 30px;
-  left: 570px;
+  left: 490px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 110px;
+}
+
+.AI-chatbot-page .google-form-link {
+  color: #000000;
+  display: block;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 200;
+  height: 30px;
+  left: 690px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;

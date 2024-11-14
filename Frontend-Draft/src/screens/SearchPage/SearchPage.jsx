@@ -378,7 +378,14 @@ export const SearchPage = () => {
 
 
           <div className="text-wrapper-26">Date</div>
+          <div className="date-subscript">Please enter the oldest date for 
+            published datasets</div>
           <div className="Data_length_text">Data Length</div>
+          <div className="length-subscript">Please enter a minimum and maximum 
+            for number of rows.
+          </div>
+          <div className="length-minimum-text">Minimum</div>
+          <div className="length-maximum-text">Maximum</div>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker label="Select date"
@@ -482,7 +489,12 @@ export const SearchPage = () => {
           <Link className="userguide-page-link" to="/userguide-page">
             User Guide & Help
           </Link>
+          <Link className="google-form-link" to={"/google-form"}>
+            Submit a Dataset
+            </Link>
+            
         </div>
+        <img className="logo-2" alt="Logo" src="/img/logo.png" />
       </div>
     </div>
   );

@@ -5,13 +5,13 @@
   justify-content: flex-start;
   padding: 40px;
   min-height: 100vh;
-  background-color: var(--white);
+  background-color: #e3f8d1;
 }
 
 .form-container {
   width: 80%;
   max-width: 800px;
-  margin-top: 20px;
+  margin-top: 80px;
   box-shadow: var(--m3-elevation-light-2);
   padding: 20px;
   border-radius: 12px;
@@ -23,4 +23,126 @@
   height: 800px;
   border: none;
   border-radius: 8px;
+}
+
+.google-form-page .text-wrapper-25{
+  top: 100px;
+}
+
+.google-form-page .navbar {
+  height: 30px;
+  left: 170px;
+  position: absolute;
+  top: 31px;
+  width: 541px;
+}
+
+.google-form-page .text-wrapper-21 {
+  color: #000000;
+  display: block;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 200;
+  height: 30px;
+  left: 230px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 110px;
+}
+
+.google-form-page .text-wrapper-22 {
+  color: #000000;
+  display: block;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 200;
+  height: 30px;
+  left: 110px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 110px;
+}
+
+.google-form-page .text-wrapper-23 {
+  color: #000000;
+  display: block;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 200;
+  height: 30px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 110px;
+}
+
+.google-form-page .text-wrapper-24 {
+  color: #000000;
+  display: block;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 200;
+  height: 30px;
+  left: 350px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 110px;
+}
+
+.google-form-page .userguide-page-link {
+  color: #000000;
+  display: block;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 200;
+  height: 30px;
+  left: 490px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 110px;
+}
+
+.google-form-page .google-form-link {
+  color: #000000;
+  display: block;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 200;
+  height: 30px;
+  left: 690px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 110px;
+}
+
+.google-form-page .logo {
+  height: 77px;
+  left: 46px;
+  position: absolute;
+  top: 29px;
+  width: 92px;
 }

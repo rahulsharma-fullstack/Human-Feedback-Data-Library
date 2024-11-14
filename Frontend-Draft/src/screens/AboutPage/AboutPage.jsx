@@ -91,6 +91,9 @@ export const AboutPage = () => {
           <Link className="userguide-page-link" to="/userguide-page">
             User Guide & Help
           </Link>
+          <Link className="google-form-link" to={"/google-form"}>
+          Submit a Dataset
+          </Link>
         </div>
         <img className="logo" alt="Logo" src="/img/logo.png" />
       </div>

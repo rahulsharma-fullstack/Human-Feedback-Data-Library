@@ -110,9 +110,15 @@ export const UserGuidePage = () => {
                                                         to a prompt. There will be a response that was
                                                         accepted, and a response that was rejected.
                                                     </li>
-                                                    <li>Scored</li>
+                                                    <li>Scored: dataset consists of rows of data in which the 
+                                                        response given by the model will be ranked or given a 
+                                                        score.
+                                                    </li>
                                                     <li>Classification</li>
-                                                    <li>Prompt and response</li>
+                                                    <li>Prompt and response: dataset consists of rows of data
+                                                        in which there will be a prompt given to the model, and 
+                                                        the corresponding response given by the model.
+                                                    </li>
                                                 </ul>
                                             </li>
 
@@ -160,6 +166,9 @@ export const UserGuidePage = () => {
                         </Link>
                         <Link className="userguide-page-link" to="/userguide-page">
                             User Guide & Help
+                        </Link>
+                        <Link className="google-form-link" to={"/google-form"}>
+                        Submit a Dataset
                         </Link>
 
                     </div>
