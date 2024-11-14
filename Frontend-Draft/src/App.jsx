@@ -5,6 +5,7 @@ import { AboutPage } from "./screens/AboutPage";
 import { LandingPage } from "./screens/LandingPage";
 import { AiChatbotPage } from "./screens/AiChatbotPage";
 import { UserGuidePage } from "./screens/UserGuidePage";
+import GoogleFormPage from './screens/GoogleFormPage';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/userguide-page",
     element: <UserGuidePage/>,
+  },
+  {
+    path: "/google-form",
+    element: <GoogleFormPage />,
   },
 ]);
 
