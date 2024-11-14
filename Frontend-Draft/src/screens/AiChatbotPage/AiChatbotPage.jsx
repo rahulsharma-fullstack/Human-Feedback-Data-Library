@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 import "./style.css";
 
 export const AiChatbotPage = () => {
