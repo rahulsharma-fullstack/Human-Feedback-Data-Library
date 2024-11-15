@@ -66,14 +66,10 @@ export const SearchPage = () => {
     return `${value}°C`;
   }
 
+
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
-    // if quicksearching, go straight to search
-    if (searchQuery) {
-      searchRef.current.value = searchQuery;
-      searchFunction(); // Trigger search with the query
-      return;
-    }
+
 
     fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets') // Update the URL if necessary
       .then(response => response.json())
@@ -135,14 +131,15 @@ export const SearchPage = () => {
 
         setMax(chosenMax);
         setMin(chosenMin);
-        console.log(temp_arr);
-        console.log(lang_set);
-        console.log("MAX:\n")
-        console.log(chosenMax);
-        console.log(min);
+
+        // if quicksearching, go straight to search
+        if (searchQuery) {
+          searchRef.current.value = searchQuery;
+          searchFunction(); // Trigger search with the query
+
+        }
 
 
-        console.log(key_set);
       })
       .catch(error => {
         console.error('Error fetching datasets:', error);
