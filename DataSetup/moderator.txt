@@ -1,0 +1,32 @@
+### Documentation for Moderators
+
+#### **1. Validating and Cleaning Google Sheets Data**
+- **Purpose**: Ensure dataset links in Google Sheets are valid and remove any invalid entries.
+- **Steps**:
+  1. Open the Google Sheet linked to the form responses.
+  2. Go to the DataSetup directory
+  3. Run the validation script:
+     - This checks the links for HTTPS and SSL validity.
+     - Logs invalid links with dataset names and row numbers.
+
+RUN: entryValidation.py
+
+Make sure u have the relevant libraries, pip install requests google-api-python-client google-auth pandas psycopg2
+
+  3. Verify the changes in Google Sheets: (Optional)
+     - Invalid rows will be deleted automatically.
+     - Valid rows remain intact.
+  4. You may have to run this multiple times (During testing and verification test this)
+
+#### **2. Uploading Data to the Database**
+- **Purpose**: Insert validated data into the database for use by the front end.
+- **Steps**:
+  1. Run the upload script:
+     - This fetches validated data from Google Sheets and inserts it into the database.
+
+RUN: entryUpload.py
+
+Make sure u have the relevant libraries, pip install requests google-api-python-client google-auth pandas psycopg2
+
+  3. Confirm database content: (Optional)
+     - Use a database query tool to check that the data has been uploaded correctly.

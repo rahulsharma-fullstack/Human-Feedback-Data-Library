@@ -1,0 +1,25 @@
+### Documentation for Steps Taken
+
+#### 1. Google Sheets Data Validation and Cleanup
+- **Purpose**: Validate dataset links in Google Sheets, delete invalid rows, and prepare the data for database upload.
+- **Steps**:
+  1. **Validate Links**:
+     - Used `requests` to check if links start with `https://` and have a valid SSL certificate.
+     - Invalid links were logged with their dataset names and row numbers.
+  2. **Delete Rows**:
+     - Used the Google Sheets API's `batchUpdate` method to delete rows with invalid links entirely.
+     - Verified row deletion by checking the Google Sheet after the operation.
+  3. **Prepare Valid Rows**:
+     - Kept valid rows, ensuring all data was properly formatted for database upload.
+
+#### 2. Uploading Data to the Database
+- **Purpose**: Insert validated data from Google Sheets into a PostgreSQL database.
+- **Steps**:
+  1. **Fetch and Process Data**:
+     - Used the Google Sheets API to fetch validated rows.
+     - Processed data using `pandas` to ensure compatibility with the database schema.
+  2. **Clear Database**:
+     - Cleared the `datasets` table in PostgreSQL before uploading to avoid duplication or inconsistency.
+  3. **Insert Data**:
+     - Used `psycopg2` to insert rows into the `datasets` table.
+     - Ensured data types and formats matched the database schema.

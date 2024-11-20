@@ -4,7 +4,7 @@ import requests
 
 # Google Sheets API setup
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SERVICE_ACCOUNT_FILE = 'DataSetup\\humanfeedbackdataentries-f2bf391f9c56.json'
+SERVICE_ACCOUNT_FILE = 'humanfeedbackdataentries-f2bf391f9c56.json'
 SPREADSHEET_ID = '1zcoxCclwMHbNnhK2TmQpvRBYbIlokzjIwI47-JXne3k'
 RANGE_NAME = 'Form Responses 1!A:K'
 
