@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 import "./style.css";
 
 export const AboutPage = () => {
@@ -38,7 +39,8 @@ export const AboutPage = () => {
           </p>
           <div className="text-wrapper-8">About the Foundation</div>
         </div>
-        <div className="overlap-2">
+
+        {/* <div className="overlap-2 ">
           <p className="text-wrapper-9">
             Our team consists of five undergraduate students from the University of Toronto. Each member of the team brings
             their own unique skills, such as unique design thinking, expertise with artificial intelligence, and database construction.
@@ -62,20 +64,66 @@ export const AboutPage = () => {
           <div className="text-wrapper-16">Backend Engineer</div>
           <div className="text-wrapper-17">Backend Engineer</div>
           <div className="text-wrapper-18">Project Manager</div>
+        </div> */}
+        <div className="student-about">
+          <h2>Our Team</h2>
+
+          <div className="student-pictures">
+            <Card className="student-card">
+              <Card.Body>
+                <Card.Title>Aleksandra <br /> Kalas</Card.Title>
+                <Card.Img src="/img/aleksandra.png" alt="Aleksandra Image" className="student-image" />
+                <Card.Subtitle>Frontend Engineer</Card.Subtitle>
+              </Card.Body>
+            </Card>
+
+            <Card className="student-card">
+              <Card.Body>
+                <Card.Title>Assad <br /> Usman</Card.Title>
+                <Card.Img src="/img/assad.jpg" alt="Assad Image" className="student-image" />
+                <Card.Subtitle>Fullstack Engineer</Card.Subtitle>
+              </Card.Body>
+            </Card>
+
+            <Card className="student-card">
+              <Card.Body>
+                <Card.Title>Humza <br /> Iqbal</Card.Title>
+                <Card.Img src="/img/humza.png" alt="Humza Image" className="student-image" />
+                <Card.Subtitle>Backend Engineer</Card.Subtitle>
+              </Card.Body>
+            </Card>
+
+            <Card className="student-card">
+              <Card.Body>
+                <Card.Title>Modaser <br /> Mojadiddi</Card.Title>
+                <Card.Img src="/img/modaser.jpg" alt="Modaser Image" className="student-image" />
+                <Card.Subtitle>Backend Engineer</Card.Subtitle>
+              </Card.Body>
+            </Card>
+
+            <Card className="student-card">
+              <Card.Body>
+                <Card.Title>Aditya <br /> Kumar</Card.Title>
+                <Card.Img src="/img/aditya.jpg" alt="Aditya Image" className="student-image" />
+                <Card.Subtitle>Project Manager</Card.Subtitle>
+              </Card.Body>
+            </Card>
+          </div>
         </div>
+
+
         <div className="overlap-3">
-          <div className="overlap-group-wrapper">
-            {/* <div className="overlap-group-2">
+          {/* <div className="overlap-group-2">
               <div className="rectangle-2" />
               <div className="text-wrapper-19">Search</div>
             </div> */}
-            <Form.Control className="overlap-group-2" placeholder="Search" value={query}
-              onChange={(e) => setQuery(e.target.value)} // Update the search query
-              onKeyDown={handleKeyPress}></Form.Control>
-          </div>
+          <Form.Control className="overlap-group-2" placeholder="Search" value={query}
+            onChange={(e) => setQuery(e.target.value)} // Update the search query
+            onKeyDown={handleKeyPress}></Form.Control>
+
           <Link className="text-wrapper-20" to="/search-page">Advanced Search</Link>
         </div>
-        <div className="navbar">
+        {/* <div className="navbar">
           <Link className="text-wrapper-21" to="/ai-chatbot-page">
             Chatbot
           </Link>
@@ -94,9 +142,60 @@ export const AboutPage = () => {
           <Link className="google-form-link" to={"/google-form"}>
           Submit a Dataset
           </Link>
-        </div>
+        </div> */}
+        <nav className="navbar navbar-expand-md navbar-3">
+          <div className="container-fluid">
+
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarContent"
+              aria-controls="navbarContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/ai-chatbot-page">
+                    Chatbot
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/search-page">
+                    Datasets
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about-page">
+                    About Us
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/userguide-page">
+                    User Guide & Help
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/google-form">
+                    Submit a Dataset
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
         <img className="logo" alt="Logo" src="/img/logo.png" />
       </div>
-    </div>
+    </div >
   );
 };
