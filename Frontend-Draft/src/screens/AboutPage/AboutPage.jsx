@@ -143,7 +143,7 @@ export const AboutPage = () => {
           Submit a Dataset
           </Link>
         </div> */}
-        <nav className="navbar navbar-expand-md navbar-3">
+        <nav className="navbar navbar-expand-lg navbar-3">
           <div className="container-fluid">
 
             <button

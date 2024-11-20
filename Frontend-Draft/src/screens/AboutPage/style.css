@@ -79,7 +79,7 @@
   line-height: 50px;
   position: absolute;
   top: 48px;
-  width: 1148px;
+  width: 100%;
 }
 
 .about-page .overlap-group {
@@ -113,12 +113,13 @@
   font-size: 64px;
   font-weight: 500;
   height: 50px;
-  left: 25px;
+  left: 0px;
+  padding-left: 20px;
   letter-spacing: 0;
   line-height: 50px;
   position: absolute;
   top: 37px;
-  width: 1148px;
+  width: 100%;
 }
 
 .about-page .overlap-2 {
@@ -487,7 +488,7 @@
   left: 150px;
   position: absolute;
   top: 50px;
-  width: 541px;
+  width: 60%;
 }
 
 .about-page .text-wrapper-21 {
@@ -667,4 +668,98 @@
 
 }
 
-@media (min-width: 900px) and (max-width: 1149px) {}
+@media (min-width: 900px) and (max-width: 1149px) {
+  .about-page .overlap-3 {
+    top: 100px;
+  }
+
+  .about-page .text-wrapper-5 {
+    font-size: 60px;
+  }
+
+  .about-page .text-wrapper-6 {
+    font-size: 60px;
+  }
+
+  .about-page .p {
+    font-size: 25px;
+  }
+
+  .about-page .text-wrapper-7 {
+    font-size: 25px;
+  }
+
+  .about-page .student-card .card-subtitle {
+    font-size: 30px;
+  }
+
+  .about-page .student-card {
+    transform: scale(0.8);
+    width: 100%;
+    text-align: center;
+
+    border: #23662a;
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .about-page .student-card .card-title {
+    font-size: 25px;
+  }
+
+  .about-page .student-card .student-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .about-page .student-pictures {
+    justify-content: space-between;
+  }
+
+}
+
+@media (min-width: 500px) and (max-width: 899px) {
+  .about-page .overlap-3 {
+    top: 100px;
+  }
+
+  .about-page .student-pictures {
+    flex-direction: column;
+  }
+
+  .about-page .overlap {
+    width: 100%;
+    left: 0px;
+    top: 400px;
+  }
+
+  .about-page .text-wrapper-6 {
+    text-align: center;
+    left: 0px;
+  }
+
+  .about-page .p {
+    left: 0px;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    position: relative;
+    left: 65px;
+  }
+
+  .about-page .text-wrapper-5 {
+    font-size: 50px;
+  }
+
+  .about-page .text-wrapper-7 {
+    font-size: 25px;
+    line-height: 30px;
+    top: 150px;
+  }
+
+  .about-page .overlap-group {
+    width: 100%;
+    top: 950px;
+    height: 600px;
+  }
+}
