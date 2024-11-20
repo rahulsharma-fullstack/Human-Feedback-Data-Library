@@ -6,7 +6,7 @@ from google.oauth2.service_account import Credentials
 
 # Google Sheets API setup
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SERVICE_ACCOUNT_FILE = 'DataSetup\\humanfeedbackdataentries-f2bf391f9c56.json'
+SERVICE_ACCOUNT_FILE = 'humanfeedbackdataentries-f2bf391f9c56.json'
 SPREADSHEET_ID = '1zcoxCclwMHbNnhK2TmQpvRBYbIlokzjIwI47-JXne3k'
 RANGE_NAME = 'Form Responses 1!A:K'
 
@@ -23,7 +23,11 @@ df = pd.DataFrame(rows, columns=headers)
 
 # Process columns for database insertion using column indices
 # Combine tags from columns 4 (index 4) and 5 (index 5)
-df['Tags'] = df.iloc[:, 4] + ',' + df.iloc[:, 5]
+df['Tags'] = df.apply(
+    lambda row: row.iloc[4] if pd.isnull(row.iloc[5]) or row.iloc[5] == ''
+    else row.iloc[5] if pd.isnull(row.iloc[4]) or row.iloc[4] == ''
+    else row.iloc[4] + ',' + row.iloc[5], axis=1
+)
 df['Tags'] = df['Tags'].fillna('').str.strip()
 df['Tags'] = df['Tags'].apply(lambda x: ','.join(set(tag.strip() for tag in x.split(','))))
 
@@ -59,7 +63,7 @@ try:
     cursor = conn.cursor()
 
     for _, row in df.iterrows():
-        tags_array = '{' + ','.join(row['Tags'].split(',')) + '}'
+        tags_array = '{' + ','.join(tag.strip() for tag in row['Tags'].split(',')) + '}'
         date_posted = row['Date posted'].strftime('%Y-%m-%d') if pd.notna(row['Date posted']) else None
         insert_query = sql.SQL('''
             INSERT INTO datasets (link, name, description, tags, data_type, data_size_mb, number_of_rows, date_posted, language)
