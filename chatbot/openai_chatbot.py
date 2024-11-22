@@ -4,7 +4,7 @@ import json
 from sentence_transformers import SentenceTransformer
 import numpy as np
 import logging
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, abort 
 from openai import OpenAI
 import json
 import numpy as np
@@ -12,6 +12,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+API_KEY = os.getenv("API_KEY")
 client = OpenAI(
     api_key = os.getenv("OPENAI_API_KEY"),  # This is the default and can be omitted
 )
@@ -49,9 +50,14 @@ def retrieve_info(user_input, embedded_data, top_k=1):
     logging.info(f"Retrieved information: {retrieved_info}")
     return retrieved_info
 
+def check_api_key():
+    api_key = request.headers.get('X-API-KEY')
+    if api_key != API_KEY:
+        abort(403, description="Forbidden: Invalid API Key")
 # Endpoint for chatbot
 @app.route('/chat', methods=['POST'])
 def chat():
+    check_api_key()
     data = request.json
     user_input = data.get('question')  # Expecting a single string as "question"
 
