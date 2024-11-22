@@ -11,7 +11,7 @@ app.use(express.json());  // To parse JSON request bodies
 app.options('*', cors());  // Enable pre-flight across-the-board
 
 // Use the routes
-app.use('/api/datasets', datasetsRoute); // Route for datasets
+app.use('/api', datasetsRoute); // Route for datasets
 app.use('/api/chat', chatRoute);         // Route for chatbot
 
 const PORT = process.env.PORT || 5000;
