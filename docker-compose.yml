@@ -7,3 +7,7 @@ services:
     build: ./Frontend-Draft/
     network_mode: host
     restart: unless-stopped
+  chatbot:
+    build: ./chatbot
+    network_mode: host
+    restart: unless-stopped
