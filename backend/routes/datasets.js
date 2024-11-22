@@ -73,13 +73,24 @@ const FLASK_CHATBOT_URL = 'https://openfeedbackvault.utm.utoronto.ca/chat';
 router.post('/chat', async (req, res) => {
     const { message } = req.body; // Expecting a 'message' field in the request body
     console.log(req.body);
+
     if (!message || typeof message !== 'string') {
         return res.status(400).json({ error: "Invalid input format. 'message' should be a non-empty string." });
     }
 
     try {
-        // Send the user's message to the Flask app
-        const response = await axios.post(FLASK_CHATBOT_URL, { question: message });
+        // Fetch the API key from environment variables
+        const apiKey = process.env.API_KEY;
+
+        // Send the user's message to the Flask app with the API key
+        const response = await axios.post(FLASK_CHATBOT_URL,
+            { question: message },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-KEY': apiKey  // Include the API key in the request header
+                }
+            });
 
         // Extract the reply from the Flask app's response
         const reply = response.data.reply;
