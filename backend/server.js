@@ -3,7 +3,7 @@ const cors = require('cors');
 
 // Import the routes
 const datasetsRoute = require('./routes/datasets');
-const chatRoute = require('./routes/chat'); // Import the chatbot route
+const chatRoute = require('./routes/chatbot'); // Import the chatbot route
 
 const app = express();
 app.use(cors());
