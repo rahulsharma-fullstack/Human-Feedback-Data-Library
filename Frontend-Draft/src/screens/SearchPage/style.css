@@ -37,7 +37,9 @@
   width: 100%;
   position: relative;
   top: 80px;
+  margin: none;
 }
+
 
 .search-page .first-filter-row {
   position: relative;
@@ -47,6 +49,11 @@
 .search-page .second-filter-row {
   position: relative;
   top: 40px;
+}
+
+.search-page .keywordOptions {
+  position: relative;
+  top: 60px;
 }
 
 .search-page .nav-link {

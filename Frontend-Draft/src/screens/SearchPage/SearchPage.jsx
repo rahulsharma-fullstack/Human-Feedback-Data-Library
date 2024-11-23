@@ -381,8 +381,26 @@ export const SearchPage = () => {
                 />
 
               </div>
+              <div className="col-1">
+                <div className="keywordOptions">
+                  <Form.Check
+                    inline
+                    label="AND"
+                    name="keyword"
+                    type='radio'
+                    id='keywordAnd'
+                  />
+                  <Form.Check
+                    inline
+                    label="OR"
+                    name="keyword"
+                    type='radio'
+                    id='keywordOr'
+                  />
+                </div>
+              </div>
 
-              <div className="col-4">
+              <div className="col-3">
                 <div className="text-wrapper-28">Language</div>
                 <Form.Select ref={langref} className="Language-Select">
                   {languages.map((lang, index) => (
