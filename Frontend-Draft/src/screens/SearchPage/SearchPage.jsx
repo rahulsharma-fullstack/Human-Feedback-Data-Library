@@ -327,14 +327,53 @@ export const SearchPage = () => {
               )}
             </div>
           </div>
-          <div className="group-2">
+          {/* <div className="group-2">
             <Form.Control ref={searchRef} className="overlap-group-3" placeholder="Search"></Form.Control>
+          </div> */}
+
+
+          <div className="container-fluid">
+
+            <div className="row">
+              <div className="col-3"></div>
+              <div className="col-6">
+                <Form.Control ref={searchRef} className="overlap-group-3" placeholder="Search"></Form.Control>
+              </div>
+              <div className="col-3"></div>
+            </div>
+
+            <div className="row">
+              <div className="col-4">
+                <div className="text-wrapper-26">Date</div>
+                <div className="date-subscript">Please enter the oldest date for
+                  published datasets</div>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker label="Select date"
+                    onChange={(dateInput) => {
+                      if (dateInput != null) {
+                        console.log(dateInput.format("DD/MM/YYYY"));
+                        setDate(dateInput.format("DD/MM/YYYY"))
+                      }
+                      else {
+                        setDate(null);
+                      }
+                    }} />
+                </LocalizationProvider>
+              </div>
+
+              <div className="col-4">
+
+              </div>
+
+            </div>
+
           </div>
 
 
-          <div className="text-wrapper-26">Date</div>
+
+          {/* <div className="text-wrapper-26">Date</div>
           <div className="date-subscript">Please enter the oldest date for
-            published datasets</div>
+            published datasets</div> */}
           <div className="Data_length_text">Data Length</div>
           <div className="length-subscript">Please enter a minimum and maximum
             for number of rows.
@@ -342,7 +381,7 @@ export const SearchPage = () => {
           <div className="length-minimum-text">Minimum</div>
           <div className="length-maximum-text">Maximum</div>
 
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker label="Select date"
               onChange={(dateInput) => {
                 if (dateInput != null) {
@@ -353,22 +392,11 @@ export const SearchPage = () => {
                   setDate(null);
                 }
               }} />
-          </LocalizationProvider>
+          </LocalizationProvider> */}
 
 
           <Box className="max-min-holder" sx={{ width: 400 }}>
 
-            {/* <Slider className="max-min-slider"
-              //getAriaLabel={() => 'Temperature range'}
-              value={value}
-              onChange={handleChange}
-              valueLabelDisplay="auto"
-              getAriaValueText={valuetext}
-              min={0}
-              max={max ? max : 300000}
-              step={1000}
-
-            /> */}
 
 
             <Slider
@@ -440,7 +468,7 @@ export const SearchPage = () => {
           }
 
         }} className="group-7 Dataset-Button">Back</Button>
-        <div className="navbar-2">
+        {/* <div className="navbar-2">
           <Link className="text-wrapper-29" to="/ai-chatbot-page">
             Chatbot
           </Link>
@@ -460,7 +488,60 @@ export const SearchPage = () => {
             Submit a Dataset
           </Link>
 
-        </div>
+        </div> */}
+
+        <nav className="navbar navbar-expand-lg navbar-3">
+          <div className="container-fluid">
+
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarContent"
+              aria-controls="navbarContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/ai-chatbot-page">
+                    Chatbot
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/search-page">
+                    Datasets
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about-page">
+                    About Us
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/userguide-page">
+                    User Guide & Help
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/google-form">
+                    Submit a Dataset
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
         <img className="logo-2" alt="Logo" src="/img/logo.png" />
       </div>
     </div>

@@ -32,6 +32,26 @@
 
 }
 
+.search-page .nav-link {
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 38px;
+  white-space: nowrap;
+  margin-right: 25px;
+}
+
+.search-page .navbar-3 {
+  height: 30px;
+  left: 150px;
+  position: absolute;
+  top: 50px;
+  width: 60%;
+}
+
+
 
 #dataset-page .frame:hover {
   background-color: lightgray;
@@ -101,6 +121,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-family: "Roboto", Helvetica;
   width: 100%;
 }
 
@@ -108,8 +129,8 @@
   background-color: #ffffff;
   height: 2213px;
   position: relative;
-  width: 1440px;
-  margin-inline: auto;
+  width: 100%;
+  margin: none;
   left: 0;
 }
 
@@ -685,7 +706,7 @@
   width: 110px;
 }
 
-.search-page .date-subscript{
+.search-page .date-subscript {
   color: #000000;
   font-family: "Roboto", Helvetica;
   font-size: 14px;
@@ -698,7 +719,7 @@
   top: 235px;
 }
 
-.search-page .length-subscript{
+.search-page .length-subscript {
   color: #000000;
   font-family: "Roboto", Helvetica;
   font-size: 14px;
@@ -711,7 +732,7 @@
   top: 410px;
 }
 
-.search-page .length-minimum-text{
+.search-page .length-minimum-text {
   color: #000000;
   font-family: "Roboto", Helvetica;
   font-size: 14px;
@@ -724,7 +745,7 @@
   top: 470px;
 }
 
-.search-page .length-maximum-text{
+.search-page .length-maximum-text {
   color: #000000;
   font-family: "Roboto", Helvetica;
   font-size: 14px;
