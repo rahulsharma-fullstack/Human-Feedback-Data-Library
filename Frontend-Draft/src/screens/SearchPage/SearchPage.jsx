@@ -332,9 +332,9 @@ export const SearchPage = () => {
           </div> */}
 
 
-          <div className="container-fluid">
+          <div className="container-fluid filters">
 
-            <div className="row">
+            <div className="row searchbar-row">
               <div className="col-3"></div>
               <div className="col-6">
                 <Form.Control ref={searchRef} className="overlap-group-3" placeholder="Search"></Form.Control>
@@ -342,8 +342,9 @@ export const SearchPage = () => {
               <div className="col-3"></div>
             </div>
 
-            <div className="row">
-              <div className="col-4">
+            <div className="row first-filter-row">
+              <div className="col-1"></div>
+              <div className="col-3">
                 <div className="text-wrapper-26">Date</div>
                 <div className="date-subscript">Please enter the oldest date for
                   published datasets</div>
@@ -361,11 +362,79 @@ export const SearchPage = () => {
                 </LocalizationProvider>
               </div>
 
-              <div className="col-4">
+              <div className="col-3">
+
+                <div className="keywords-text">Keywords</div>
+                <Select className="Keywords-Select"
+                  isMulti
+                  options={keyword_options}
+                  onChange={(options) => {
+
+                    let stateArray = []
+                    if (options != null) {
+                      for (let i = 0; i < options.length; i++) {
+                        stateArray.push(options[i].value);
+                      }
+                    }
+                    setKeywords(stateArray);
+                  }}
+                />
 
               </div>
 
+              <div className="col-4">
+                <div className="text-wrapper-28">Language</div>
+                <Form.Select ref={langref} className="Language-Select">
+                  {languages.map((lang, index) => (
+                    <option key={lang} value={lang}>
+                      {lang}
+                    </option>
+                  ))}
+
+                </Form.Select>
+              </div>
+              <div className="col-1"></div>
+
             </div>
+
+            <div className="row second-filter-row">
+              <div className="col-1"></div>
+              <div className="col-4">
+                <div className="Data_length_text">Data Length</div>
+                <div className="length-subscript">Please enter a minimum and maximum
+                  for number of rows.
+                </div>
+                <Box className="max-min-holder" sx={{ width: 400 }}>
+
+
+
+                  <Slider
+                    className="max-min-slider"
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                    min={min}
+                    max={max}
+                    step={1000}
+                  />
+
+                </Box>
+                {/* <div className="length-minimum-text">Minimum</div>
+                <div className="length-maximum-text">Maximum</div> */}
+              </div>
+              <div className="col-3"></div>
+              <div className="col-2">
+                <Button className="search-button" onClick={() => searchFunction()} variant="success">Submit Filters</Button>{' '}
+              </div>
+              <div className="col-2"></div>
+
+
+
+
+
+            </div>
+
+
 
           </div>
 
@@ -374,12 +443,12 @@ export const SearchPage = () => {
           {/* <div className="text-wrapper-26">Date</div>
           <div className="date-subscript">Please enter the oldest date for
             published datasets</div> */}
-          <div className="Data_length_text">Data Length</div>
+          {/* <div className="Data_length_text">Data Length</div>
           <div className="length-subscript">Please enter a minimum and maximum
             for number of rows.
-          </div>
-          <div className="length-minimum-text">Minimum</div>
-          <div className="length-maximum-text">Maximum</div>
+          </div> */}
+          {/* <div className="length-minimum-text">Minimum</div>
+          <div className="length-maximum-text">Maximum</div> */}
 
           {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker label="Select date"
@@ -395,7 +464,7 @@ export const SearchPage = () => {
           </LocalizationProvider> */}
 
 
-          <Box className="max-min-holder" sx={{ width: 400 }}>
+          {/* <Box className="max-min-holder" sx={{ width: 400 }}>
 
 
 
@@ -409,9 +478,9 @@ export const SearchPage = () => {
               step={1000}
             />
 
-          </Box>
+          </Box> */}
           {/*<Form.Control placeholder="dd/mm/yyyy" ref={dateRef} className="input-date-picker-instance"></Form.Control> */}
-          <div className="keywords-dropdown">
+          {/* <div className="keywords-dropdown">
             <div className="keywords-text">Keywords</div>
             <Select className="Keywords-Select"
               isMulti
@@ -428,10 +497,10 @@ export const SearchPage = () => {
               }}
             />
 
-          </div>
+          </div> */}
 
         </div>
-        <div className="text-wrapper-28">Language</div>
+        {/* <div className="text-wrapper-28">Language</div>
         <Form.Select ref={langref} className="Language-Select">
           {languages.map((lang, index) => (
             <option key={lang} value={lang}>
@@ -439,11 +508,11 @@ export const SearchPage = () => {
             </option>
           ))}
 
-        </Form.Select>
+        </Form.Select> */}
 
 
 
-        <Button className="search-button" onClick={() => searchFunction()} variant="success">Search</Button>{' '}
+        {/* <Button className="search-button" onClick={() => searchFunction()} variant="success">Submit</Button>{' '} */}
         <Form.Select
           className="Dataset-Pages"
           id="pages-top"
