@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useLocation } from 'react-router-dom';
 
+
 import "./style.css";
 import { element } from "prop-types";
 
@@ -66,6 +67,18 @@ export const SearchPage = () => {
     return `${value}°C`;
   }
 
+  // chatbot initialization
+  const id = "my-chatbot-id" // if not specified, will auto-generate uuidv4
+
+  const flow = {
+    "start": {
+      message: "Hello there! What ",
+      path: "end"
+    },
+    "end": {
+      message: "See you, goodbye!"
+    }
+  }
 
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
@@ -631,6 +644,7 @@ export const SearchPage = () => {
 
         <img className="logo-2" alt="Logo" src="/img/logo.png" />
       </div>
+
     </div>
   );
 };

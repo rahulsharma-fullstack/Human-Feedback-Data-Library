@@ -2,12 +2,22 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
+import ScrollToBottom from "react-scroll-to-bottom";
+import { FaPaperPlane } from "react-icons/fa";
 import "./style.css";
 
 export const AiChatbotPage = () => {
+  // Quicksearch functionality
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
+  // Chatbot functionality
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const [loadingResponse, setLoading] = useState(false); // Track loading state of AI response
+  const chatWindowRef = useRef(null);
+
+  // Quick search press enter
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -16,95 +26,193 @@ export const AiChatbotPage = () => {
     }
   };
 
+  // Scroll to the bottom of the chat window when messages update
+  useEffect(() => {
+    if (chatWindowRef.current) {
+      chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+
+  // Handle send message
+  const handleSend = () => {
+    if (input.trim() === "") return;
+
+    // Add the user's message
+    const userMessage = { sender: "user", text: input };
+    setMessages([...messages, userMessage]);
+    setInput(""); // Clear the input field
+    setLoading(true); // Start loading animation
+
+    // Get bot response
+    fetch('https://openfeedbackvault.utm.utoronto.ca/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: userMessage.text
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        const botResponse = {
+          sender: "bot",
+          text: data.reply,
+        };
+
+        setTimeout(() => {
+          setMessages((prev) => [...prev, botResponse]);
+          setLoading(false); // Stop loading animation
+        }, 1000);
+      })
+      .catch(error => console.error('Error:', error));
+  };
+
+  // Key down for chatbot
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") handleSend();
+  };
+
+  // Chatbot styles
+  const styles = {
+    container: {
+      width: "80%",
+      height: "600px", // Fixed height for the entire chat container
+      position: "relative",
+      top: "150px",
+      margin: "auto",
+      border: "1px solid #ddd",
+      borderRadius: "10px",
+      display: "flex",
+      flexDirection: "column",
+    },
+    chatWindow: {
+      flex: 1, // Ensures it fills the available space
+      padding: "10px",
+      display: "flex",
+      flexDirection: "column", // Keep messages in a column
+      overflowY: "scroll"
+    },
+    scrollContainer: {
+      height: "200px",
+      overflowY: "scroll",
+      backgroundColor: "green"
+    },
+    message: {
+      maxWidth: "100%",
+      margin: "5px",
+      padding: "10px",
+      borderRadius: "10px",
+    },
+    inputContainer: {
+      display: "flex",
+      padding: "10px",
+      borderTop: "1px solid #ddd",
+    },
+    input: {
+      flex: 1,
+      padding: "10px",
+      borderRadius: "5px",
+      border: "1px solid #ddd",
+      marginRight: "10px",
+    },
+    sendButton: {
+      backgroundColor: "#007bff",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      padding: "10px",
+      cursor: "pointer",
+    },
+    loading: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      margin: "10px",
+    },
+    dot: {
+      width: "8px",
+      height: "8px",
+      margin: "0 5px",
+      backgroundColor: "#888",
+      borderRadius: "50%",
+      animation: "loading 1.2s infinite",
+    },
+  };
+
   return (
     <div className="AI-chatbot-page">
       <div className="div-6">
         <div className="overlap-9">
           <div className="group-13">
-            {/* <div className="overlap-group-6">
-              <div className="rectangle-6" />
-              <div className="text-wrapper-48">Search</div>
-            </div> */}
-
-            <Form.Control className="overlap-group-6" placeholder="Search" value={query}
+            <Form.Control
+              className="overlap-group-6"
+              placeholder="Search"
+              value={query}
               onChange={(e) => setQuery(e.target.value)} // Update the search query
-              onKeyDown={handleKeyPress}></Form.Control>
+              onKeyDown={handleKeyPress}
+            />
           </div>
-
         </div>
+
         <Link className="AdvancedSearchLink" to="/search-page">
           <div className="text-wrapper-36">Advanced Search</div>
         </Link>
         <img className="logo-4" alt="Logo" src="/img/logo.png" />
-        <div className="group-14">
-          <div className="overlap-10">
-            <div className="rectangle-7" />
-            <div className="text-wrapper-50">Enter Message</div>
+
+        <div style={styles.container}>
+          <div style={{ flex: 1, overflow: "scroll" }} ref={chatWindowRef}>
+
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                style={{
+                  ...styles.message,
+                  alignSelf: message.sender === "user" ? "flex-end" : "flex-start",
+                  backgroundColor: message.sender === "user" ? "#cef2dc" : "#f1f1f1",
+                }}
+              >
+                {message.text}
+              </div>
+            ))}
+
+            {loadingResponse && (
+              <div style={styles.loading}>
+                <div style={styles.dot}></div>
+                <div style={styles.dot}></div>
+                <div style={styles.dot}></div>
+              </div>
+            )}
+
+          </div>
+
+          <div style={styles.inputContainer}>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Type a message..."
+              style={styles.input}
+            />
+            <button onClick={handleSend} style={styles.sendButton}>
+              <FaPaperPlane />
+            </button>
           </div>
         </div>
-        <div className="overlap-11">
-          <div className="group-15" />
-          <p className="text-wrapper-51">
-            Hi, I’m looking for a dataset that specializes in training harmlessness in an AI chat bot. Do you have any
-            Recommendations?
-          </p>
-        </div>
-        <div className="group-16">
-          <div className="is-pulvinar-augue-wrapper">
-            <p className="is-pulvinar-augue">
-              {" "}
-              is pulvinar augue felis, in iaculis sem dapibus ultrices. Duis elementum libero sit amet felis gravida
-              facilisis.
-            </p>
-          </div>
-        </div>
-        <div className="overlap-12">
-          <div className="group-17" />
-          <div className="flexcontainer">
-            <p className="text">
-              <span className="span">
-                Sure! Here are a few:
-                <br />
-              </span>
-            </p>
-            <p className="text">
-              <span className="text-wrapper-52">
-                Dataset_Link1, Dataset_Link2, DatasetLink3
-                <br />
-              </span>
-            </p>
-            <p className="text">
-              <span className="text-wrapper-53">AI Description of Datasets: </span>
-              <span className="text-wrapper-54">
-                is pulvinar augue felis, in iaculis sem dapibus ultrices. Duis elementum libero sit amet felis gravida
-                facilisis. Vivamus quis sem vel velit aliquet varius sed eu sem. Proin mattis ipsum quis tortor
-                elementum rhoncus. Mauris eget interdum diam. Ut ullamcorper vehicula arcu nec pulvinar. In hac
-                habitasse
-              </span>
-            </p>
-          </div>
-        </div>
+
         <div className="navbar-4">
-          <Link className="text-wrapper-55" to="/ai-chatbot-page">
-            Chatbot
-          </Link>
-          <Link className="text-wrapper-56" to="/search-page">
-            Datasets
-          </Link>
-          <Link className="text-wrapper-57" to="/landing-page">
-            Home
-          </Link>
-          <Link className="text-wrapper-58" to="/about-page">
-            About Us
-          </Link>
-          <Link className="userguide-page-link" to="/userguide-page">
-            User Guide & Help
-          </Link>
-          <Link className="google-form-link" to={"/google-form"}>
-          Submit a Dataset
-          </Link>
+          <Link className="text-wrapper-55" to="/ai-chatbot-page">Chatbot</Link>
+          <Link className="text-wrapper-56" to="/search-page">Datasets</Link>
+          <Link className="text-wrapper-57" to="/landing-page">Home</Link>
+          <Link className="text-wrapper-58" to="/about-page">About Us</Link>
+          <Link className="userguide-page-link" to="/userguide-page">User Guide & Help</Link>
+          <Link className="google-form-link" to={"/google-form"}>Submit a Dataset</Link>
         </div>
       </div>
     </div>
   );
 };
+
+
