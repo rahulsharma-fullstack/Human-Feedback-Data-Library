@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
-import ScrollToBottom from "react-scroll-to-bottom";
 import { FaPaperPlane } from "react-icons/fa";
 import "./style.css";
 
@@ -12,7 +11,8 @@ export const AiChatbotPage = () => {
   const navigate = useNavigate();
 
   // Chatbot functionality
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([{sender: "OpenFeedbackVault", 
+    text: "Welcome to OpenFeedbackVault's chatbot! How can I help you today?"}]);
   const [input, setInput] = useState("");
   const [loadingResponse, setLoading] = useState(false); // Track loading state of AI response
   const chatWindowRef = useRef(null);
@@ -39,7 +39,7 @@ export const AiChatbotPage = () => {
     if (input.trim() === "") return;
 
     // Add the user's message
-    const userMessage = { sender: "user", text: input };
+    const userMessage = { sender: "User", text: input };
     setMessages([...messages, userMessage]);
     setInput(""); // Clear the input field
     setLoading(true); // Start loading animation
@@ -57,7 +57,7 @@ export const AiChatbotPage = () => {
       .then(response => response.json())
       .then(data => {
         const botResponse = {
-          sender: "bot",
+          sender: "OpenFeedbackVault",
           text: data.reply,
         };
 
@@ -86,24 +86,34 @@ export const AiChatbotPage = () => {
       borderRadius: "10px",
       display: "flex",
       flexDirection: "column",
+      backgroundColor: "white",
+      fontFamily: "Roboto",
+      fontSize: 25,
     },
     chatWindow: {
       flex: 1, // Ensures it fills the available space
       padding: "10px",
       display: "flex",
       flexDirection: "column", // Keep messages in a column
-      overflowY: "scroll"
+      overflowY: "scroll",
     },
     scrollContainer: {
       height: "200px",
       overflowY: "scroll",
       backgroundColor: "green"
     },
+    sender: {
+      fontFamily: "Roboto",
+      fontSize: "10px",
+      marginBottom: "5px",
+    },
     message: {
       maxWidth: "100%",
       margin: "5px",
       padding: "10px",
       borderRadius: "10px",
+      fontFamily: "Roboto",
+      fontSize: "20px",
     },
     inputContainer: {
       display: "flex",
@@ -116,6 +126,8 @@ export const AiChatbotPage = () => {
       borderRadius: "5px",
       border: "1px solid #ddd",
       marginRight: "10px",
+      fontFamily: "Roboto",
+      fontSize: "20px",
     },
     sendButton: {
       backgroundColor: "#007bff",
@@ -169,10 +181,11 @@ export const AiChatbotPage = () => {
                 key={index}
                 style={{
                   ...styles.message,
-                  alignSelf: message.sender === "user" ? "flex-end" : "flex-start",
-                  backgroundColor: message.sender === "user" ? "#cef2dc" : "#f1f1f1",
+                  alignSelf: message.sender === "User" ? "flex-start" : "flex-end",
+                  backgroundColor: message.sender === "User" ? "#cef2dc" : "#f1f1f1",
                 }}
               >
+                <div style={styles.sender}>{message.sender}</div>
                 {message.text}
               </div>
             ))}

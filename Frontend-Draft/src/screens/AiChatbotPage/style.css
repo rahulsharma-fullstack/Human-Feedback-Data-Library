@@ -21,7 +21,7 @@
 }
 
 .AI-chatbot-page .div-6 {
-  background-color: #ffffff;
+  background-color: #e3f8d1;
   height: 750px;
   overflow: hidden;
   position: relative;
@@ -400,4 +400,8 @@
   top: 0;
   white-space: nowrap;
   width: 110px;
+}
+
+.AI-chatbot-page .ai-chatbot-title {
+  left: 20px;
 }
