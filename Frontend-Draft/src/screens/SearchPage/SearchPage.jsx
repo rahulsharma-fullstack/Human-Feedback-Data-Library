@@ -261,7 +261,7 @@ export const SearchPage = () => {
           <div className="element">
             <div className="div2">
               <Frame
-                className="frame-34"
+                className="frame data-frame"
                 divClassName="frame-instance"
                 divClassName1="frame-instance"
                 divClassName2="frame-instance"
@@ -270,7 +270,7 @@ export const SearchPage = () => {
                 divClassName5="frame-instance"
                 divClassNameOverride="frame-instance"
                 frameClassName="frame-34-instance"
-                text="Dataset Name"
+
                 text1="Dataset Name"
                 text2="Type"
                 text3="Date Posted"
@@ -283,9 +283,9 @@ export const SearchPage = () => {
                   {pages[currentPage].map((dataset, datasetIndex) => (
                     <React.Fragment key={datasetIndex}>
                       <Frame
-                        // onClick={window.open(dataset.link, "_blank")}
+
                         onClick={() => { setOpen(datasetIndex) }}
-                        className="frame"
+                        className="data-frame"
                         divClassName="frame-instance"
                         divClassName1="frame-instance"
                         divClassName2="frame-instance"
@@ -340,24 +340,22 @@ export const SearchPage = () => {
               )}
             </div>
           </div>
-          {/* <div className="group-2">
-            <Form.Control ref={searchRef} className="overlap-group-3" placeholder="Search"></Form.Control>
-          </div> */}
+
 
 
           <div className="container-fluid filters">
 
             <div className="row searchbar-row">
-              <div className="col-3"></div>
-              <div className="col-6">
+              <div className="col-lg-3"></div>
+              <div className="col-lg-6">
                 <Form.Control ref={searchRef} className="overlap-group-3" placeholder="Search"></Form.Control>
               </div>
-              <div className="col-3"></div>
+              <div className="col-lg-3"></div>
             </div>
 
             <div className="row first-filter-row">
-              <div className="col-1"></div>
-              <div className="col-3">
+              <div className="col-lg-1 "></div>
+              <div className="col-3 date-col">
                 <div className="text-wrapper-26">Date</div>
                 <div className="date-subscript">Please enter the oldest date for
                   published datasets</div>
@@ -375,7 +373,7 @@ export const SearchPage = () => {
                 </LocalizationProvider>
               </div>
 
-              <div className="col-3">
+              <div className="col-3 keyword-col">
 
                 <div className="keywords-text">Keywords</div>
                 <Select className="Keywords-Select"
@@ -413,7 +411,7 @@ export const SearchPage = () => {
                 </div>
               </div>
 
-              <div className="col-3">
+              <div className="col-3 lang-col">
                 <div className="text-wrapper-28">Language</div>
                 <Form.Select ref={langref} className="Language-Select">
                   {languages.map((lang, index) => (
@@ -430,7 +428,7 @@ export const SearchPage = () => {
 
             <div className="row second-filter-row">
               <div className="col-1"></div>
-              <div className="col-4">
+              <div className="col-4 datalen-col">
                 <div className="Data_length_text">Data Length</div>
                 <div className="length-subscript">Please enter a minimum and maximum
                   for number of rows.
@@ -450,11 +448,10 @@ export const SearchPage = () => {
                   />
 
                 </Box>
-                {/* <div className="length-minimum-text">Minimum</div>
-                <div className="length-maximum-text">Maximum</div> */}
+
               </div>
-              <div className="col-3"></div>
-              <div className="col-2">
+              <div className="col-lg-3"></div>
+              <div className="col-2 button-col">
                 <Button className="search-button" onClick={() => searchFunction()} variant="success">Submit Filters</Button>{' '}
               </div>
               <div className="col-2"></div>
@@ -470,125 +467,41 @@ export const SearchPage = () => {
           </div>
 
 
-
-          {/* <div className="text-wrapper-26">Date</div>
-          <div className="date-subscript">Please enter the oldest date for
-            published datasets</div> */}
-          {/* <div className="Data_length_text">Data Length</div>
-          <div className="length-subscript">Please enter a minimum and maximum
-            for number of rows.
-          </div> */}
-          {/* <div className="length-minimum-text">Minimum</div>
-          <div className="length-maximum-text">Maximum</div> */}
-
-          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker label="Select date"
-              onChange={(dateInput) => {
-                if (dateInput != null) {
-                  console.log(dateInput.format("DD/MM/YYYY"));
-                  setDate(dateInput.format("DD/MM/YYYY"))
-                }
-                else {
-                  setDate(null);
-                }
-              }} />
-          </LocalizationProvider> */}
-
-
-          {/* <Box className="max-min-holder" sx={{ width: 400 }}>
-
-
-
-            <Slider
-              className="max-min-slider"
-              value={value}
-              onChange={handleChange}
-              valueLabelDisplay="auto"
-              min={min}
-              max={max}
-              step={1000}
-            />
-
-          </Box> */}
-          {/*<Form.Control placeholder="dd/mm/yyyy" ref={dateRef} className="input-date-picker-instance"></Form.Control> */}
-          {/* <div className="keywords-dropdown">
-            <div className="keywords-text">Keywords</div>
-            <Select className="Keywords-Select"
-              isMulti
-              options={keyword_options}
-              onChange={(options) => {
-
-                let stateArray = []
-                if (options != null) {
-                  for (let i = 0; i < options.length; i++) {
-                    stateArray.push(options[i].value);
-                  }
-                }
-                setKeywords(stateArray);
-              }}
-            />
-
-          </div> */}
-
         </div>
-        {/* <div className="text-wrapper-28">Language</div>
-        <Form.Select ref={langref} className="Language-Select">
-          {languages.map((lang, index) => (
-            <option key={lang} value={lang}>
-              {lang}
-            </option>
-          ))}
-
-        </Form.Select> */}
 
 
 
-        {/* <Button className="search-button" onClick={() => searchFunction()} variant="success">Submit</Button>{' '} */}
-        <Form.Select
-          className="Dataset-Pages"
-          id="pages-top"
-          onChange={(e) => setCurrentPage(Number(e.target.value))}
-          value={currentPage}  // Keep in sync with current page
-        >
-          {pages.map((_, index) => (
-            <option key={index} value={index}>
-              Page {index + 1}
-            </option>
-          ))}
-        </Form.Select>
+        <div className="container-fluid page-selector-container">
+          <div className="row pages-buttons-row">
+            <Button onClick={(e) => {
+              if (currentPage - 1 >= 0) {
+                setCurrentPage(currentPage - 1)
+              }
 
-        <Button onClick={(e) => {
-          if (currentPage + 1 < pages.length) {
-            setCurrentPage(currentPage + 1)
-          }
-        }} className="group-4 Dataset-Button">Next</Button>
-        <Button onClick={(e) => {
-          if (currentPage - 1 >= 0) {
-            setCurrentPage(currentPage - 1)
-          }
+            }} className="col-1 data-button">Back</Button>
 
-        }} className="group-7 Dataset-Button">Back</Button>
-        {/* <div className="navbar-2">
-          <Link className="text-wrapper-29" to="/ai-chatbot-page">
-            Chatbot
-          </Link>
-          <Link className="text-wrapper-30" to="/search-page">
-            Datasets
-          </Link>
-          <Link className="text-wrapper-31" to="/landing-page">
-            Home
-          </Link>
-          <Link className="text-wrapper-32" to="/about-page">
-            About Us
-          </Link>
-          <Link className="userguide-page-link" to="/userguide-page">
-            User Guide & Help
-          </Link>
-          <Link className="google-form-link" to={"/google-form"}>
-            Submit a Dataset
-          </Link>
+            <div className="col-3">
+              <Form.Select
+                className=""
+                id="pages-top"
+                onChange={(e) => setCurrentPage(Number(e.target.value))}
+                value={currentPage}  // Keep in sync with current page
+              >
+                {pages.map((_, index) => (
+                  <option key={index} value={index}>
+                    Page {index + 1}
+                  </option>
+                ))}
+              </Form.Select>
+            </div>
+            <Button onClick={(e) => {
+              if (currentPage + 1 < pages.length) {
+                setCurrentPage(currentPage + 1)
+              }
+            }} className="col-1 data-button">Next</Button>
 
-        </div> */}
+          </div>
+        </div>
 
         <nav className="navbar navbar-expand-lg navbar-3">
           <div className="container-fluid">
