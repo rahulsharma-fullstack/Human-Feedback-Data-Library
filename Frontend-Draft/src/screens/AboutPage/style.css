@@ -3,15 +3,29 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-family: "Roboto", Helvetica;
   width: 100%;
+  margin: 0px;
+  padding: 0px;
+
 }
 
 .about-page .div-3 {
   background-color: #ffffff;
-  height: 2499px;
-  overflow: hidden;
+  height: fit-content;
   position: relative;
-  width: 1440px;
+  width: 100%;
+}
+
+.about-page .nav-link {
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 38px;
+  white-space: nowrap;
+  margin-right: 25px;
 }
 
 .about-page .text-wrapper-5 {
@@ -20,13 +34,13 @@
   font-size: 96px;
   font-weight: 900;
   height: 99px;
-  left: 40px;
   letter-spacing: 0;
-  line-height: 38px;
+  line-height: 80px;
   position: absolute;
   text-align: center;
   top: 200px;
-  width: 1357px;
+  width: 100%;
+
 }
 
 .about-page .overlap {
@@ -36,7 +50,8 @@
   left: -119px;
   position: absolute;
   top: 340px;
-  width: 1387px;
+  width: 90%;
+  padding-right: 10px;
 }
 
 .about-page .p {
@@ -45,12 +60,12 @@
   font-size: 32px;
   font-weight: 500;
   height: 431px;
-  left: 159px;
+  left: 15%;
   letter-spacing: 0;
   line-height: 50px;
   position: absolute;
   top: 110px;
-  width: 1157px;
+  width: 85%;
 }
 
 .about-page .text-wrapper-6 {
@@ -64,17 +79,17 @@
   line-height: 50px;
   position: absolute;
   top: 48px;
-  width: 1148px;
+  width: 100%;
 }
 
 .about-page .overlap-group {
   background-color: #def9c4;
   border-radius: 5px;
   height: 530px;
-  left: 187px;
+  right: 0px;
   position: absolute;
   top: 1020px;
-  width: 1387px;
+  width: 90%;
 }
 
 .about-page .text-wrapper-7 {
@@ -83,13 +98,13 @@
   font-size: 32px;
   font-weight: 500;
   height: 412px;
-  left: 30px;
+  left: 5%;
   letter-spacing: 0;
   line-height: 50px;
   position: absolute;
   text-align: left;
   top: 106px;
-  width: 1144px;
+  width: 95%;
 }
 
 .about-page .text-wrapper-8 {
@@ -98,12 +113,13 @@
   font-size: 64px;
   font-weight: 500;
   height: 50px;
-  left: 25px;
+  left: 0px;
+  padding-left: 20px;
   letter-spacing: 0;
   line-height: 50px;
   position: absolute;
   top: 37px;
-  width: 1148px;
+  width: 100%;
 }
 
 .about-page .overlap-2 {
@@ -112,8 +128,9 @@
   height: 833px;
   left: -134px;
   position: absolute;
+  overflow: hidden;
   top: 1666px;
-  width: 1708px;
+  width: 100vw;
 }
 
 .about-page .text-wrapper-9 {
@@ -221,7 +238,7 @@
   width: 1348px;
 }
 
-.about-page .IMG {
+/* .about-page .IMG {
   height: 240px;
   left: 0px;
   object-fit: cover;
@@ -229,6 +246,64 @@
   top: 0;
   width: 240px;
   border-radius: 50;
+} */
+
+.about-page .student-pictures {
+  display: flex;
+  position: absolute;
+
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: rgb(222, 249, 196);
+}
+
+.about-page .student-about {
+  top: 1600px;
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(222, 249, 196);
+  padding-top: 20px;
+}
+
+.about-page .student-image {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 50;
+
+
+
+}
+
+.about-page .student-card {
+  background-color: rgb(222, 249, 196);
+  border: none;
+  text-align: center;
+
+}
+
+.about-page .student-card .card-title {
+  color: #23662a;
+  font-family: "Roboto", Helvetica;
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.about-page .student-card .card-subtitle {
+  color: #236629;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 10px;
+}
+
+.student-about h2 {
+  color: #23662a;
+  font-family: "Roboto", Helvetica;
+  font-size: 64px;
+  font-weight: 500;
+  padding-left: 30px;
 }
 
 .about-page .IMG2 {
@@ -347,29 +422,23 @@
 
 .about-page .overlap-3 {
   height: 100px;
-  left: 1053px;
+  right: 10px;
   position: absolute;
   top: 24px;
   width: 375px;
 }
 
-.about-page .overlap-group-wrapper {
-  height: 71px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 375px;
-}
+
 
 .about-page .overlap-group-2 {
   height: 71px;
-  position: relative;
+  position: absolute;
+  top: 5px;
   width: 373px;
   font-size: 30px;
   border-radius: 50px;
-  padding-left: 20px;
-  padding-right: 10px;
-  border-color: #DFF9C5;
+  border-color: #23662a;
+  border-width: 3px;
   box-shadow: none;
   border-style: solid;
 }
@@ -414,12 +483,12 @@
   width: 195px;
 }
 
-.about-page .navbar {
+.about-page .navbar-3 {
   height: 30px;
-  left: 170px;
+  left: 150px;
   position: absolute;
-  top: 31px;
-  width: 541px;
+  top: 50px;
+  width: 60%;
 }
 
 .about-page .text-wrapper-21 {
@@ -546,4 +615,153 @@
   top: 0;
   white-space: nowrap;
   width: 110px;
+}
+
+@media (min-width: 1250px) and (max-width: 1355px) {
+  .about-page .overlap-3 {
+    top: 100px;
+  }
+
+  .about-page .text-wrapper-5 {
+    font-size: 80px;
+  }
+
+  .about-page .student-card {
+    transform: scale(0.9);
+    border: #23662a;
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .about-page .student-card .student-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .about-page .student-pictures {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1150px) and (max-width: 1249px) {
+  .about-page .overlap-3 {
+    top: 100px;
+  }
+
+  .about-page .text-wrapper-5 {
+    font-size: 80px;
+  }
+
+  .about-page .student-card {
+    transform: scale(0.8);
+    text-align: center;
+
+    border: #23662a;
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .about-page .student-card .student-image {
+    width: 200px;
+    height: 200px;
+  }
+
+}
+
+@media (min-width: 900px) and (max-width: 1149px) {
+  .about-page .overlap-3 {
+    top: 100px;
+  }
+
+
+
+  .about-page .text-wrapper-5 {
+    font-size: 60px;
+  }
+
+  .about-page .text-wrapper-6 {
+    font-size: 60px;
+  }
+
+  .about-page .p {
+    font-size: 25px;
+  }
+
+  .about-page .text-wrapper-7 {
+    font-size: 25px;
+  }
+
+  .about-page .student-card .card-subtitle {
+    font-size: 30px;
+  }
+
+  .about-page .student-card {
+    transform: scale(0.8);
+    width: 100%;
+    text-align: center;
+
+    border: #23662a;
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .about-page .student-card .card-title {
+    font-size: 25px;
+  }
+
+  .about-page .student-card .student-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .about-page .student-pictures {
+    justify-content: space-between;
+  }
+
+}
+
+@media (min-width: 500px) and (max-width: 899px) {
+  .about-page .overlap-3 {
+    top: 100px;
+  }
+
+  .about-page .student-pictures {
+    flex-direction: column;
+  }
+
+  .about-page .overlap {
+    width: 100%;
+    left: 0px;
+    top: 400px;
+  }
+
+  .about-page .text-wrapper-6 {
+    text-align: center;
+    left: 0px;
+  }
+
+  .about-page .p {
+    left: 0px;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    position: relative;
+    left: 65px;
+  }
+
+  .about-page .text-wrapper-5 {
+    font-size: 50px;
+  }
+
+  .about-page .text-wrapper-7 {
+    font-size: 25px;
+    line-height: 30px;
+    top: 150px;
+  }
+
+  .about-page .overlap-group {
+    width: 100%;
+    top: 950px;
+    height: 600px;
+  }
 }

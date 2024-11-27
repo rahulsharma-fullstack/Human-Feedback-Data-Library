@@ -5,10 +5,10 @@ import '../../../styleguide.css';
 
 const GoogleFormPage = () => {
   return (
-    <div className="google-form-page container">
+    <div className="google-form-page container-fluid">
       {/* Page Heading */}
       <div className="group-2 header-instance">
-      <div className="navbar">
+        <div className="navbar">
           <Link className="text-wrapper-21" to="/ai-chatbot-page">
             Chatbot
           </Link>
@@ -25,12 +25,12 @@ const GoogleFormPage = () => {
             User Guide & Help
           </Link>
           <Link className="google-form-link" to={"/google-form"}>
-          Submit a Dataset
+            Submit a Dataset
           </Link>
         </div>
         <img className="logo" alt="Logo" src="/img/logo.png" />
       </div>
-      
+
       {/* Embedded Google Form */}
       <div className="form-container dropdown-box items-frame">
         <iframe

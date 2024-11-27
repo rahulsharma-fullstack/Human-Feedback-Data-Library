@@ -1,55 +1,79 @@
+.user-guide-page .navbar-3 {
+  height: 30px;
+  left: 150px;
+  position: absolute;
+  top: 50px;
+  width: 60%;
+  font-size: 20px;
+}
+
+.user-guide-page .nav-link {
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 38px;
+  white-space: nowrap;
+  margin-right: 25px;
+}
+
 .user-guide-page {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  max-width: 100vw;
+  font-family: "Roboto", Helvetica;
 }
 
 .user-guide-page .div-3 {
   background-color: #ffffff;
   height: 2000px;
-  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
   position: relative;
-  width: 1440px;
+  width: 100%;
 }
 
 .user-guide-page .text-wrapper-5 {
   color: #236629;
   font-family: "Roboto", Helvetica;
-  font-size: 90px;
+  font-size: 80px;
   font-weight: 900;
   height: 99px;
-  left: 40px;
   letter-spacing: 0;
-  line-height: 38px;
+  line-height: 80px;
   position: absolute;
+  text-align: center;
   top: 200px;
-  width: 1357px;
+  width: 100%;
 }
 
 .user-guide-page .overlap {
   background-color: #def9c4;
   border-radius: 5px;
-  height: 720px;
-  left: -119px;
+  height: 800px;
+  left: 0px;
   position: absolute;
-  top: 310px;
-  width: 1387px;
+  top: 340px;
+  width: 80%;
+  padding-right: 10px;
 }
 
 .user-guide-page .p {
   color: #23662a;
   font-family: "Roboto", Helvetica;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 500;
   height: 431px;
-  left: 159px;
+  left: 3%;
   letter-spacing: 0;
   line-height: 30px;
   position: absolute;
   top: 110px;
-  width: 1157px;
+  width: 85%;
 }
 
 .user-guide-page .text-wrapper-6 {
@@ -58,37 +82,38 @@
   font-size: 64px;
   font-weight: 500;
   height: 50px;
-  left: 151px;
+  left: 3%;
   letter-spacing: 0;
   line-height: 50px;
   position: absolute;
   top: 48px;
-  width: 1148px;
+  width: 100%;
 }
 
 .user-guide-page .overlap-group {
   background-color: #def9c4;
   border-radius: 5px;
-  height: 800px;
-  left: 187px;
+  height: 750px;
+  right: 0px;
   position: absolute;
-  top: 1100px;
-  width: 1387px;
+  top: 1200px;
+  width: 90%;
 }
 
 .user-guide-page .text-wrapper-7 {
   color: #23662a;
   font-family: "Roboto", Helvetica;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 500;
+
   height: 412px;
-  left: 50px;
+  left: 5%;
   letter-spacing: 0;
   line-height: 30px;
   position: absolute;
   text-align: left;
   top: 106px;
-  width: 1144px;
+  width: 95%;
 }
 
 
@@ -99,12 +124,13 @@
   font-size: 64px;
   font-weight: 500;
   height: 50px;
-  left: 25px;
+  left: 0px;
+  padding-left: 20px;
   letter-spacing: 0;
   line-height: 50px;
   position: absolute;
   top: 37px;
-  width: 1148px;
+  width: 100%;
 }
 
 
@@ -118,7 +144,7 @@
 
 .user-guide-page .overlap-3 {
   height: 100px;
-  left: 1053px;
+  right: 10px;
   position: absolute;
   top: 24px;
   width: 375px;
@@ -134,13 +160,13 @@
 
 .user-guide-page .overlap-group-2 {
   height: 71px;
-  position: relative;
+  position: absolute;
+  top: 5px;
   width: 373px;
   font-size: 30px;
   border-radius: 50px;
-  padding-left: 20px;
-  padding-right: 10px;
-  border-color: #DFF9C5;
+  border-color: #23662a;
+  border-width: 3px;
   box-shadow: none;
   border-style: solid;
 }
@@ -175,13 +201,13 @@
   width: 195px;
 }
 
-.user-guide-page .navbar {
+/* .user-guide-page .navbar {
   height: 30px;
   left: 170px;
   position: absolute;
   top: 31px;
   width: 541px;
-}
+} */
 
 .user-guide-page .text-wrapper-21 {
   color: #000000;
@@ -291,4 +317,120 @@
   top: 0;
   white-space: nowrap;
   width: 110px;
+}
+
+@media (min-width: 1250px) and (max-width: 1355px) {
+  .user-guide-page .overlap-3 {
+    top: 100px;
+  }
+
+}
+
+@media (min-width: 1150px) and (max-width: 1249px) {
+  .user-guide-page .overlap-3 {
+    top: 100px;
+  }
+
+  .user-guide-page .p {
+    font-size: 20px;
+  }
+
+  .user-guide-page .overlap {
+    width: 95%;
+  }
+
+  .user-guide-page .text-wrapper-7 {
+    font-size: 20px;
+  }
+
+}
+
+@media (min-width: 900px) and (max-width: 1149px) {
+  /* .user-guide-page .overlap {
+    width: 100%;
+    left: 0px;
+  } */
+
+  .user-guide-page .overlap-group {
+    height: 850px;
+  }
+
+
+  .user-guide-page .overlap-3 {
+    top: 100px;
+  }
+
+  .user-guide-page .text-wrapper-5 {
+    font-size: 60px;
+  }
+
+  .user-guide-page .text-wrapper-6 {
+    font-size: 40px;
+  }
+
+  .user-guide-page .text-wrapper-8 {
+    font-size: 40px;
+  }
+
+  .user-guide-page .p {
+    font-size: 20px;
+    width: 95%;
+  }
+
+  .user-guide-page .text-wrapper-7 {
+    font-size: 20px;
+
+  }
+
+
+}
+
+@media (min-width: 500px) and (max-width: 899px) {
+  .user-guide-page .overlap-group {
+    height: 850px;
+  }
+
+  .user-guide-page .overlap {
+    width: 100%;
+    left: 0px;
+    top: 400px;
+    height: 1200px
+  }
+
+  .user-guide-page .overlap-group {
+    width: 100%;
+    left: 0px;
+    top: 1700px;
+    height: 1300px;
+  }
+
+
+  .user-guide-page .overlap-3 {
+    top: 100px;
+  }
+
+  .user-guide-page .text-wrapper-5 {
+    font-size: 50px;
+  }
+
+  .user-guide-page .text-wrapper-6 {
+    font-size: 40px;
+  }
+
+
+  .user-guide-page .text-wrapper-8 {
+    font-size: 40px;
+  }
+
+  .user-guide-page .p {
+    font-size: 20px;
+    width: 95%;
+    top: 150px;
+  }
+
+  .user-guide-page .text-wrapper-7 {
+    font-size: 20px;
+    top: 150px;
+
+  }
 }

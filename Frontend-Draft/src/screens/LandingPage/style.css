@@ -4,14 +4,53 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+
 }
 
 
 .landing-page .div-5 {
   background-color: #ffffff;
-  height: 1892px;
+  height: fit-content;
   position: relative;
   width: 1440px;
+}
+
+.landing-page .boxes {
+  display: flex;
+  position: absolute;
+  top: 1000px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.landing-page .box {
+
+  background-color: #def9c4;
+  border-radius: 20px;
+  height: 421px;
+
+  width: 382px;
+
+}
+
+.landing-page .form-control {
+  font-family: "Roboto", Helvetica;
+
+}
+
+
+
+
+
+.landing-page .nav-link {
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 38px;
+  white-space: nowrap;
+  margin-right: 20px;
 }
 
 .landing-page .overlap-5 {
@@ -19,15 +58,15 @@
   left: 0;
   position: absolute;
   top: 0;
-  width: 1417px;
+  width: 100%;
 }
 
 .landing-page .path-2 {
-  height: 1186px;
+  height: 100%;
   left: 0;
   position: absolute;
   top: -200px;
-  width: 1247px;
+
 }
 
 .landing-page .logo-3 {
@@ -40,7 +79,7 @@
 
 .landing-page .group-8 {
   height: 71px;
-  left: 1042px;
+  right: 30px;
   position: absolute;
   top: 24px;
   width: 375px;
@@ -48,13 +87,14 @@
 
 .landing-page .overlap-group-4 {
   height: 71px;
-  position: relative;
+  position: absolute;
+  right: 5%;
+  top: 5px;
   width: 373px;
   font-size: 30px;
   border-radius: 50px;
-  padding-left: 20px;
-  padding-right: 10px;
-  border-color: #DFF9C5;
+  border-color: #23662a;
+  border-width: 3px;
   box-shadow: none;
   border-style: solid;
 }
@@ -111,7 +151,7 @@
   position: absolute;
   top: 550px;
   white-space: nowrap;
-  width: 856px;
+  width: 0px;
 }
 
 .landing-page .text-wrapper-36 {
@@ -120,12 +160,12 @@
   font-size: 24px;
   font-weight: 200;
   height: 30px;
-  left: 1059px;
+  right: 170px;
   letter-spacing: 0;
   line-height: 38px;
   position: absolute;
   text-align: center;
-  top: 94px;
+  top: 80px;
   white-space: nowrap;
   width: 195px;
 }
@@ -164,7 +204,7 @@
 
 .landing-page .navbar-3 {
   height: 30px;
-  left: 170px;
+  left: 1%;
   position: absolute;
   top: 31px;
   width: 541px;
@@ -253,6 +293,7 @@
   white-space: nowrap;
   width: 110px;
 }
+
 .landing-page .google-form-link {
   color: #000000;
   display: block;
@@ -286,13 +327,6 @@
   width: 386px;
 }
 
-.landing-page .overlap-group-5 {
-  background-color: #def9c4;
-  border-radius: 20px;
-  height: 421px;
-  position: relative;
-  width: 382px;
-}
 
 .landing-page .text-wrapper-42 {
   color: #468585;
@@ -319,7 +353,7 @@
   letter-spacing: 0;
   line-height: 27px;
   position: absolute;
-  top: 168px;
+  top: 200px;
   width: 316px;
 }
 
@@ -419,4 +453,176 @@
   position: absolute;
   top: 163px;
   width: 324px;
+}
+
+@media(min-width: 1130px) and (max-width: 1250px) {
+
+  .landing-page .overlap-group-4 {
+    top: 100px;
+  }
+
+  .landing-page .text-wrapper-36 {
+    top: 175px;
+  }
+
+
+  .path-2 {
+    width: 80%;
+  }
+}
+
+@media(min-width:860px) and (max-width:1129px) {
+  .landing-page .logo-3 {
+    transform: scale(0.9);
+  }
+
+  .landing-page .OpenFeedbackVault {
+    font-size: 70px;
+    left: 220px;
+    width: 200px;
+  }
+
+  .path-2 {
+    width: 90%;
+  }
+
+  .landing-page .overlap-group-4 {
+    top: 100px;
+  }
+
+  .landing-page .text-wrapper-36 {
+    top: 175px;
+  }
+
+  .landing-page .boxes {
+    top: 900px;
+  }
+
+  .landing-page .box {
+    transform: scale(0.9);
+  }
+
+  .landing-page .text-wrapper-42 {
+    font-size: 25px;
+    width: 100%;
+    position: static;
+    margin-top: 30px;
+  }
+
+  .landing-page .text-wrapper-43 {
+    width: 100%;
+    position: static;
+    margin-top: 50px;
+    font-weight: 100;
+  }
+}
+
+@media (min-width:768px) and (max-width: 859px) {
+  .landing-page .logo-3 {
+    transform: scale(0.7);
+    left: 1px;
+  }
+
+  .landing-page .nav-link {
+    font-size: 17px;
+  }
+
+  .landing-page .OpenFeedbackVault {
+    font-size: 60px;
+    left: 170px;
+    width: 200px;
+  }
+
+  .landing-page .text-wrapper-35 {
+    left: 180px;
+    font-size: 30px;
+  }
+
+  .path-2 {
+    width: 90%;
+  }
+
+  .landing-page .overlap-group-4 {
+    top: 150px;
+  }
+
+  .landing-page .text-wrapper-36 {
+    top: 220px;
+  }
+
+  .landing-page .boxes {
+    top: 750px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .landing-page .box {
+    transform: scale(0.9);
+    width: 100%;
+  }
+
+  .landing-page .text-wrapper-42 {
+    font-size: 40px;
+    width: 100%;
+    position: static;
+    margin-top: 30px;
+  }
+
+  .landing-page .text-wrapper-43 {
+    width: 100%;
+    position: static;
+    margin-top: 40px;
+    font-size: 35px;
+    line-height: 50px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+  .landing-page .logo-3 {
+    display: none;
+  }
+
+  .landing-page .OpenFeedbackVault {
+    font-size: 50px;
+    top: 350px;
+    left: 0px;
+    width: 100%;
+  }
+
+  .landing-page .text-wrapper-35 {
+    left: 0px;
+    font-size: 25px;
+    top: 400px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+  }
+
+
+  .path-2 {
+    width: 100%;
+    left: 0px;
+  }
+
+  .landing-page .boxes {
+    top: 750px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #navbarContent {
+    background-color: #23662a;
+
+  }
+
+  .landing-page .nav-link {
+    color: white;
+    text-align: center;
+  }
+
+  .landing-page .box {
+    transform: scale(0.9);
+
+  }
+
 }

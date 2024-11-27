@@ -4,11 +4,25 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  height: fit-content;
+}
+
+@keyframes loading {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+  }
 }
 
 .AI-chatbot-page .div-6 {
-  background-color: #ffffff;
-  height: 1140px;
+  background-color: #e3f8d1;
+  height: 750px;
   overflow: hidden;
   position: relative;
   width: 1440px;
@@ -52,11 +66,13 @@
   width: 373px;
   font-size: 30px;
   border-radius: 50px;
+  border-color: #23662a;
+  border-width: 3px;
   padding-left: 20px;
   padding-right: 10px;
-  border-color: #DFF9C5;
   box-shadow: none;
   border-style: solid;
+  font-family: "Roboto", Helvetica;
 }
 
 .AI-chatbot-page .rectangle-6 {
@@ -386,4 +402,8 @@
   top: 0;
   white-space: nowrap;
   width: 110px;
+}
+
+.AI-chatbot-page .ai-chatbot-title {
+  left: 20px;
 }
