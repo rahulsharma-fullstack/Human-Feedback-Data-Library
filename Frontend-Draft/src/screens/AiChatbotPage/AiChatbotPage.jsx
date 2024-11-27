@@ -39,7 +39,7 @@ export const AiChatbotPage = () => {
     if (input.trim() === "") return;
 
     // Add the user's message
-    const userMessage = { sender: "User", text: input };
+    const userMessage = { sender: "You", text: input };
     setMessages([...messages, userMessage]);
     setInput(""); // Clear the input field
     setLoading(true); // Start loading animation
@@ -130,7 +130,7 @@ export const AiChatbotPage = () => {
       fontSize: "20px",
     },
     sendButton: {
-      backgroundColor: "#007bff",
+      backgroundColor: "#23662a",
       color: "white",
       border: "none",
       borderRadius: "5px",
@@ -181,8 +181,8 @@ export const AiChatbotPage = () => {
                 key={index}
                 style={{
                   ...styles.message,
-                  alignSelf: message.sender === "User" ? "flex-start" : "flex-end",
-                  backgroundColor: message.sender === "User" ? "#cef2dc" : "#f1f1f1",
+                  alignSelf: message.sender === "You" ? "flex-start" : "flex-end",
+                  backgroundColor: message.sender === "You" ? "#cef2dc" : "#f1f1f1",
                 }}
               >
                 <div style={styles.sender}>{message.sender}</div>

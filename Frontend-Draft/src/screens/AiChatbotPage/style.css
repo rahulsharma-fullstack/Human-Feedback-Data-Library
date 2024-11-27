@@ -66,11 +66,13 @@
   width: 373px;
   font-size: 30px;
   border-radius: 50px;
+  border-color: #23662a;
+  border-width: 3px;
   padding-left: 20px;
   padding-right: 10px;
-  border-color: #DFF9C5;
   box-shadow: none;
   border-style: solid;
+  font-family: "Roboto", Helvetica;
 }
 
 .AI-chatbot-page .rectangle-6 {
