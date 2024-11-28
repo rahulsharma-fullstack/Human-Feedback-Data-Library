@@ -35,13 +35,13 @@ export const Frame = ({
           <div className={`dataset-type`}>{text2}</div>
         </div>
 
-        <div className="col-2">
+        <div className="col-2 date-row-col">
           <div className={`dataset-date`}>{text3}</div>
         </div>
 
 
 
-        <div className="col-2">
+        <div className="col-2 lang-row-col">
           <div className={`dataset-language`}>{text5}</div>
         </div>
 
