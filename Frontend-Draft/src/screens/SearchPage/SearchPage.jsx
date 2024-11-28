@@ -46,8 +46,8 @@ export const SearchPage = () => {
     position: 'absolute',
     top: '50%',
     left: '50%',
+    width: '90%',
     transform: 'translate(-50%, -50%)',
-    width: 900,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -332,12 +332,13 @@ export const SearchPage = () => {
 
                       />
                       <Modal
+
                         open={openModalIndex === datasetIndex}
                         onClose={() => { setOpen(-1) }}
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
                       >
-                        <Box sx={style}>
+                        <Box sx={style} className="modal-box">
                           <Button className="modal-button" onClick={() => { window.open(dataset.link, "_blank") }}>Go to Dataset Website</Button>
 
                           <Typography id="modal-modal-description" sx={{ mt: 2 }}>

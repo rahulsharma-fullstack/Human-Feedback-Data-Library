@@ -11,8 +11,10 @@ export const AiChatbotPage = () => {
   const navigate = useNavigate();
 
   // Chatbot functionality
-  const [messages, setMessages] = useState([{sender: "OpenFeedbackVault", 
-    text: "Welcome to OpenFeedbackVault's chatbot! How can I help you today?"}]);
+  const [messages, setMessages] = useState([{
+    sender: "OpenFeedbackVault",
+    text: "Welcome to OpenFeedbackVault's chatbot! How can I help you today?"
+  }]);
   const [input, setInput] = useState("");
   const [loadingResponse, setLoading] = useState(false); // Track loading state of AI response
   const chatWindowRef = useRef(null);
@@ -77,10 +79,9 @@ export const AiChatbotPage = () => {
   // Chatbot styles
   const styles = {
     container: {
-      width: "80%",
       height: "600px", // Fixed height for the entire chat container
       position: "relative",
-      top: "150px",
+
       margin: "auto",
       border: "1px solid #ddd",
       borderRadius: "10px",
@@ -156,24 +157,24 @@ export const AiChatbotPage = () => {
   return (
     <div className="AI-chatbot-page">
       <div className="div-6">
-        <div className="overlap-9">
-          <div className="group-13">
-            <Form.Control
-              className="overlap-group-6"
-              placeholder="Search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)} // Update the search query
-              onKeyDown={handleKeyPress}
-            />
-          </div>
+
+        <div className="overlap-3">
+          {/* <div className="overlap-group-2">
+              <div className="rectangle-2" />
+              <div className="text-wrapper-19">Search</div>
+            </div> */}
+          <Form.Control className="overlap-group-2" placeholder="Search" value={query}
+            onChange={(e) => setQuery(e.target.value)} // Update the search query
+            onKeyDown={handleKeyPress}></Form.Control>
+
+          <Link className="text-wrapper-20" to="/search-page">Advanced Search</Link>
         </div>
 
-        <Link className="AdvancedSearchLink" to="/search-page">
-          <div className="text-wrapper-36">Advanced Search</div>
-        </Link>
+
+
         <img className="logo-4" alt="Logo" src="/img/logo.png" />
 
-        <div style={styles.container}>
+        <div style={styles.container} id="chatbotContainer" >
           <div style={{ flex: 1, overflow: "scroll" }} ref={chatWindowRef}>
 
             {messages.map((message, index) => (
@@ -215,14 +216,65 @@ export const AiChatbotPage = () => {
           </div>
         </div>
 
-        <div className="navbar-4">
+        {/* <div className="navbar-4">
           <Link className="text-wrapper-55" to="/ai-chatbot-page">Chatbot</Link>
           <Link className="text-wrapper-56" to="/search-page">Datasets</Link>
           <Link className="text-wrapper-57" to="/landing-page">Home</Link>
           <Link className="text-wrapper-58" to="/about-page">About Us</Link>
           <Link className="userguide-page-link" to="/userguide-page">User Guide & Help</Link>
           <Link className="google-form-link" to={"/google-form"}>Submit a Dataset</Link>
-        </div>
+        </div> */}
+        <nav className="navbar navbar-expand-lg navbar-3">
+          <div className="container-fluid">
+
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarContent"
+              aria-controls="navbarContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/ai-chatbot-page">
+                    Chatbot
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/search-page">
+                    Datasets
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about-page">
+                    About Us
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/userguide-page">
+                    User Guide & Help
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/google-form">
+                    Submit a Dataset
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
   );

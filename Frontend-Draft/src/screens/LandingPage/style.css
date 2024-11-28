@@ -4,6 +4,7 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  background-color: #def9c4;
 
 }
 
@@ -12,7 +13,7 @@
   background-color: #ffffff;
   height: fit-content;
   position: relative;
-  width: 1440px;
+  width: 100%;
 }
 
 .landing-page .boxes {
@@ -625,4 +626,133 @@
 
   }
 
+}
+
+@media (min-width: 400) and (max-width:499px) {
+  .landing-page .logo-3 {
+    display: none;
+  }
+
+
+
+
+  .landing-page .overlap-group-4 {
+    display: none;
+  }
+
+  .landing-page .text-wrapper-36 {
+    display: none;
+  }
+
+  .landing-page .OpenFeedbackVault {
+    font-size: 30px;
+    top: 350px;
+    left: 0px;
+    width: 100%;
+  }
+
+  .landing-page .text-wrapper-35 {
+    left: 0px;
+    font-size: 20px;
+    top: 400px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+  }
+
+
+  .path-2 {
+    width: 100%;
+    left: 0px;
+  }
+
+  .landing-page .boxes {
+    top: 750px;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  #navbarContent {
+    background-color: #23662a;
+
+  }
+
+  .landing-page .nav-link {
+    color: white;
+    text-align: center;
+  }
+
+  .landing-page .box {
+    transform: scale(0.9);
+
+  }
+
+  .landing-page .navbar {
+    max-width: 100px;
+  }
+}
+
+@media (max-width:399px) {
+  .landing-page .logo-3 {
+    display: none;
+  }
+
+
+  .landing-page .overlap-group-4 {
+    display: none;
+  }
+
+  .landing-page .text-wrapper-36 {
+    display: none;
+  }
+
+  .landing-page .OpenFeedbackVault {
+    font-size: 30px;
+    top: 350px;
+    left: 0px;
+    width: 100%;
+  }
+
+  .landing-page .text-wrapper-35 {
+    left: 0px;
+    font-size: 20px;
+    top: 400px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+  }
+
+
+  .path-2 {
+    width: 100%;
+    left: 0px;
+  }
+
+  .landing-page .boxes {
+    top: 750px;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  #navbarContent {
+    background-color: #23662a;
+
+
+  }
+
+  .landing-page .navbar {
+    max-width: 100px;
+  }
+
+  .landing-page .nav-link {
+    color: white;
+    text-align: center;
+  }
+
+  .landing-page .box {
+    transform: scale(0.9);
+
+  }
 }

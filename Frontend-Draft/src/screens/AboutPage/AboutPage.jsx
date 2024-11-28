@@ -123,26 +123,7 @@ export const AboutPage = () => {
 
           <Link className="text-wrapper-20" to="/search-page">Advanced Search</Link>
         </div>
-        {/* <div className="navbar">
-          <Link className="text-wrapper-21" to="/ai-chatbot-page">
-            Chatbot
-          </Link>
-          <Link className="text-wrapper-22" to="/search-page">
-            Datasets
-          </Link>
-          <Link className="text-wrapper-23" to="/landing-page">
-            Home
-          </Link>
-          <Link className="text-wrapper-24" to="/about-page">
-            About Us
-          </Link>
-          <Link className="userguide-page-link" to="/userguide-page">
-            User Guide & Help
-          </Link>
-          <Link className="google-form-link" to={"/google-form"}>
-          Submit a Dataset
-          </Link>
-        </div> */}
+
         <nav className="navbar navbar-expand-lg navbar-3">
           <div className="container-fluid">
 

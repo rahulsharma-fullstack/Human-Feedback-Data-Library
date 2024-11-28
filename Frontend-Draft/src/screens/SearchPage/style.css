@@ -13,7 +13,7 @@
 }
 
 .modal-button {
-  background-color: #DEF9C4;
+  background-color: #23662a;
   border-color: #236629;
   border-style: solid;
   border-width: 4px;
@@ -25,6 +25,7 @@
   margin-left: 35%;
   margin-right: auto;
 }
+
 
 .modal-button:hover {
   background-color: lightgray;
@@ -835,6 +836,14 @@
 }
 
 @media (min-width: 700px) and (max-width:999px) {
+  .search-page .modal-item {
+    width: 500px;
+  }
+
+  .modal-button {
+    font-size: small;
+  }
+
   .search-page .data-row {
     font-size: small;
   }
@@ -905,8 +914,12 @@
 
 }
 
-@media (max-width: 699px) {
+@media (min-width: 500px) and (max-width: 699px) {
   .search-page .data-row {
+    font-size: small;
+  }
+
+  .modal-button {
     font-size: small;
   }
 
@@ -988,4 +1001,227 @@
   .search-page .data-button {
     width: 100px;
   }
+}
+
+@media (min-width: 400px) and (max-width: 499px) {
+  .search-page .data-row {
+    font-size: 10px;
+  }
+
+  .modal-button {
+    font-size: 10px;
+    width: 50%;
+    margin-left: auto;
+  }
+
+  .search-page .page-selector-container {
+    top: 920px;
+    width: 100%;
+    padding: none;
+
+  }
+
+  .search-page .data-frame {
+    height: 100px;
+    padding: 0px;
+  }
+
+  .search-page .keyword-col {
+    width: 80%;
+    position: relative;
+    top: -30px;
+  }
+
+  .search-page .keywordOptions {
+    top: 30px;
+    position: relative;
+  }
+
+  .search-page .search-button {
+    font-size: small;
+    width: 30%;
+    margin: auto;
+  }
+
+  .search-page .date-col {
+    width: 80%;
+  }
+
+  .search-page .lang-col {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    top: -30px;
+  }
+
+  .search-page .element {
+    top: 850px;
+
+  }
+
+  .search-page .datalen-col {
+    width: 100%;
+    position: relative;
+    top: -20px;
+  }
+
+  .search-page .datalen-col .max-min-holder {
+    width: 80%;
+    margin: auto;
+  }
+
+  .search-page .button-col {
+    width: 100%;
+    position: relative;
+    top: -30px;
+    margin: auto;
+  }
+
+  .search-page .div2 {
+    width: 100%;
+  }
+
+  .search-page .type-col {
+
+    padding: 0px;
+  }
+
+  .search-page .name-col {
+    width: 110px;
+    padding: 0px;
+    padding-left: 20px;
+  }
+
+  .search-page .data-button {
+    width: 100px;
+  }
+
+  .search-page .lang-row-col {
+    display: none;
+  }
+
+  .search-page .pages-buttons-row .col-3 {
+    width: 50%;
+  }
+}
+
+@media (max-width: 399px) {
+  .modal-button {
+    font-size: 10px;
+    width: 50%;
+    margin-left: auto;
+  }
+
+  .search-page .data-row {
+    font-size: 10px;
+  }
+
+  .search-page .page-selector-container {
+    top: 920px;
+    width: 100%;
+    padding: none;
+
+  }
+
+  .search-page .data-frame {
+    height: 100px;
+    padding: 0px;
+  }
+
+  .search-page .keyword-col {
+    width: 80%;
+    position: relative;
+    top: -30px;
+  }
+
+  .search-page .keywordOptions {
+    top: 30px;
+    position: relative;
+  }
+
+  .search-page .search-button {
+    font-size: small;
+    width: 30%;
+    margin: auto;
+  }
+
+  .search-page .date-col {
+    width: 80%;
+  }
+
+  .search-page .lang-col {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    top: -30px;
+  }
+
+  .search-page .element {
+    top: 850px;
+
+  }
+
+  .search-page .datalen-col {
+    width: 100%;
+    position: relative;
+    top: -20px;
+  }
+
+  .search-page .datalen-col .max-min-holder {
+    width: 80%;
+    margin: auto;
+  }
+
+  .search-page .button-col {
+    width: 100%;
+    position: relative;
+    top: -30px;
+    margin: auto;
+  }
+
+  .search-page .div2 {
+    width: 100%;
+  }
+
+  .search-page .type-col {
+
+    padding: 0px;
+  }
+
+  .search-page .name-col {
+    width: 110px;
+    padding: 0px;
+    padding-left: 20px;
+  }
+
+  .search-page .data-button {
+    width: 100px;
+  }
+
+  .search-page .lang-row-col {
+    display: none;
+  }
+
+  .search-page .date-row-col {
+    display: none;
+  }
+
+  .search-page .pages-buttons-row .col-3 {
+    width: 50%;
+  }
+
+  .search-page .data-button {
+    display: none;
+  }
+
+  .search-page .length-subscript {
+    font-size: 10px;
+  }
+
+  .search-page .date-subscript {
+    font-size: 10px;
+  }
+
+
+
 }

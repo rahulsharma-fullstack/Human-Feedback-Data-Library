@@ -8,6 +8,27 @@
   background-color: #e3f8d1;
 }
 
+.google-form-page .navbar-3 {
+  height: 30px;
+  left: 150px;
+  position: absolute;
+  top: 50px;
+  width: 60%;
+}
+
+.google-form-page .nav-link {
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 38px;
+  white-space: nowrap;
+  margin-right: 25px;
+}
+
+
+
 .form-container {
   width: 80%;
   max-width: 800px;
@@ -25,7 +46,7 @@
   border-radius: 8px;
 }
 
-.google-form-page .text-wrapper-25{
+.google-form-page .text-wrapper-25 {
   top: 100px;
 }
 
@@ -145,4 +166,52 @@
   position: absolute;
   top: 29px;
   width: 92px;
+}
+
+@media (min-width:470px) and (max-width:700px) {
+  .google-form-page .navbar {
+    max-width: 300px;
+    z-index: 2;
+
+
+  }
+
+  .google-form-page .navbar-collapse {
+    background-color: #236629;
+  }
+
+  .google-form-page .dropdown-box {
+    width: 100%;
+    top: 50px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .google-form-page {
+    padding: 0px;
+  }
+}
+
+@media (max-width:469px) {
+  .google-form-page .navbar {
+    max-width: 150px;
+    z-index: 2;
+
+
+  }
+
+  .google-form-page .navbar-collapse {
+    background-color: #236629;
+  }
+
+  .google-form-page .dropdown-box {
+    width: 100%;
+    top: 50px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .google-form-page {
+    padding: 0px;
+  }
 }
