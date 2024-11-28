@@ -46,7 +46,18 @@ def retrieve_info(user_input, embedded_data, top_k=1):
     top_indices = np.argsort(similarities)[-top_k:]
     
     logging.info(f"Top {top_k} similar entries found with indices: {top_indices}.")
-    retrieved_info = " ".join([embedded_data[i]['description'] for i in top_indices])
+    
+    # Gather retrieved information with name, link, tags, and description
+    retrieved_info = []
+    for i in top_indices:
+        item = embedded_data[i]
+        retrieved_info.append({
+            # "name": item.get("name", "N/A"),
+            "link": item.get("link", "N/A"),
+            "tags": item.get("tags", []),
+            "description": item.get("description", "N/A")
+        })
+    
     logging.info(f"Retrieved information: {retrieved_info}")
     return retrieved_info
 
@@ -69,8 +80,16 @@ def chat():
 
     # Construct messages for OpenAI API
     messages = [
-        {"role": "system", "content": f"Relevant context: {retrieved_info}"},
-        {"role": "user", "content": user_input},
+    {
+        "role": "system",
+        "content": (
+            "You are an AI assistant. The server has provided some additional context. "
+            "Focus only on answering the client's question directly and concisely based on the context or your own knowledge. "
+            "Avoid including disclaimers or information that is not directly related to the user's input. "
+            f"Here is the additional context: {retrieved_info}"
+        )
+    },
+    {"role": "user", "content": user_input},
     ]
 
     # Send messages to OpenAI
