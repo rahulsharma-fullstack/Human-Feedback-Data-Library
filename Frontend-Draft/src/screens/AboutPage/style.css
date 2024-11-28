@@ -765,3 +765,107 @@
     height: 600px;
   }
 }
+
+@media (min-width:400px) and (max-width: 499px) {
+  .about-page .overlap-3 {
+    display: none;
+  }
+
+
+  .about-page .student-pictures {
+    flex-direction: column;
+  }
+
+  .about-page .overlap {
+    width: 100%;
+    left: 0px;
+    top: 400px;
+  }
+
+  .about-page .text-wrapper-6 {
+    text-align: center;
+    left: 0px;
+  }
+
+  .about-page .p {
+    left: 0px;
+    font-size: 25px;
+    line-height: 30px;
+    font-size: 15px;
+    position: relative;
+    left: 20px;
+  }
+
+  .about-page .text-wrapper-5 {
+    font-size: 30px;
+    line-height: normal;
+    top: 200px;
+  }
+
+  .about-page .text-wrapper-7 {
+    font-size: 15px;
+    line-height: 30px;
+    top: 150px;
+  }
+
+  .about-page .overlap-group {
+    width: 100%;
+    top: 950px;
+    height: 600px;
+  }
+}
+
+@media (max-width:399px) {
+  .about-page .overlap-3 {
+    display: none;
+  }
+
+  .about-page .student-pictures {
+    flex-direction: column;
+  }
+
+  .about-page .overlap {
+    width: 100%;
+    left: 0px;
+    top: 400px;
+  }
+
+  .about-page .text-wrapper-6 {
+    text-align: center;
+    left: 0px;
+    font-size: 40px;
+  }
+
+  .about-page .p {
+    left: 0px;
+    font-size: 25px;
+    line-height: 30px;
+    font-size: 15px;
+    position: relative;
+    left: 20px;
+  }
+
+  .about-page .text-wrapper-5 {
+    font-size: 30px;
+    line-height: normal;
+    top: 200px;
+  }
+
+  .about-page .text-wrapper-7 {
+    font-size: 15px;
+    line-height: 30px;
+    top: 150px;
+  }
+
+  .about-page .text-wrapper-8 {
+    font-size: 40px;
+  }
+
+  .about-page .overlap-group {
+    width: 100%;
+    top: 950px;
+    height: 600px;
+  }
+
+
+}

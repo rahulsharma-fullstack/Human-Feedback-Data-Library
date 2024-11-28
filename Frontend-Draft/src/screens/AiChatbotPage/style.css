@@ -22,10 +22,72 @@
 
 .AI-chatbot-page .div-6 {
   background-color: #e3f8d1;
-  height: 750px;
+  height: 1000px;
   overflow: hidden;
   position: relative;
-  width: 1440px;
+  width: 100%;
+}
+
+.AI-chatbot-page #chatbotContainer {
+  top: 150px;
+  width: 80%;
+}
+
+.AI-chatbot-page .navbar-3 {
+
+  height: 30px;
+  left: 150px;
+  position: absolute;
+  top: 50px;
+  width: 60%;
+}
+
+.AI-chatbot-page .nav-link {
+  color: #000000;
+  font-family: "Roboto", Helvetica;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 38px;
+  white-space: nowrap;
+  margin-right: 25px;
+}
+
+.AI-chatbot-page .overlap-3 {
+  height: 100px;
+  right: 10px;
+  position: absolute;
+  top: 24px;
+  width: 375px;
+}
+
+.AI-chatbot-page .overlap-group-2 {
+  height: 71px;
+  position: absolute;
+  top: 5px;
+  width: 373px;
+  font-size: 30px;
+  border-radius: 50px;
+  border-color: #23662a;
+  border-width: 3px;
+  box-shadow: none;
+  border-style: solid;
+}
+
+.AI-chatbot-page .text-wrapper-20 {
+  color: #0d27b2;
+  font-family: "Roboto", Helvetica;
+  font-size: 24px;
+  font-weight: 200;
+  height: 30px;
+  left: 17px;
+  letter-spacing: 0;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  top: 70px;
+  white-space: nowrap;
+  width: 195px;
 }
 
 .AI-chatbot-page .text-wrapper-36 {
@@ -406,4 +468,36 @@
 
 .AI-chatbot-page .ai-chatbot-title {
   left: 20px;
+}
+
+@media (min-width: 800px) and (max-width: 1355px) {
+  .AI-chatbot-page .overlap-3 {
+    top: 100px;
+  }
+
+  .AI-chatbot-page #chatbotContainer {
+    top: 250px;
+    position: relative;
+
+  }
+
+}
+
+@media (min-width: 400px) and (max-width: 799px) {
+  .AI-chatbot-page .overlap-3 {
+    top: 100px;
+  }
+
+  .AI-chatbot-page #chatbotContainer {
+    top: 250px;
+    position: relative;
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+@media (max-width:399px) {
+  .AI-chatbot-page .overlap-3 {
+    display: none;
+  }
 }
