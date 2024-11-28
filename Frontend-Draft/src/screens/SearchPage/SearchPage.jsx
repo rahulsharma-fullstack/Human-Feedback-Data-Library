@@ -82,8 +82,6 @@ export const SearchPage = () => {
 
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
-
-
     fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets') // Update the URL if necessary
       .then(response => response.json())
       .then(data => {
@@ -112,6 +110,9 @@ export const SearchPage = () => {
           if (data[count].data_type == "NaN") {
             data[count].data_type = "";
           }
+
+          // capitalize data type
+          data[count].data_type = capitalizeFirstLetter(data[count].data_type);
           page_arr.push(data[count]);
 
           lang_set.add(data[count].language)
@@ -179,6 +180,9 @@ export const SearchPage = () => {
     }
 
     let lang = langref.current ? langref.current.value : null;
+    if (lang == "N/A") {
+      lang = null;
+    }
     let searchText = searchRef.current ? searchRef.current.value : null;
     console.log(searchText);
 
@@ -242,6 +246,8 @@ export const SearchPage = () => {
           if (searchedData[count].data_type == "NaN") {
             searchedData[count].data_type = "";
           }
+          // capitalize data type
+          searchedData[count].data_type = capitalizeFirstLetter(searchedData[count].data_type);
           page_arr.push(searchedData[count]);
 
 
@@ -266,6 +272,13 @@ export const SearchPage = () => {
       })
 
   }
+
+  function capitalizeFirstLetter(input) {
+    if (!input) return input; // Handle null, undefined, or empty strings
+    if (input.length === 1) return input.toUpperCase(); // Handle single-character strings
+    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+  }
+
   return (
     <div className="search-page">
       <div className="div-4">
@@ -426,8 +439,10 @@ export const SearchPage = () => {
               </div>
 
               <div className="col-3 lang-col">
+
                 <div className="text-wrapper-28">Language</div>
                 <Form.Select ref={langref} className="Language-Select">
+                  <option value="N/A"></option>
                   {languages.map((lang, index) => (
                     <option key={lang} value={lang}>
                       {lang}
