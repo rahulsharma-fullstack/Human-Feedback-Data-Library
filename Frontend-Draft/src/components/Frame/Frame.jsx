@@ -1,11 +1,10 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
+
 
 import PropTypes from "prop-types";
 import React from "react";
 import "./style.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export const Frame = ({
   className,
@@ -25,29 +24,30 @@ export const Frame = ({
   onClick
 }) => {
   return (
-    <div className={`frame ${className}`} onClick={onClick}>
+    <div className={`frame ${className} container-fluid`} onClick={onClick}>
+
+      <div className="row data-row">
+        <div className="col-2 name-col">
+          <div className={'dataset-name'}>{text1}</div>
+        </div>
+
+        <div className="col-2 type-col">
+          <div className={`dataset-type`}>{text2}</div>
+        </div>
+
+        <div className="col-2">
+          <div className={`dataset-date`}>{text3}</div>
+        </div>
 
 
-      <div className="founder-break-even-wrapper">
-        <div className={`text-wrapper ${divClassNameOverride}`}>{text1}</div>
-      </div>
 
-      <div className="comparable-wrapper">
-        <div className={`text-wrapper ${divClassName1}`}>{text2}</div>
-      </div>
+        <div className="col-2">
+          <div className={`dataset-language`}>{text5}</div>
+        </div>
 
-      <div className="div-wrapper">
-        <div className={`text-wrapper ${divClassName2}`}>{text3}</div>
-      </div>
-
-
-
-      <div className={`element-wrapper ${frameClassName}`}>
-        <div className={`text-wrapper ${divClassName4}`}>{text5}</div>
-      </div>
-
-      <div className="element-wrapper">
-        <div className={`text-wrapper ${divClassName5}`}>{text6}</div>
+        <div className="col-2">
+          <div className={`dataset-rownum`}>{text6}</div>
+        </div>
       </div>
 
 
