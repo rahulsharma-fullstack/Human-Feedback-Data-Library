@@ -199,14 +199,26 @@ export const SearchPage = () => {
     }).then(response => response.json())
       .then(data => {
         // Filter the response data by seeing if its descriptions contain key words or words in search bar.
-        let searchWords = searchText.split(/\s+/); // Splits by one or more spaces
+        // let searchWords = searchText.split(/\s+/); // Splits by one or more spaces
+        let searchWord = searchText.toLowerCase();
+        // Create a regular expression to search for the exact phrase
+        const regex = new RegExp(`\\b${searchWord}\\b`, 'i');
+        // \b ensures exact word boundary matches, and 'i' makes it case-insensitive.
+
         let searchedData = null;
+
         if (searchText != null) {
-          searchedData = [];
+          // Ensures there is something to search for.
+          searchedData = []; // Initialize an array to hold the results.
+
           for (let i = 0; i < data.length; i++) {
-            let description = data[i].description.toLowerCase();
-            let found = searchWords.some(word => description.includes(word.toLowerCase()));
-            if (found) {
+            // Loop through the data array.
+            let desc = data[i].description.toLowerCase();
+            let name = data[i].name.toLowerCase();
+            // Convert both fields to lowercase for case-insensitive comparison.
+
+            if (regex.test(desc) || regex.test(name)) {
+              // Check if the regex matches either description or name.
               searchedData.push(data[i]);
             }
           }
@@ -249,6 +261,7 @@ export const SearchPage = () => {
 
 
       }).catch(error => {
+        console.log(error)
         console.log("Unable to fetch datasets. Please check formatting");
       })
 
