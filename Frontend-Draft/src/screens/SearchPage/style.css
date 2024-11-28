@@ -13,7 +13,7 @@
 }
 
 .modal-button {
-  background-color: #DEF9C4;
+  background-color: #23662a;
   border-color: #236629;
   border-style: solid;
   border-width: 4px;
@@ -25,6 +25,7 @@
   margin-left: 35%;
   margin-right: auto;
 }
+
 
 .modal-button:hover {
   background-color: lightgray;
@@ -835,6 +836,14 @@
 }
 
 @media (min-width: 700px) and (max-width:999px) {
+  .search-page .modal-item {
+    width: 500px;
+  }
+
+  .modal-button {
+    font-size: small;
+  }
+
   .search-page .data-row {
     font-size: small;
   }
@@ -907,6 +916,10 @@
 
 @media (min-width: 500px) and (max-width: 699px) {
   .search-page .data-row {
+    font-size: small;
+  }
+
+  .modal-button {
     font-size: small;
   }
 
@@ -993,6 +1006,12 @@
 @media (min-width: 400px) and (max-width: 499px) {
   .search-page .data-row {
     font-size: 10px;
+  }
+
+  .modal-button {
+    font-size: 10px;
+    width: 50%;
+    margin-left: auto;
   }
 
   .search-page .page-selector-container {
@@ -1087,6 +1106,12 @@
 }
 
 @media (max-width: 399px) {
+  .modal-button {
+    font-size: 10px;
+    width: 50%;
+    margin-left: auto;
+  }
+
   .search-page .data-row {
     font-size: 10px;
   }
