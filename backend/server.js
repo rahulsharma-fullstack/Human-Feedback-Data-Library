@@ -9,6 +9,19 @@ app.use(cors());
 app.use(express.json());  // To parse JSON request bodies
 app.options('*', cors());  // Enable pre-flight across-the-board
 
+// Middleware to validate requests only from your website
+app.use((req, res, next) => {
+    const allowedOrigin = 'https://openfeedbackvault.utm.utoronto.ca'; // Replace with your website's domain
+
+    const origin = req.get('Origin') || req.get('Referer'); // Check both Origin and Referer headers
+    console.log(origin)
+    if (origin && origin.startsWith(allowedOrigin)) {
+        next(); // Allow the request
+    } else {
+        res.status(403).json({ error: 'Forbidden: Access is restricted to requests from the official website.' });
+    }
+});
+
 // Use the routes
 app.use('/api', datasetsRoute); // Route for datasets
 
