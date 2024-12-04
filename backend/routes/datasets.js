@@ -24,7 +24,7 @@ router.get('/datasets', async (req, res) => {
 });
 
 router.post('/datasets/search', async (req, res) => {
-    const { endDate, minRows, maxRows, language, tags } = req.body; // Destructure the search filters from request body
+    const { endDate, minRows, maxRows, language, tags , tagsLogic} = req.body; // Destructure the search filters from request body
     let query = 'SELECT * FROM datasets WHERE 1=1';
     let queryParams = [];
 
@@ -52,11 +52,19 @@ router.post('/datasets/search', async (req, res) => {
         query += ` AND language = $${queryParams.length}`;
     }
 
-    // Multi-select filter for tags
+    // Multi-select filter for tags with AND/OR logic
     if (tags && Array.isArray(tags) && tags.length > 0) {
-        queryParams.push(tags);
-        query += ` AND tags && $${queryParams.length}::text[]`; // match any of the tags with && $N::text[]
+        if (tagsLogic === 'AND') {
+            // Match all selected tags (intersection logic)
+            query += ` AND tags @> $${queryParams.length + 1}::text[]`; // Use @> operator for array containment
+            queryParams.push(tags);
+        } else if (tagsLogic === 'OR' || !tagsLogic) {
+            // Match any of the selected tags (union logic)
+            query += ` AND tags && $${queryParams.length + 1}::text[]`; // Use && operator for array overlap
+            queryParams.push(tags);
+        }
     }
+    
 
     try {
         const result = await pool.query(query, queryParams); // Execute the query with parameters
