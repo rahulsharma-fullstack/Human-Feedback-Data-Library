@@ -4,10 +4,9 @@ import { Frame } from "../../components/Frame";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Select from 'react-select';
-//import {SliderField} from "../../components/SliderField"
+
 import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { Alert } from 'react-bootstrap';
 import Modal from '@mui/material/Modal';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -18,7 +17,6 @@ import { useLocation } from 'react-router-dom';
 
 
 import "./style.css";
-import { element } from "prop-types";
 
 
 export const SearchPage = () => {
@@ -27,10 +25,11 @@ export const SearchPage = () => {
   const [currentPage, setCurrentPage] = useState(0); // Track the current page
   const [languages, setLanguages] = useState([]);
   const [keywords, setKeywords] = useState([]);
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(0);
   const [date, setDate] = useState(null);
-  const [loading_lengths, setLoading] = useState(true);
+  const [data_length, setLength] = useState(0);
+  const [showDatasetsAlert, setShowAlert] = useState(false);
+
+  const [selectedKeyword, setSelectedKeyword] = useState(null);
 
   const [keyword_options, setKeyOptions] = useState(null);
 
@@ -67,25 +66,14 @@ export const SearchPage = () => {
     return `${value}°C`;
   }
 
-  // chatbot initialization
-  const id = "my-chatbot-id" // if not specified, will auto-generate uuidv4
 
-  const flow = {
-    "start": {
-      message: "Hello there! What ",
-      path: "end"
-    },
-    "end": {
-      message: "See you, goodbye!"
-    }
-  }
 
   // Fetch datasets from the backend when the component mounts
   useEffect(() => {
     fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets') // Update the URL if necessary
       .then(response => response.json())
       .then(data => {
-
+        setLength(data.length);
         //split data into pages, fill languages, and set min and max rows
         let chosenMin = Infinity
         let chosenMax = -Infinity;
@@ -143,8 +131,6 @@ export const SearchPage = () => {
         console.log(options);
         setKeyOptions(options);
 
-        setMax(chosenMax);
-        setMin(chosenMin);
 
         // if quicksearching, go straight to search
         if (searchQuery) {
@@ -185,6 +171,7 @@ export const SearchPage = () => {
     }
     let searchText = searchRef.current ? searchRef.current.value : null;
     console.log(searchText);
+    console.log(selectedKeyword);
 
 
     const searchParams = {
@@ -192,7 +179,8 @@ export const SearchPage = () => {
       minRows: chosenMin,
       maxRows: chosenMax,
       language: lang,
-      tags: keys
+      tags: keys,
+      tagsLogic: selectedKeyword,
     };
     fetch('https://openfeedbackvault.utm.utoronto.ca/api/datasets/search', {
       method: 'POST',
@@ -203,7 +191,7 @@ export const SearchPage = () => {
     }).then(response => response.json())
       .then(data => {
         // Filter the response data by seeing if its descriptions contain key words or words in search bar.
-        // let searchWords = searchText.split(/\s+/); // Splits by one or more spaces
+
         let searchWord = searchText.toLowerCase();
         // Create a regular expression to search for the exact phrase
         const regex = new RegExp(`\\b${searchWord}\\b`, 'i');
@@ -231,6 +219,13 @@ export const SearchPage = () => {
           searchedData = data;
         }
         console.log(searchedData);
+        if (searchedData.length == 0) {
+          setShowAlert(true);
+        }
+        else {
+          setShowAlert(false);
+        }
+        setLength(searchedData.length);
         //split data into pages, fill languages, and set min and max rows
         let count = 0;
         let page_arr = [];
@@ -281,10 +276,21 @@ export const SearchPage = () => {
 
   return (
     <div className="search-page">
+
+
+
       <div className="div-4">
         <div className="overlap-4">
           <img className="path" alt="Path" src="/img/path.svg" />
           <div className="element">
+            <div className="no-datasets-alert">
+              {showDatasetsAlert && (
+                <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
+                  No datasets match your search criteria. Please try again.
+                </Alert>
+              )}
+              {/* Your other component JSX */}
+            </div>
             <div className="div2">
               <Frame
                 className="frame data-frame"
@@ -355,7 +361,7 @@ export const SearchPage = () => {
                           <Button className="modal-button" onClick={() => { window.open(dataset.link, "_blank") }}>Go to Dataset Website</Button>
 
                           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            {dataset.description} <br />  <br />  {"Key words: " + dataset.tags} <br /> Size: {dataset.data_size_mb} mbs
+                            {dataset.description} <br />  <br />  <span className="bold">Key Words:</span> {"" + dataset.tags} <br /> <span className="bold">Size: </span> {dataset.data_size_mb} mbs
                           </Typography>
                         </Box>
 
@@ -426,14 +432,17 @@ export const SearchPage = () => {
                     label="AND"
                     name="keyword"
                     type='radio'
-                    id='keywordAnd'
+                    id='AND'
+                    onChange={(e) => { setSelectedKeyword(e.target.id) }}
+
                   />
                   <Form.Check
                     inline
                     label="OR"
                     name="keyword"
                     type='radio'
-                    id='keywordOr'
+                    id='OR'
+                    onChange={(e) => { setSelectedKeyword(e.target.id) }}
                   />
                 </div>
               </div>
@@ -462,21 +471,17 @@ export const SearchPage = () => {
                 <div className="length-subscript">Please enter a minimum and maximum
                   for number of rows.
                 </div>
-                <Box className="max-min-holder" sx={{ width: 400 }}>
+                <div className="max-min-box row">
+                  <div className="col-6">
+                    <Form.Control className="col-6 " onChange={(e) => { setValue([e.target.value, value[1]]) }} placeholder="Minimum"></Form.Control>
+                  </div>
 
+                  <div className="col-6">
+                    <Form.Control className="col-6" onChange={(e) => { setValue([value[0], e.target.value]) }} placeholder="Maximum"></Form.Control>
+                  </div>
 
+                </div>
 
-                  <Slider
-                    className="max-min-slider"
-                    value={value}
-                    onChange={handleChange}
-                    valueLabelDisplay="auto"
-                    min={min}
-                    max={max}
-                    step={1000}
-                  />
-
-                </Box>
 
               </div>
               <div className="col-lg-3"></div>
@@ -502,6 +507,7 @@ export const SearchPage = () => {
 
         <div className="container-fluid page-selector-container">
           <div className="row pages-buttons-row">
+            <div className="col-3 page-button-spacer"></div>
             <Button onClick={(e) => {
               if (currentPage - 1 >= 0) {
                 setCurrentPage(currentPage - 1)
@@ -527,7 +533,8 @@ export const SearchPage = () => {
               if (currentPage + 1 < pages.length) {
                 setCurrentPage(currentPage + 1)
               }
-            }} className="col-1 data-button">Next</Button>
+            }} className="col-1 data-button ">Next</Button>
+            <div className="col-3 page-length-text">Datasets Displaying: {data_length}</div>
 
           </div>
         </div>
