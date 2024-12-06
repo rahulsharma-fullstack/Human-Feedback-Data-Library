@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import { FaPaperPlane } from "react-icons/fa";
 import "./style.css";
+/** FEATURE/PAGE IS NOT IMPLEMENTED */
+
 
 export const AiChatbotPage = () => {
   // Quicksearch functionality
@@ -159,10 +161,7 @@ export const AiChatbotPage = () => {
       <div className="div-6">
 
         <div className="overlap-3">
-          {/* <div className="overlap-group-2">
-              <div className="rectangle-2" />
-              <div className="text-wrapper-19">Search</div>
-            </div> */}
+
           <Form.Control className="overlap-group-2" placeholder="Search" value={query}
             onChange={(e) => setQuery(e.target.value)} // Update the search query
             onKeyDown={handleKeyPress}></Form.Control>
@@ -216,14 +215,7 @@ export const AiChatbotPage = () => {
           </div>
         </div>
 
-        {/* <div className="navbar-4">
-          <Link className="text-wrapper-55" to="/ai-chatbot-page">Chatbot</Link>
-          <Link className="text-wrapper-56" to="/search-page">Datasets</Link>
-          <Link className="text-wrapper-57" to="/landing-page">Home</Link>
-          <Link className="text-wrapper-58" to="/about-page">About Us</Link>
-          <Link className="userguide-page-link" to="/userguide-page">User Guide & Help</Link>
-          <Link className="google-form-link" to={"/google-form"}>Submit a Dataset</Link>
-        </div> */}
+
         <nav className="navbar navbar-expand-lg navbar-3">
           <div className="container-fluid">
 
@@ -246,11 +238,7 @@ export const AiChatbotPage = () => {
                     Home
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/ai-chatbot-page">
-                    Chatbot
-                  </Link>
-                </li>
+
                 <li className="nav-item">
                   <Link className="nav-link" to="/search-page">
                     Datasets
