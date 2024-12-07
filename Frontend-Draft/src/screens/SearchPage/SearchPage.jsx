@@ -289,7 +289,7 @@ export const SearchPage = () => {
                   No datasets match your search criteria. Please try again.
                 </Alert>
               )}
-              {/* Your other component JSX */}
+
             </div>
             <div className="div2">
               <Frame
@@ -561,11 +561,7 @@ export const SearchPage = () => {
                     Home
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/ai-chatbot-page">
-                    Chatbot
-                  </Link>
-                </li>
+
                 <li className="nav-item">
                   <Link className="nav-link" to="/search-page">
                     Datasets

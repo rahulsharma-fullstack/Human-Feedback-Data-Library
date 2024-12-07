@@ -40,31 +40,6 @@ export const AboutPage = () => {
           <div className="text-wrapper-8">About the Foundation</div>
         </div>
 
-        {/* <div className="overlap-2 ">
-          <p className="text-wrapper-9">
-            Our team consists of five undergraduate students from the University of Toronto. Each member of the team brings
-            their own unique skills, such as unique design thinking, expertise with artificial intelligence, and database construction.
-
-          </p>
-          <div className="aleksandra-kalas">Aleksandra Kalas</div>
-          <div className="text-wrapper-10">Assad Usman</div>
-          <div className="humza-iqbal">Humza <br />Iqbal</div>
-          <div className="text-wrapper-11">Modaser Mojadiddi</div>
-          <div className="text-wrapper-12">Aditya Kumar</div>
-          <div className="text-wrapper-13">Our Team</div>
-          <div className="group">
-            <img className="IMG" alt="Img" src="/img/aleksandra.png" />
-            <img className="IMG2" alt="Img" src="/img/assad.jpg" />
-            <img className="IMG3" alt="Img" src="/img/humza.png" />
-            <img className="IMG4" alt="Img" src="/img/modaser.jpg" />
-            <img className="IMG5" alt="Img" src="/img/aditya.jpg" />
-          </div>
-          <div className="text-wrapper-14">Frontend Engineer</div>
-          <div className="text-wrapper-15">Fullstack Engineer</div>
-          <div className="text-wrapper-16">Backend Engineer</div>
-          <div className="text-wrapper-17">Backend Engineer</div>
-          <div className="text-wrapper-18">Project Manager</div>
-        </div> */}
         <div className="student-about">
           <h2>Our Team</h2>
 
@@ -113,10 +88,7 @@ export const AboutPage = () => {
 
 
         <div className="overlap-3">
-          {/* <div className="overlap-group-2">
-              <div className="rectangle-2" />
-              <div className="text-wrapper-19">Search</div>
-            </div> */}
+
           <Form.Control className="overlap-group-2" placeholder="Search" value={query}
             onChange={(e) => setQuery(e.target.value)} // Update the search query
             onKeyDown={handleKeyPress}></Form.Control>
@@ -146,11 +118,7 @@ export const AboutPage = () => {
                     Home
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/ai-chatbot-page">
-                    Chatbot
-                  </Link>
-                </li>
+
                 <li className="nav-item">
                   <Link className="nav-link" to="/search-page">
                     Datasets

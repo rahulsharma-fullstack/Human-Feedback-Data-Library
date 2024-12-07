@@ -6,30 +6,6 @@ import '../../../styleguide.css';
 const GoogleFormPage = () => {
   return (
     <div className="google-form-page container-fluid">
-      {/* Page Heading */}
-      {/* <div className="group-2 header-instance">
-        <div className="navbar">
-          <Link className="text-wrapper-21" to="/ai-chatbot-page">
-            Chatbot
-          </Link>
-          <Link className="text-wrapper-22" to="/search-page">
-            Datasets
-          </Link>
-          <Link className="text-wrapper-23" to="/landing-page">
-            Home
-          </Link>
-          <Link className="text-wrapper-24" to="/about-page">
-            About Us
-          </Link>
-          <Link className="userguide-page-link" to="/userguide-page">
-            User Guide & Help
-          </Link>
-          <Link className="google-form-link" to={"/google-form"}>
-            Submit a Dataset
-          </Link>
-        </div>
-        <img className="logo" alt="Logo" src="/img/logo.png" />
-      </div> */}
 
       <nav className="navbar navbar-expand-lg navbar-3">
         <div className="container-fluid">
@@ -53,11 +29,7 @@ const GoogleFormPage = () => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/ai-chatbot-page">
-                  Chatbot
-                </Link>
-              </li>
+
               <li className="nav-item">
                 <Link className="nav-link" to="/search-page">
                   Datasets
