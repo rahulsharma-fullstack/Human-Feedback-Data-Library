@@ -43,7 +43,7 @@ The chatbot implements rag by calling the database, getting all metadata of the 
 
 the openai_chatbot code runs a Flask server, it first authenticates requests by checking the secret of the request against what it should be. The secrets are in the DockerFiles of the backend and chatbot folders and should never be commited to GitHub. Doesn't matter what they are as long as they match. If the request is valid it calls a method that embedds the prompt and compares it using cosine similarity with the embeddings in the json file and returns a string containing the metada of the closest match. This method could use work, the comparison method could be improved or a whole different method or considering only returning if the match percentage is higher than certain percentage. Lastly it calls OPENAI passing the rag result as context and finally returns back the result of the prompt to the backend. 
 
-If the GPUs are found to power it I would suggest implementing some open source model like Llama from HuggingFace with Python's transformers and using something like SocketIO to make a client server connection between wherever the GPUs are and the feedback VM. 
+If the GPUs are found to power it one way of implementing some open source model like Llama from HuggingFace with Python's transformers and using something like SocketIO to make a client server connection between wherever the GPUs are and the feedback VM. 
 
 # Frontend
  
