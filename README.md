@@ -26,14 +26,14 @@ To takedown deployment:
 
 # Deploying to the domain https://openfeedbackvault.utm.utoronto.ca/ai-chatbot-page
 This vm has an apache2 server running and we route the subpaths of the domain to different localhost deployment depending if we want to route to the frontend or backend or chatbot. This is done in /etc/apache2/sites-available/ in default-ssl.conf
-`
+```
         ProxyPass /api http://localhost:5000/api
         ProxyPassReverse /api http://localhost:5000/api
         ProxyPass /chat http://localhost:7888/chat
         ProxyPassReverse /chat http://localhost:7888/chat
         ProxyPass / http://localhost:8080/
         ProxyPassReverse / http://localhost:8080/
-`
+```
 # Backend 
 The backend is a JavaScript server with the server.js file importing the routes from the routes/datasets.js file, doing some validation so that requests are only coming from the domain and running the server on port 5000. Lastly it contains a dockerfile that the docker-compose in the main folder picks up when the command is run and starts a docker container on that port
 # Chatbot
