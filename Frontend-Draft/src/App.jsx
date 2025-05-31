@@ -6,6 +6,11 @@ import { LandingPage } from "./screens/LandingPage";
 import { AiChatbotPage } from "./screens/AiChatbotPage";
 import { UserGuidePage } from "./screens/UserGuidePage";
 import GoogleFormPage from './screens/GoogleFormPage';
+import AdminPage from "./screens/AdminPage/AdminPage";
+import SubmitDatasetPage from "./screens/SubmitDatasetPage/SubmitDatasetPage";
+import LoginPage from "./screens/LoginPage/LoginPage";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +21,7 @@ const router = createBrowserRouter([
     path: "/search-page",
     element: <SearchPage />,
   },
+
   {
     path: "/about-page",
     element: <AboutPage />,
@@ -35,9 +41,28 @@ const router = createBrowserRouter([
   {
     path: "/google-form",
     element: <GoogleFormPage />,
+  },  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute>
+        <AdminPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/submit-form",
+    element: <SubmitDatasetPage />,
   },
 ]);
 
 export const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 };
