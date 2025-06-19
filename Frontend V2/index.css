@@ -1,0 +1,80 @@
+/* Custom styles for Human Feedback Data Library */
+
+/* Base styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* Theme transition */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Focus styles */
+.focus-outline:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Card hover effects */
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Loading spinner */
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
