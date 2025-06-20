@@ -4,11 +4,11 @@ import supabaseService from '../services/supabaseService.js';
 const router = express.Router();
 
 // @route   GET /api/supabase/datasets
-// @desc    Get all approved datasets from Supabase
+// @desc    Get all datasets from Supabase (both human_feedback and approved datasets)
 // @access  Public
 router.get('/datasets', async (req, res) => {
   try {
-    const { searchTerm, language, dataFormat, fileType, licensing } = req.query;
+    const { searchTerm, language, dataFormat, fileType, licensing, source } = req.query;
     
     const filters = {
       searchTerm,
@@ -18,7 +18,17 @@ router.get('/datasets', async (req, res) => {
       licensing
     };
 
-    const datasets = await supabaseService.getApprovedDatasets(filters);
+    let datasets;
+    
+    // Allow filtering by source, or get combined by default
+    if (source === 'human_feedback') {
+      datasets = await supabaseService.getHumanFeedbackDatasets(filters);
+    } else if (source === 'datasets') {
+      datasets = await supabaseService.getApprovedDatasets(filters);
+    } else {
+      // Default: get combined datasets from both tables
+      datasets = await supabaseService.getCombinedDatasets(filters);
+    }
     
     res.json({
       success: true,
@@ -253,6 +263,27 @@ router.get('/health', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Supabase service health check failed',
+      error: error.message
+    });
+  }
+});
+
+// @route   GET /api/supabase/test-human-feedback
+// @desc    Test human_feedback table connection and structure
+// @access  Public (for debugging)
+router.get('/test-human-feedback', async (req, res) => {
+  try {
+    const result = await supabaseService.testHumanFeedbackTable();
+    
+    res.json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    console.error('Error testing human_feedback table:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to test human_feedback table',
       error: error.message
     });
   }

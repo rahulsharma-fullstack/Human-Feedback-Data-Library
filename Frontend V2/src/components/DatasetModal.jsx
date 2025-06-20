@@ -53,16 +53,17 @@ const DatasetModal = ({ dataset, onClose }) => {
             <strong className="block text-gray-800 dark:text-gray-200">Licensing:</strong>
             <p className="text-gray-600 dark:text-gray-400">{dataset.licensing}</p>
           </div>
-        </div>
-
-        <div className="mb-6">
+        </div>        <div className="mb-6">
           <strong className="block text-gray-800 dark:text-gray-200 mb-1">Tags:</strong>
           <div className="flex flex-wrap gap-2">
-            {dataset.tags.map(tag => (
+            {Array.isArray(dataset.tags) && dataset.tags.map(tag => (
               <span key={tag} className="bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
                 #{tag}
               </span>
             ))}
+            {(!Array.isArray(dataset.tags) || dataset.tags.length === 0) && (
+              <span className="text-gray-500 dark:text-gray-400 text-sm">No tags available</span>
+            )}
           </div>
         </div>
         

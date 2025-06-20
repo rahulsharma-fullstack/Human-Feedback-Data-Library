@@ -11,14 +11,13 @@ const DatasetListItem = ({ dataset, onViewDetails }) => {
         <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
           Posted: {new Date(dataset.datePosted).toLocaleDateString()} | Language: {dataset.language} | Format: {dataset.dataFormat} | Size: {dataset.dataSize} {dataset.numRows ? `| Rows: ${dataset.numRows.toLocaleString()}` : ''}
         </p>
-        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">{dataset.description}</p>
-        <div className="mt-2">
-          {dataset.tags.slice(0, 3).map(tag => (
+        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">{dataset.description}</p>        <div className="mt-2">
+          {Array.isArray(dataset.tags) && dataset.tags.slice(0, 3).map(tag => (
             <span key={tag} className="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 dark:text-gray-200 mr-1">
               #{tag}
             </span>
           ))}
-          {dataset.tags.length > 3 && (
+          {Array.isArray(dataset.tags) && dataset.tags.length > 3 && (
             <span className="text-xs text-gray-500 dark:text-gray-400">+{dataset.tags.length - 3} more</span>
           )}
         </div>
