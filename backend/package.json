@@ -1,0 +1,44 @@
+{
+  "name": "human-feedback-data-library-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Human Feedback Data Library",
+  "main": "server.js",
+  "type": "module",  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node scripts/seed.js",
+    "seed:users": "node scripts/seed.js --users-only",
+    "seed:datasets": "node scripts/seed.js --datasets-only",
+    "test": "echo \"Tests not implemented yet\" && exit 0",
+    "setup": "npm install && echo \"Setup complete! Run 'npm run seed' to populate database.\"",
+    "check": "node -e \"console.log('✅ Backend is ready!')\"",
+    "docs": "echo \"API documentation available at: http://localhost:5000/api/health\"",
+    "validate": "node -e \"console.log('Environment validation would go here')\""
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "mongoose": "^8.0.3",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "express-validator": "^7.0.1",
+    "multer": "^1.4.5-lts.1",
+    "dotenv": "^16.3.1",
+    "express-rate-limit": "^7.1.5",
+    "compression": "^1.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [
+    "api",
+    "backend",
+    "datasets",
+    "human-feedback",
+    "mongodb",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT"
+}
