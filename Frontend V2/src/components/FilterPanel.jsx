@@ -1,5 +1,5 @@
 import React from 'react';
-import { FILTER_OPTIONS } from '../constants';
+import { FILTER_OPTIONS } from '../../constants';
 
 const FilterPanel = ({ filters, onFilterChange, onResetFilters }) => {
   const handleSelectChange = (e) => {

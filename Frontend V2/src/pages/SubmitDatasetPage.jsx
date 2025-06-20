@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Calendar as CalendarIcon } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
+import { datasetService } from '../services/datasetService';
+import { supabaseService } from '../services/supabaseService';
 
 // Simple date formatter
 const formatDate = (date) => {
@@ -19,54 +23,98 @@ const tagOptions = [
   "Toxicity", "Transparency", "Truthfulness", "Visual", "Visual QA", "Writing"
 ];
 
-const languages = ["English", "Chinese", "Japanese", "Korean", "Arabic", "Russian", "Telugu", "Turkish", "Other"];
+const languages = ["English", "Chinese", "Japanese", "Korean", "Arabic", "Russian", "Telugu", "Turkish", "German", "Spanish", "French", "Multiple", "Other"];
 
 const dataFormats = [
-  "accepted/rejected", "Scored", "Classification", "Multiple responses scored", "Prompt and response"
+  "accepted/rejected", "Scored", "Classification", "Multiple responses scored", "Prompt and response", "JSONL", "CSV", "JSON", "Text", "XML"
 ];
 
+const fileTypes = [".jsonl", ".csv", ".json", ".txt", ".zip", ".parquet", ".xlsx"];
+
+const licenses = ["CC BY-NC-SA 4.0", "Apache 2.0", "MIT", "GPLv3", "CC BY 4.0", "Custom (Research Only)", "Other"];
+
 const SubmitDatasetPage = () => {
-  const [formData, setFormData] = useState({
-    datasetLink: "",
-    datasetName: "",
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+    name: "",
+    link: "",
     description: "",
     dataFormat: "",
     dataSize: "",
-    numberOfRows: "",
+    numRows: "",
     language: "",
-    otherLanguage: "",
+    fileType: "",
+    licensing: "",
+    originatingPlatform: "",
+    categories: [],
   });
-  const [date, setDate] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [tagInput, setTagInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [date, setDate] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!isAuthenticated) {
+      setError("Please login to submit a dataset");
+      return;
+    }
 
-    const submissionData = {
-      ...formData,
-      datePosted: date,
-      tags: selectedTags,
-      status: "pending",
-    };
+    setLoading(true);
+    setError("");
 
-    console.log("Submission data:", submissionData);
-    alert("Dataset submitted successfully! It will be reviewed by our team.");
+    try {
+      const submissionData = {
+        ...formData,
+        tags: selectedTags,
+        numRows: parseInt(formData.numRows) || 0,
+        dataSize: formData.dataSize.toString(),
+        datePosted: date || new Date().toISOString().split('T')[0],
+      };
 
-    // Reset form
+      // Remove any undefined or empty fields
+      Object.keys(submissionData).forEach(key => {
+        if (submissionData[key] === '' || submissionData[key] === undefined) {
+          delete submissionData[key];
+        }
+      });
+
+      const response = await datasetService.submitDataset(submissionData);
+      
+      if (response.success) {
+        alert("Dataset submitted successfully! It will be reviewed by our team.");
+        resetForm();
+        navigate('/datasets');
+      } else {
+        setError(response.message || "Failed to submit dataset");
+      }
+    } catch (err) {
+      console.error("Error submitting dataset:", err);
+      setError(err.response?.data?.message || err.message || "Failed to submit dataset. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };const resetForm = () => {
     setFormData({
-      datasetLink: "",
-      datasetName: "",
+      name: "",
+      link: "",
       description: "",
       dataFormat: "",
       dataSize: "",
-      numberOfRows: "",
+      numRows: "",
       language: "",
-      otherLanguage: "",
+      fileType: "",
+      licensing: "",
+      originatingPlatform: "",
+      categories: [],
     });
-    setDate("");
     setSelectedTags([]);
+    setTagInput("");
+    setError("");
+    setDate("");
   };
 
   const addTag = (tag) => {
@@ -136,18 +184,17 @@ const SubmitDatasetPage = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Dataset Link */}
+        <form onSubmit={handleSubmit} className="space-y-6">          {/* Dataset Link */}
           <div>
-            <label htmlFor="datasetLink" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="link" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Dataset Link <span className="text-red-500">*</span>
             </label>
             <input
-              id="datasetLink"
+              id="link"
               type="url"
               required
-              value={formData.datasetLink}
-              onChange={(e) => setFormData({ ...formData, datasetLink: e.target.value })}
+              value={formData.link}
+              onChange={(e) => setFormData({ ...formData, link: e.target.value })}
               placeholder="https://example.com/dataset"
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
             />
@@ -155,14 +202,14 @@ const SubmitDatasetPage = () => {
 
           {/* Dataset Name */}
           <div>
-            <label htmlFor="datasetName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Dataset Name and Author <span className="text-red-500">*</span>
             </label>
             <input
-              id="datasetName"
+              id="name"
               required
-              value={formData.datasetName}
-              onChange={(e) => setFormData({ ...formData, datasetName: e.target.value })}
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="Dataset Name by Author Name"
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
             />
@@ -266,19 +313,17 @@ const SubmitDatasetPage = () => {
               placeholder="Size in MB"
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
             />
-          </div>
-
-          {/* Number of Rows */}
+          </div>          {/* Number of Rows */}
           <div>
-            <label htmlFor="numberOfRows" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="numRows" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Number of Rows <span className="text-red-500">*</span>
             </label>
             <input
-              id="numberOfRows"
+              id="numRows"
               type="number"
               required
-              value={formData.numberOfRows}
-              onChange={(e) => setFormData({ ...formData, numberOfRows: e.target.value })}
+              value={formData.numRows}
+              onChange={(e) => setFormData({ ...formData, numRows: e.target.value })}
               placeholder="Number of rows"
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
             />
@@ -329,9 +374,7 @@ const SubmitDatasetPage = () => {
                   {language}
                 </option>
               ))}
-            </select>
-
-            {formData.language === "Other" && (
+            </select>            {formData.language === "Other" && (
               <input
                 value={formData.otherLanguage}
                 onChange={(e) => setFormData({ ...formData, otherLanguage: e.target.value })}
@@ -341,13 +384,65 @@ const SubmitDatasetPage = () => {
             )}
           </div>
 
-          {/* Submit Button */}
+          {/* File Type */}
+          <div>
+            <label htmlFor="fileType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              File Type <span className="text-red-500">*</span>
+            </label>
+            <select
+              id="fileType"
+              value={formData.fileType}
+              onChange={(e) => setFormData({ ...formData, fileType: e.target.value })}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+              required
+            >
+              <option value="">Select file type</option>
+              {fileTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Licensing */}
+          <div>
+            <label htmlFor="licensing" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Licensing <span className="text-red-500">*</span>
+            </label>
+            <select
+              id="licensing"
+              value={formData.licensing}
+              onChange={(e) => setFormData({ ...formData, licensing: e.target.value })}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+              required
+            >
+              <option value="">Select license</option>
+              {licenses.map((license) => (
+                <option key={license} value={license}>
+                  {license}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Error Display */}
+          {error && (
+            <div className="p-4 bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-md">
+              <p className="text-red-700 dark:text-red-200">{error}</p>
+            </div>
+          )}          {/* Submit Button */}
           <div className="pt-4">
             <button 
               type="submit" 
-              className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              disabled={loading}
+              className={`w-full px-6 py-3 font-semibold rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                loading 
+                  ? 'bg-gray-400 cursor-not-allowed text-white' 
+                  : 'bg-blue-600 hover:bg-blue-700 text-white'
+              }`}
             >
-              Submit Dataset
+              {loading ? 'Submitting...' : 'Submit Dataset'}
             </button>
           </div>
         </form>

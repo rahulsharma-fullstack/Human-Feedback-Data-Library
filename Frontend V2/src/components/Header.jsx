@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { NAV_LINKS } from '../constants';
+import { NAV_LINKS } from '../../constants';
 import { useTheme } from '../contexts/ThemeContext';
 import { SunIcon } from './icons/SunIcon';
 import { MoonIcon } from './icons/MoonIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { HamburgerIcon } from './icons/HamburgerIcon';
 import { CloseIcon } from './icons/CloseIcon';
-import { Theme } from '../types';
+import { Theme } from '../../types';
 import SearchModal from './SearchModal';
-import { FILTER_OPTIONS, MOCK_DATASETS } from '../constants';
+import { FILTER_OPTIONS, MOCK_DATASETS } from '../../constants';
 
 const initialModalFilters = {
   searchTerm: '',

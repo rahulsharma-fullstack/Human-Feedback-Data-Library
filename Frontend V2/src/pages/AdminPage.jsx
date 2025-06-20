@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, XCircle, Clock, Eye, FileText, Calendar, Database, Tag, Globe, Hash, X, LogOut } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 // Simple date formatter utility function
 const formatDate = (date) => {
@@ -62,15 +62,23 @@ export default function AdminPage() {
   const [submissions, setSubmissions] = useState(mockSubmissions);
   const [selectedSubmission, setSelectedSubmission] = useState(null);
   const [activeTab, setActiveTab] = useState("pending");
-  const { logout, isAuthenticated } = useAuth();
+  const { logout, isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect to login if not authenticated
+  // Redirect to login if not authenticated or not admin
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');
+      return;
     }
-  }, [isAuthenticated, navigate]);
+    
+    // Check if user has admin role
+    if (user && user.role !== 'admin') {
+      alert('Access denied. Admin privileges required.');
+      navigate('/datasets');
+      return;
+    }
+  }, [isAuthenticated, user, navigate]);
 
   const handleLogout = () => {
     logout();

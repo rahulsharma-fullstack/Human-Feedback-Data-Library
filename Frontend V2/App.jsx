@@ -1,14 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import AboutUsPage from './pages/AboutUsPage';
-import UserGuidePage from './pages/UserGuidePage';
+import Header from './src/components/Header';
+import Footer from './src/components/Footer';
+import HomePage from './src/pages/HomePage';
+import AboutUsPage from './src/pages/AboutUsPage';
+import UserGuidePage from './src/pages/UserGuidePage';
 import DatasetsPage from './pages/DatasetsPage';
-import SubmitDatasetPage from './pages/SubmitDatasetPage';
-import LoginPage from './pages/LoginPage';
-import AdminPage from './pages/AdminPage';
+import SubmitDatasetPage from './src/pages/SubmitDatasetPage';
+import LoginPage from './src/pages/LoginPage';
+import AdminPage from './src/pages/AdminPage';
 
 const App = () => {
   return (

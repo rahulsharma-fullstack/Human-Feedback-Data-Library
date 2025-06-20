@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { authService } from '../src/services/authService';
+import { authService } from '../services/authService';
 
 const AuthContext = createContext();
 
@@ -15,31 +15,16 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const initAuth = async () => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          // Handle hardcoded admin token
-          if (token === 'hardcoded-admin-token') {
-            const adminUser = {
-              id: 'admin',
-              username: 'admin',
-              email: 'admin@local.dev',
-              firstName: 'Admin',
-              lastName: 'User',
-              role: 'admin',
-              isActive: true
-            };
-            setUser(adminUser);
+          const response = await authService.getCurrentUser();
+          if (response.success) {
+            setUser(response.data.user);
             setIsAuthenticated(true);
-          } else {
-            // Regular token verification
-            const response = await authService.getCurrentUser();
-            if (response.success) {
-              setUser(response.data.user);
-              setIsAuthenticated(true);
-            }
           }
         } catch (error) {
           console.error('Failed to verify token:', error);
@@ -51,27 +36,9 @@ export const AuthProvider = ({ children }) => {
 
     initAuth();
   }, []);
+
   const login = async (credentials) => {
     try {
-      // Handle hardcoded admin login
-      if (credentials.isHardcodedAdmin && credentials.identifier === 'admin' && credentials.password === 'admin123') {
-        const adminUser = {
-          id: 'admin',
-          username: 'admin',
-          email: 'admin@local.dev',
-          firstName: 'Admin',
-          lastName: 'User',
-          role: 'admin',
-          isActive: true
-        };
-        
-        setUser(adminUser);
-        setIsAuthenticated(true);
-        localStorage.setItem('token', 'hardcoded-admin-token');
-        return { success: true, data: { user: adminUser } };
-      }
-
-      // Regular backend login
       const response = await authService.login(credentials);
       if (response.success) {
         setUser(response.data.user);

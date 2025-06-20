@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { datasetService } from '../src/services/datasetService';
-import { supabaseService } from '../src/services/supabaseService';
-import DatasetCard from '../src/components/DatasetCard';
-import DatasetListItem from '../src/components/DatasetListItem';
-import DatasetModal from '../src/components/DatasetModal';
-import FilterPanel from '../src/components/FilterPanel';
-import { ListIcon } from '../src/components/icons/ListIcon';
-import { GridIcon } from '../src/components/icons/GridIcon';
-import { SearchIcon } from '../src/components/icons/SearchIcon';
+import { datasetService } from '../services/datasetService';
+import DatasetCard from '../../components/DatasetCard';
+import DatasetListItem from '../../components/DatasetListItem';
+import DatasetModal from '../../components/DatasetModal';
+import FilterPanel from '../../components/FilterPanel';
+import { ListIcon } from '../../components/icons/ListIcon';
+import { GridIcon } from '../../components/icons/GridIcon';
+import { SearchIcon } from '../../components/icons/SearchIcon';
 
 const defaultInitialFilters = {
   searchTerm: '',
@@ -27,10 +26,10 @@ const DatasetsPage = () => {
   const [selectedDataset, setSelectedDataset] = useState(null);
   const [filters, setFilters] = useState(defaultInitialFilters);
   const [pagination, setPagination] = useState(null);
-  const [useSupabase, setUseSupabase] = useState(false); // Toggle for data source
-  const searchInputRef = useRef(null);
-  const location = useLocation();
-  const navigate = useNavigate();  // Fetch datasets from API or Supabase
+  const searchInputRef = useRef(null);  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Fetch datasets from API
   const fetchDatasets = useCallback(async (searchFilters = filters) => {
     try {
       setLoading(true);
@@ -47,26 +46,21 @@ const DatasetsPage = () => {
         limit: 20,
       };
 
-      let response;
-      if (useSupabase) {
-        response = await supabaseService.getDatasets(params);
-      } else {
-        response = await datasetService.getDatasets(params);
-      }
+      const response = await datasetService.getDatasets(params);
       
       if (response.success) {
         setDatasets(response.data.datasets);
-        setPagination(response.data.pagination || { total: response.data.total });
+        setPagination(response.data.pagination);
       } else {
-        setError(`Failed to load datasets from ${useSupabase ? 'Supabase' : 'database'}`);
+        setError('Failed to load datasets');
       }
     } catch (err) {
       console.error('Error fetching datasets:', err);
-      setError(err.message || `Failed to load datasets from ${useSupabase ? 'Supabase' : 'database'}`);
+      setError(err.message || 'Failed to load datasets');
     } finally {
       setLoading(false);
     }
-  }, [filters, useGoogleSheets]);
+  }, [filters]);
 
   // Initial data fetch
   useEffect(() => {
@@ -117,34 +111,6 @@ const DatasetsPage = () => {
       searchInputRef.current.value = '';
     }
   }, []);
-  // Toggle between using API and Supabase
-  const handleToggleDataSource = async () => {
-    setUseSupabase(prev => !prev);
-    
-    if (!useSupabase) {
-      // Fetch datasets from Supabase
-      try {
-        setLoading(true);
-        setError(null);
-        
-        const response = await supabaseService.getDatasets();
-        
-        if (response.success) {
-          setDatasets(response.data.datasets);
-          setPagination({ total: response.data.total }); // Supabase provides total count
-        } else {
-          setError('Failed to load datasets from Supabase');
-        }
-      } catch (err) {        console.error('Error fetching datasets from Supabase:', err);
-        setError(err.message || 'Failed to load datasets from Supabase');
-      } finally {
-        setLoading(false);
-      }
-    } else {
-      // Re-fetch datasets from API
-      fetchDatasets();
-    }
-  };
 
   return (
     <div className="max-w-7xl mx-auto py-8 px-4">
@@ -254,15 +220,6 @@ const DatasetsPage = () => {
           onClose={handleCloseModal} 
         />
       )}
-
-      <div className="mt-8">
-        <button
-          onClick={handleToggleDataSource}
-          className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md transition-colors"
-        >
-          {useSupabase ? 'Switch to API Data' : 'Use Supabase Data'}
-        </button>
-      </div>
     </div>
   );
 };
