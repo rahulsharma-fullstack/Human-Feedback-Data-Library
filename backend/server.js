@@ -3,20 +3,16 @@ import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 // Import routes
-import authRoutes from './routes/auth.js';
-import datasetRoutes from './routes/datasets.js';
-import userRoutes from './routes/users.js';
-import adminRoutes from './routes/admin.js';
+import supabaseRoutes from './routes/supabase.js';
 
 // Import middleware
-import { errorHandler } from './middleware/errorHandler.js';
 import { logger } from './middleware/logger.js';
+import supabaseService from './services/supabaseService.js';
 
 // Load environment variables
 dotenv.config();
@@ -59,10 +55,7 @@ app.use(logger);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/datasets', datasetRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/admin', adminRoutes);
+app.use('/api/supabase', supabaseRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -82,27 +75,39 @@ app.use('*', (req, res) => {
   });
 });
 
-// Error handling middleware
-app.use(errorHandler);
+// Simple error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    success: false,
+    message: 'Something went wrong!',
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+  });
+});
 
-// Database connection
-const connectDB = async () => {
+// Supabase connection
+const connectSupabase = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/human_feedback_db');
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    const isConnected = await supabaseService.testConnection();
+    if (isConnected) {
+      console.log('✅ Supabase connection verified');
+    } else {
+      console.log('⚠️ Supabase connection failed - check your environment variables');
+    }
   } catch (error) {
-    console.error('Database connection error:', error);
-    process.exit(1);
+    console.error('Supabase connection error:', error);
   }
 };
 
 // Start server
 const startServer = async () => {
-  await connectDB();
+  await connectSupabase();
   
   app.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-    console.log(`Health check: http://localhost:${PORT}/api/health`);
+    console.log(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
+    console.log(`🗃️  Supabase API: http://localhost:${PORT}/api/supabase/health`);
+    console.log(`📚 Datasets: http://localhost:${PORT}/api/supabase/datasets`);
   });
 };
 
@@ -121,7 +126,6 @@ process.on('uncaughtException', (err) => {
 // Graceful shutdown
 process.on('SIGTERM', () => {
   console.log('SIGTERM received. Shutting down gracefully...');
-  mongoose.connection.close();
   process.exit(0);
 });
 
