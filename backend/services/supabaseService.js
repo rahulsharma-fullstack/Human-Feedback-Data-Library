@@ -251,8 +251,7 @@ class SupabaseService {
     } catch (error) {
       console.error('❌ Error getting statistics:', error);
       return { approved: 0, pending: 0, rejected: 0, total: 0 };
-    }
-  }
+    }  }
 }
 
 export default new SupabaseService();

@@ -19,39 +19,61 @@ export default function AdminPage() {
   // Load data on component mount
   useEffect(() => {
     loadSubmissions();
-  }, []);
-
-  const loadSubmissions = async () => {
+  }, []);  const loadSubmissions = async () => {
     try {
       setLoading(true);
       setError(null);
       
+      console.log('Loading submissions...');
+      
       // Get pending submissions
       const pendingResponse = await datasetService.getPendingSubmissions();
+      console.log('Pending response:', pendingResponse);
       
       // Get all datasets to see approved/rejected ones
       const allDatasetsResponse = await datasetService.getDatasets({ limit: 1000 });
+      console.log('All datasets response:', allDatasetsResponse);
       
-      // Combine submissions with different statuses
-      const pendingSubmissions = pendingResponse.data || [];
-      const approvedDatasets = allDatasetsResponse.data || [];
+      // Combine submissions with different statuses      // Handle both direct array and nested data structure
+      const pendingSubmissions = Array.isArray(pendingResponse.data) 
+        ? pendingResponse.data 
+        : (pendingResponse.data?.submissions || []);
       
-      // Format the data to match the expected structure
+      const approvedDatasets = Array.isArray(allDatasetsResponse.data) 
+        ? allDatasetsResponse.data 
+        : (allDatasetsResponse.data?.datasets || []);
+
+      console.log('Pending submissions:', pendingSubmissions);
+      console.log('Approved datasets:', approvedDatasets);
+        // Ensure we have arrays before calling map
+      if (!Array.isArray(pendingSubmissions)) {
+        console.error('pendingSubmissions is not an array:', pendingSubmissions);
+        setError('Invalid pending submissions data structure received from server');
+        return;
+      }
+      
+      if (!Array.isArray(approvedDatasets)) {
+        console.error('approvedDatasets is not an array:', approvedDatasets);
+        setError('Invalid approved datasets data structure received from server');
+        return;
+      }
+        // Format the data to match the expected structure
       const formattedSubmissions = [
         ...pendingSubmissions.map(sub => ({
           ...sub,
-          tags: sub.tags || [],
+          tags: Array.isArray(sub.tags) ? sub.tags : [],
           datePosted: new Date(sub.created_at),
           submittedAt: new Date(sub.created_at),
         })),
         ...approvedDatasets.map(dataset => ({
           ...dataset,
-          tags: dataset.tags || [],
+          tags: Array.isArray(dataset.tags) ? dataset.tags : [],
           datePosted: new Date(dataset.created_at),
           submittedAt: new Date(dataset.created_at),
         }))
       ];
       
+      console.log('Formatted submissions:', formattedSubmissions);
       setSubmissions(formattedSubmissions);
     } catch (err) {
       setError('Failed to load submissions: ' + (err.message || 'Unknown error'));
@@ -154,8 +176,7 @@ export default function AdminPage() {
             Try Again
           </button>
         </div>
-      </div>
-    );
+      </div>    );
   }
 
   return (
@@ -359,19 +380,7 @@ export default function AdminPage() {
                     </div>
                     <p className="text-sm text-gray-900 dark:text-white">
                       {selectedSubmission.dataSize} MB • {selectedSubmission.numberOfRows} rows
-                    </p>
-                  </div>
-
-                  <div>
-                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1">
-                      <Globe className="w-4 h-4 mr-1" />
-                      Language
-                    </div>
-                    <p className="text-sm text-gray-900 dark:text-white">
-                      {selectedSubmission.language}
-                      {selectedSubmission.otherLanguage && ` (${selectedSubmission.otherLanguage})`}
-                    </p>
-                  </div>
+                    </p>                  </div>
 
                   <div>
                     <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1">
