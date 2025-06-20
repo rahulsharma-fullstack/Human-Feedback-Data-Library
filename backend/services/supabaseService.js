@@ -487,6 +487,45 @@ class SupabaseService {
       throw error;
     }
   }
+
+  // Get available filter options from both tables
+  async getFilterOptions() {
+    try {
+      // Get data from both tables to extract unique filter values
+      const [humanFeedbackData, datasetsData] = await Promise.all([
+        this.getHumanFeedbackDatasets(),
+        this.getApprovedDatasets()
+      ]);
+
+      const combinedData = [...humanFeedbackData, ...datasetsData];
+
+      // Extract unique values for each filter type
+      const filterOptions = {
+        tags: [...new Set(combinedData.flatMap(item => item.tags || []))].filter(tag => tag && tag.trim()).sort(),
+        categories: [...new Set(combinedData.flatMap(item => item.categories || []))].filter(cat => cat && cat.trim()).sort(),
+        languages: [...new Set(combinedData.map(item => item.language).filter(lang => lang && lang.trim()))].sort(),
+        dataFormats: [...new Set(combinedData.map(item => item.data_format).filter(format => format && format.trim()))].sort(),
+        fileTypes: [...new Set(combinedData.map(item => item.file_type).filter(type => type && type.trim()))].sort(),
+        licensing: [...new Set(combinedData.map(item => item.licensing).filter(license => license && license.trim()))].sort(),
+        originatingPlatforms: [...new Set(combinedData.map(item => item.originating_platform).filter(platform => platform && platform.trim()))].sort()
+      };
+
+      console.log('📊 Generated filter options:', {
+        tags: filterOptions.tags.length,
+        categories: filterOptions.categories.length,
+        languages: filterOptions.languages.length,
+        dataFormats: filterOptions.dataFormats.length,
+        fileTypes: filterOptions.fileTypes.length,
+        licensing: filterOptions.licensing.length,
+        originatingPlatforms: filterOptions.originatingPlatforms.length
+      });
+
+      return filterOptions;
+    } catch (error) {
+      console.error('❌ Error getting filter options:', error);
+      throw error;
+    }
+  }
 }
 
 export default new SupabaseService();

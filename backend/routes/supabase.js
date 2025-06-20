@@ -289,4 +289,25 @@ router.get('/test-human-feedback', async (req, res) => {
   }
 });
 
+// @route   GET /api/supabase/filter-options
+// @desc    Get available filter options from all datasets
+// @access  Public
+router.get('/filter-options', async (req, res) => {
+  try {
+    const filterOptions = await supabaseService.getFilterOptions();
+    
+    res.json({
+      success: true,
+      data: filterOptions,
+    });
+  } catch (error) {
+    console.error('Error fetching filter options:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch filter options',
+      error: error.message
+    });
+  }
+});
+
 export default router;
