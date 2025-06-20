@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle, XCircle, Clock, Eye, FileText, Calendar, Database, Tag, Globe, Hash, X, LogOut } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+import { CheckCircle, XCircle, Clock, Eye, FileText, Calendar, Database, Tag, Globe, Hash, X } from 'lucide-react';
+import { datasetService } from '../services/datasetService';
 
 // Simple date formatter utility function
 const formatDate = (date) => {
@@ -9,89 +9,74 @@ const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', options);
 };
 
-// Mock data representing dataset submissions
-const mockSubmissions = [
-  {
-    id: "1",
-    datasetLink: "https://huggingface.co/datasets/example/rlhf-dataset",
-    datasetName: "RLHF Preference Dataset by OpenAI",
-    description:
-      "A comprehensive dataset containing human preferences for reinforcement learning from human feedback. This dataset includes paired responses with human rankings, covering various topics including coding, creative writing, and factual questions.",
-    tags: ["RLHF", "Human Feedback", "Preference Learning", "Alignment"],
-    dataFormat: "accepted/rejected",
-    dataSize: "2500",
-    numberOfRows: "50000",
-    datePosted: new Date("2024-01-15"),
-    language: "English",
-    status: "pending",
-    submittedAt: new Date("2024-01-20"),
-  },
-  {
-    id: "2",
-    datasetLink: "https://github.com/example/medical-qa-dataset",
-    datasetName: "Medical Q&A Dataset by Stanford Medical",
-    description:
-      "A curated collection of medical question-answer pairs reviewed by medical professionals. Includes questions about symptoms, treatments, and general medical knowledge.",
-    tags: ["Medical", "QA", "Healthcare", "Expert Feedback"],
-    dataFormat: "Prompt and response",
-    dataSize: "1200",
-    numberOfRows: "25000",
-    datePosted: new Date("2024-01-10"),
-    language: "English",
-    status: "approved",
-    submittedAt: new Date("2024-01-18"),
-  },
-  {
-    id: "3",
-    datasetLink: "https://example.com/coding-dataset",
-    datasetName: "Code Generation Dataset by DeepMind",
-    description:
-      "Programming problems with multiple solution approaches, including human-written and AI-generated code with quality scores.",
-    tags: ["Coding", "Programming", "Scored", "Technical"],
-    dataFormat: "Multiple responses scored",
-    dataSize: "3200",
-    numberOfRows: "75000",
-    datePosted: new Date("2024-01-05"),
-    language: "English",
-    status: "rejected",
-    submittedAt: new Date("2024-01-16"),
-  },
-];
-
 export default function AdminPage() {
-  const [submissions, setSubmissions] = useState(mockSubmissions);
-  const [selectedSubmission, setSelectedSubmission] = useState(null);
+  const [submissions, setSubmissions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);  const [selectedSubmission, setSelectedSubmission] = useState(null);
   const [activeTab, setActiveTab] = useState("pending");
-  const { logout, isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect to login if not authenticated or not admin
+  // Load data on component mount
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
-      return;
+    loadSubmissions();
+  }, []);
+
+  const loadSubmissions = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      // Get pending submissions
+      const pendingResponse = await datasetService.getPendingSubmissions();
+      
+      // Get all datasets to see approved/rejected ones
+      const allDatasetsResponse = await datasetService.getDatasets({ limit: 1000 });
+      
+      // Combine submissions with different statuses
+      const pendingSubmissions = pendingResponse.data || [];
+      const approvedDatasets = allDatasetsResponse.data || [];
+      
+      // Format the data to match the expected structure
+      const formattedSubmissions = [
+        ...pendingSubmissions.map(sub => ({
+          ...sub,
+          tags: sub.tags || [],
+          datePosted: new Date(sub.created_at),
+          submittedAt: new Date(sub.created_at),
+        })),
+        ...approvedDatasets.map(dataset => ({
+          ...dataset,
+          tags: dataset.tags || [],
+          datePosted: new Date(dataset.created_at),
+          submittedAt: new Date(dataset.created_at),
+        }))
+      ];
+      
+      setSubmissions(formattedSubmissions);
+    } catch (err) {
+      setError('Failed to load submissions: ' + (err.message || 'Unknown error'));
+    } finally {
+      setLoading(false);
     }
-    
-    // Check if user has admin role
-    if (user && user.role !== 'admin') {
-      alert('Access denied. Admin privileges required.');
-      navigate('/datasets');
-      return;
+  };
+
+  const handleApprove = async (id) => {
+    try {
+      await datasetService.approveSubmission(id);
+      await loadSubmissions(); // Reload data
+    } catch (err) {
+      alert('Failed to approve submission: ' + (err.message || 'Unknown error'));
     }
-  }, [isAuthenticated, user, navigate]);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
   };
 
-  const handleApprove = (id) => {
-    setSubmissions((prev) => prev.map((sub) => (sub.id === id ? { ...sub, status: "approved" } : sub)));
-  };
-
-  const handleReject = (id) => {
-    setSubmissions((prev) => prev.map((sub) => (sub.id === id ? { ...sub, status: "rejected" } : sub)));
-  };
+  const handleReject = async (id) => {
+    try {
+      const reason = prompt('Please provide a reason for rejection (optional):');
+      await datasetService.rejectSubmission(id, reason || '');
+      await loadSubmissions(); // Reload data
+    } catch (err) {
+      alert('Failed to reject submission: ' + (err.message || 'Unknown error'));
+    }  };
 
   const getStatusIcon = (status) => {
     switch (status) {
@@ -143,10 +128,34 @@ export default function AdminPage() {
         return [];
     }
   };
+  // Don't render anything while loading
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">Loading submissions...</p>
+        </div>
+      </div>
+    );
+  }
 
-  // Don't render anything if not authenticated (will redirect)
-  if (!isAuthenticated) {
-    return null;
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-red-500 text-6xl mb-4">⚠️</div>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Error Loading Data</h1>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">{error}</p>
+          <button
+            onClick={loadSubmissions}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -161,18 +170,10 @@ export default function AdminPage() {
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Dataset Submission Management</p>
               </div>
-            </div>
-            <nav className="flex items-center space-x-4">
+            </div>            <nav className="flex items-center space-x-4">
               <a href="/" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                 Back to Site
               </a>
-              <button 
-                onClick={handleLogout} 
-                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
-              >
-                <LogOut className="w-4 h-4 mr-1" />
-                Logout
-              </button>
             </nav>
           </div>
         </div>

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
 import { datasetService } from '../services/datasetService';
-import { supabaseService } from '../services/supabaseService';
 
 // Simple date formatter
 const formatDate = (date) => {
@@ -34,7 +32,6 @@ const fileTypes = [".jsonl", ".csv", ".json", ".txt", ".zip", ".parquet", ".xlsx
 const licenses = ["CC BY-NC-SA 4.0", "Apache 2.0", "MIT", "GPLv3", "CC BY 4.0", "Custom (Research Only)", "Other"];
 
 const SubmitDatasetPage = () => {
-  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
     const [formData, setFormData] = useState({
     name: "",
@@ -54,25 +51,24 @@ const SubmitDatasetPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [date, setDate] = useState("");
-  const [showDatePicker, setShowDatePicker] = useState(false);
-  const handleSubmit = async (e) => {
+  const [showDatePicker, setShowDatePicker] = useState(false);  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!isAuthenticated) {
-      setError("Please login to submit a dataset");
-      return;
-    }
-
     setLoading(true);
-    setError("");
-
-    try {
+    setError("");    try {
       const submissionData = {
-        ...formData,
+        name: formData.name,
+        link: formData.link,
+        description: formData.description,
         tags: selectedTags,
-        numRows: parseInt(formData.numRows) || 0,
-        dataSize: formData.dataSize.toString(),
-        datePosted: date || new Date().toISOString().split('T')[0],
+        data_format: formData.dataFormat,
+        data_size: formData.dataSize.toString(),
+        num_rows: parseInt(formData.numRows) || 0,
+        language: formData.language,
+        file_type: formData.fileType,
+        licensing: formData.licensing,
+        originating_platform: formData.originatingPlatform,
+        categories: formData.categories || [],
       };
 
       // Remove any undefined or empty fields

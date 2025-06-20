@@ -1,0 +1,6 @@
+-- Add missing columns to the datasets table
+ALTER TABLE datasets 
+ADD COLUMN IF NOT EXISTS submitted_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+ADD COLUMN IF NOT EXISTS rejected_at TIMESTAMP WITH TIME ZONE,
+ADD COLUMN IF NOT EXISTS submitted_by VARCHAR(255) DEFAULT 'anonymous',
+ADD COLUMN IF NOT EXISTS submitted_by_id UUID;

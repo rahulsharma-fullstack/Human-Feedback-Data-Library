@@ -98,22 +98,28 @@ class SupabaseService {
       console.error('❌ Error retrieving pending submissions:', error);
       throw error;
     }
-  }
-
-  // Add a new pending submission
+  }  // Add a new pending submission
   async addPendingSubmission(submissionData) {
     try {
+      // Only include fields that we know exist in the database
       const dataToInsert = {
-        ...submissionData,
-        status: 'pending',
-        created_at: new Date().toISOString(),
-        submitted_at: new Date().toISOString()
+        name: submissionData.name,
+        link: submissionData.link,
+        description: submissionData.description,
+        tags: submissionData.tags || [],
+        data_format: submissionData.data_format,
+        data_size: submissionData.data_size,
+        num_rows: submissionData.num_rows,
+        language: submissionData.language,
+        file_type: submissionData.file_type,
+        licensing: submissionData.licensing,
+        originating_platform: submissionData.originating_platform,
+        categories: submissionData.categories || [],
+        status: 'pending'
+        // created_at, updated_at will be set automatically by the database
       };
 
-      // Convert tags array to string if needed
-      if (Array.isArray(dataToInsert.tags)) {
-        dataToInsert.tags = dataToInsert.tags.join(', ');
-      }
+      console.log('📝 Inserting data:', dataToInsert);
 
       const { data, error } = await this.supabase
         .from('datasets')
@@ -129,15 +135,14 @@ class SupabaseService {
       throw error;
     }
   }
-
   // Approve a submission
   async approveSubmission(submissionId) {
     try {
       const { data, error } = await this.supabase
         .from('datasets')
         .update({ 
-          status: 'approved',
-          approved_at: new Date().toISOString()
+          status: 'approved'
+          // updated_at will be set automatically by the trigger
         })
         .eq('id', submissionId)
         .select();
@@ -151,7 +156,6 @@ class SupabaseService {
       throw error;
     }
   }
-
   // Reject a submission
   async rejectSubmission(submissionId, reason = '') {
     try {
@@ -159,8 +163,8 @@ class SupabaseService {
         .from('datasets')
         .update({ 
           status: 'rejected',
-          rejection_reason: reason,
-          rejected_at: new Date().toISOString()
+          rejection_reason: reason
+          // updated_at will be set automatically by the trigger
         })
         .eq('id', submissionId)
         .select();

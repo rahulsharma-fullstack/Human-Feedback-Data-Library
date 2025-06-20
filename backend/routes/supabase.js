@@ -69,9 +69,8 @@ router.get('/pending', async (req, res) => {
 router.post('/submit', async (req, res) => {
   try {
     const submissionData = {
-      ...req.body,
-      submitted_by: 'anonymous', // simplified since no auth
-      submitted_by_id: null
+      ...req.body
+      // Remove fields that don't exist in the current database
     };
 
     const result = await supabaseService.addPendingSubmission(submissionData);
